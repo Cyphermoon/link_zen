@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base{
+  html{
+    font-family: "Roboto", Verdana, Helvetica, Tahoma, sans-serif;
+  }
   @font-face {
     font-family: "Roboto";
     font-weight: 100;
@@ -32,5 +35,11 @@
     font-family: "Roboto";
     font-weight: 900;
     src: url('/fonts/roboto/Roboto-Black.ttf');
+  }
+}
+
+@layer utilities{
+  .site-gradient{
+    background: linear-gradient(154.97deg, rgba(255, 224, 239, 0.65) 4.36%, rgba(134, 133, 239, 0) 108.32%);
   }
 }
