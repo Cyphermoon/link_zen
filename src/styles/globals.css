@@ -36,10 +36,44 @@
     font-weight: 900;
     src: url('/fonts/roboto/Roboto-Black.ttf');
   }
+
+  /*Typography*/
+
+  h1{
+    @apply text-7xl font-semibold
+  }
+
+  h2{
+    @apply text-5xl capitalize
+  }
+
+  h3{
+    @apply text-3xl capitalize font-bold
+  }
+
+  h4{
+    @apply text-2xl capitalize font-bold
+  }
+
+  p{
+    @apply text-base
+  }
+
+  button{
+    @apply text-sm
+  }
+  
+  a{
+    @apply text-lg
+  }
 }
 
 @layer utilities{
   .site-gradient{
     background: linear-gradient(154.97deg, rgba(255, 224, 239, 0.65) 4.36%, rgba(134, 133, 239, 0) 108.32%);
+  }
+
+  .profile-gradient{
+    background: linear-gradient(154.97deg, rgba(255, 204, 229, 0.73) 4.36%, rgba(113, 112, 255, 0.15) 108.32%);;
   }
 }
