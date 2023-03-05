@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import { Button, UnstyledButton } from '@mantine/core'
+import * as Popover from '@radix-ui/react-popover';
 
 
 export default function Home() {
@@ -15,6 +12,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>H1 heading</h1>
+      <h2>H2 heading</h2>
+      <h3>H3 heading</h3>
+      <Popover.Root>
+        <Popover.Trigger className="bg-red-300">Show info</Popover.Trigger>
+        <Popover.Portal className=''>
+          <Popover.Content className="bg-blue-100">
+            Some content
+            <Popover.Arrow className="border bg-teal-200 text-xl" />
+          </Popover.Content>
+        </Popover.Portal>
+      </Popover.Root>
     </div>
   )
 }
