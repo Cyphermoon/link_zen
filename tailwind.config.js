@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true
+    },
     extend: {
       colors: {
         primary: {
@@ -18,7 +21,7 @@ module.exports = {
           800: "#3b3b3b",
           900: "#1b1b1b"
         },
-        text: {
+        subdue: {
           900: "#252431",
           DEFAULT: "#474554",
           700: "#666474",
