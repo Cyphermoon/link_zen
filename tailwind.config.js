@@ -47,6 +47,7 @@ module.exports = {
   plugins: [
     require("tailwindcss-radix")({
       variantPrefix: "rdx",
-    })
+    }),
+    require("tailwindcss-animate")
   ],
 }

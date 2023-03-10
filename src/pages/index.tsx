@@ -6,7 +6,7 @@ import PageHead from '@/components/PageHead';
 
 export default function Home() {
   return (
-    <div className='bg-primary h-screen'>
+    <div className='bg-primary h-screen w-screen overflow-x-hidden'>
       <PageHead title='Organice - Home' />
       <Header />
     </div>
