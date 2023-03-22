@@ -8,6 +8,34 @@ module.exports = {
       center: true
     },
     extend: {
+      keyframes: {
+        moveOut: {
+          "0%": {
+            transform: "translateX(0%)"
+          },
+          "20%": {
+            transform: "translateX(20%)"
+          },
+          "40%": {
+            transform: "translateX(40%)"
+          },
+          "60%": {
+            transform: "translateX(60%)"
+          },
+          "70%": {
+            transform: "translateX(70%)"
+          },
+          "90%": {
+            transform: "translateX(100%)"
+          },
+          "100%": {
+            transform: "scale(0)",
+          }
+        },
+      },
+      animation: {
+        moveOut: "moveOut 450ms ease-in-out forwards",
+      },
       colors: {
         primary: {
           50: "#f9f9f9",
