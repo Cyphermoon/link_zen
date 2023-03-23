@@ -17,7 +17,7 @@ const SpiderLeg = ({ imageUrl, className = "", alt = "spider leg" }: SpiderLegPr
             src={imageUrl}
             className={`filter-dark lg:filter-light ${className}`}
             alt={alt} width={230}
-            height={289} />
+            height={230} />
     )
 }
 
