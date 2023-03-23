@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import React from 'react'
 import Button from '../common/Button'
 import Container from '../common/Container'
-import ZenLink from '../common/ZenLink'
+import PreviewLink from './PreviewLink'
+
 
 interface SpiderLegProps {
     className?: string
@@ -26,10 +26,10 @@ const SpiderLayout = () => {
     return (
         <div className='grow'>
             <Container className='relative h-full max-w-5xl text-center flex flex-col justify-center items-center'>
-                <ZenLink className='top-[10%] lg:top-5 left-2 lg:left-0' />
-                <ZenLink className='top-[10%] lg:top-5 right-2 lg:right-0' />
-                <ZenLink className='bottom-[10%] lg:bottom-0 left-2 lg:left-0' />
-                <ZenLink className='bottom-[10%] lg:bottom-0 right-2 lg:right-0' />
+                <PreviewLink className='top-[10%] lg:top-5 left-2 lg:left-0' />
+                <PreviewLink className='top-[10%] lg:top-5 right-2 lg:right-0' />
+                <PreviewLink className='bottom-[10%] lg:bottom-0 left-2 lg:left-0' />
+                <PreviewLink className='bottom-[10%] lg:bottom-0 right-2 lg:right-0' />
 
                 <div className='grid grid-cols-7 gap-4 max-w-4xl px-5 lg:px-0'>
                     <SpiderLeg className="col-start-1 col-end-3" imageUrl="/asset/left-upper-leg.svg" />

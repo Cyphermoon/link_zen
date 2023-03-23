@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import NavBar from './NavBar'
 import SpiderLayout from './SpiderLayout'
 
