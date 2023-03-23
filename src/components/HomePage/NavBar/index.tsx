@@ -45,7 +45,7 @@ const NavBar = () => {
                 <div
                     className={`
                     absolute flex bg-primary 
-                    lg:animate-none flex-col items-center justify-center lg:flex left-0 lg:flex-row lg:justify-between lg:static space-y-4 lg:grow lg:space-y-0 top-0 w-screen lg:h-auto lg:w-auto h-screen
+                    left-0 md:-left-20 lg:animate-none flex-col items-center z-20 lg:z-auto justify-center lg:flex lg:flex-row lg:justify-between lg:static space-y-4 lg:grow lg:space-y-0 top-0 w-screen lg:h-auto lg:w-auto h-screen
                     ${navOpened === undefined && "hidden"}  
                     ${navOpened ? "animate-in slide-in-from-left-full duration-500" : navOpened != undefined && "animate-moveOut"} 
                     `}>

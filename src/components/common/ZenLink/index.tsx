@@ -7,7 +7,7 @@ interface Props {
 
 const ZenLink = ({ className }: Props) => {
     return (
-        <div className={`w-1/4 h-1/6  lg:w-52 lg:h-52 absolute rounded-2xl bg-slate-400 shadow-lg ${className}`}></div>
+        <div className={`w-[95px] h-[95px] md:w-[120px] md:h-[120px] lg:w-44 lg:h-40 z-10 absolute rounded-2xl bg-slate-400 shadow-lg ${className}`}></div>
     )
 }
 
