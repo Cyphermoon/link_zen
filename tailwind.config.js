@@ -8,6 +8,9 @@ module.exports = {
       center: true
     },
     extend: {
+      fontSize: {
+        "xxs": ["0.625rem", "1.2"]
+      },
       keyframes: {
         moveOut: {
           "0%": {
