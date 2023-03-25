@@ -31,28 +31,28 @@ const SpiderLayout = () => {
                     folderName='social media'
                     dateCreated='22/03/23'
                     url='https://twitter.com/moon_cypher'
-                    imageUrl='/asset/twitter-preview.png'
+                    imageUrl='/asset/twitter-preview.svg'
                     className='top-[10%] lg:top-5 left-2 lg:left-0' />
                 <PreviewLink
                     title='GitHub'
                     folderName='social media'
                     dateCreated='22/03/23'
                     url='https://github.com/Cyphermoon'
-                    imageUrl='/asset/github-preview.png'
+                    imageUrl='/asset/github-preview.svg'
                     className='top-[10%] lg:top-5 right-2 lg:right-0' />
                 <PreviewLink
                     title='Instagram'
                     folderName='social media'
                     dateCreated='22/03/23'
                     url='#'
-                    imageUrl='/asset/instagram-preview.png'
+                    imageUrl='/asset/instagram-preview.svg'
                     className='bottom-[10%] lg:bottom-0 left-2 lg:left-0' />
                 <PreviewLink
                     title='Linkedin'
                     folderName='social media'
                     dateCreated='22/03/23'
                     url='https://www.linkedin.com/in/oluwaseun-fashina-7b6b01232/'
-                    imageUrl='/asset/linkedin-preview.png'
+                    imageUrl='/asset/linkedin-preview.svg'
                     className='bottom-[10%] lg:bottom-0 right-2 lg:right-0' />
 
                 <div className='grid grid-cols-7 gap-4 max-w-4xl px-5 lg:px-0'>
