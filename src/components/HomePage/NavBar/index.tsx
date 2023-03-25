@@ -38,7 +38,7 @@ const NavBar = () => {
 
 
     return (
-        <nav >
+        <nav className='mb-10' >
             <Container className='flex items-center justify-between relative'>
                 <Logo />
 
