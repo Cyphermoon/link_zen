@@ -71,7 +71,10 @@ module.exports = {
           800: "#3b21c7",
           900: "#3300af"
         },
-        secondary: "#BBA4D0"
+        secondary: "#BBA4D0",
+        twitter: "#1D9BF0",
+        linkedin: "#0A66C2",
+        apple: "#000000"
       }
     },
   },
