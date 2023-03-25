@@ -27,7 +27,7 @@ const Auth = () => {
     return (
         <main className='bg-primary-50 h-screen grid place-items-center'>
             <section className='w-full bg-primary-50 max-w-lg lg:shadow-xl rounded-2xl py-8 px-4'>
-                <div className='flex flex-col space-y-1 items-center mb-10'>
+                <div className='flex flex-col space-y-1 items-center mb-16'>
                     <span className='text-accent text-xs'>Welcome to organice</span>
                     <Logo className='text-4xl' />
                 </div>
