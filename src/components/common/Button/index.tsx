@@ -14,7 +14,7 @@ const Button = ({ href, text, inverse, tabIndex = 0 }: ButtonProps) => {
 
     return (
         <Link
-            className={`px-5 w-max py-2 rounded-lg inline-block ${bg} ${textClass} text-base`}
+            className={`px-5 w-max py-2 rounded-lg inline-block capitalize ${bg} ${textClass} text-base`}
             href={href}
             tabIndex={tabIndex}
         >

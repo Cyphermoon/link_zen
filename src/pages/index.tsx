@@ -4,7 +4,7 @@ import Features from '@/components/HomePage/Features/Features';
 
 export default function Home() {
   return (
-    <div className='bg-primary h-screen w-screen'>
+    <div className='bg-primary w-screen'>
       <PageHead title='Organice - Home' />
       <Header />
       <Features/>
