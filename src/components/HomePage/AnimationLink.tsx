@@ -113,7 +113,8 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
                 <div className='space-y-4 w-full'>
                     <div className='flex justify-between items-center'>
                         <h5 className='text-md text-gray-600'>{title}</h5>
-                        <div ref={chevronRef} data-animate="rotate-chevron" className='transition-transform duration-300'
+                        <div ref={chevronRef} data-animate="rotate-chevron"
+                            className={`${(isDropDownOpen !== undefined) ? "transition-transform duration-300" : ""}`}
                             onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
                             <BsChevronDown />
                         </div>
@@ -122,7 +123,7 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
                     <div
                         data-animate="dropdown"
                         ref={dropDownRef}
-                        className={`overflow-hidden h-0 space-y-3 transition-height duration-300`}>
+                        className={`overflow-hidden h-0 space-y-3  ${(isDropDownOpen !== undefined) ? "transition-height duration-300" : ""}`}>
                         <p className='text-sm text-primary-700 text-left'>
                             This is a twitter social media link
                         </p>
