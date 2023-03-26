@@ -39,6 +39,10 @@ module.exports = {
       animation: {
         moveOut: "moveOut 450ms ease-in-out forwards",
       },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
       colors: {
         primary: {
           50: "#f9f9f9",

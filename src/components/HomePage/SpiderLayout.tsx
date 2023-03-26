@@ -48,7 +48,7 @@ const SpiderLayout = () => {
                     title='Instagram'
                     folderName='social media'
                     dateCreated='22/03/23'
-                    url='#'
+                    url='https://instagram.com/heisblaq_'
                     imageUrl='/asset/instagram-preview.svg'
                     className='bottom-[8%] lg:bottom-0 left-2 lg:left-0' />
                 <PreviewLink
