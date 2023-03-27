@@ -2,9 +2,8 @@ import { getUrlDomain } from '@/utils/link.utils'
 import gsap from 'gsap'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode, RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs'
-import { useBoolean } from 'usehooks-ts'
 import LinkTag from '../common/LinkTag'
 
 interface Props {
@@ -23,6 +22,34 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
     const t1 = useRef<GSAPTimeline>()
     const dropDownRef = useRef<HTMLDivElement>(null)
     const chevronRef = useRef<HTMLDivElement>(null)
+
+
+    const styleDropDown = useCallback((dropDownRef: RefObject<HTMLDivElement>, isDropDownOpen: boolean) => {
+        if (isDropDownOpen === undefined) {
+            return
+        }
+        else if (isDropDownOpen === true) {
+            dropDownRef.current && (dropDownRef.current.style.height = "60px");
+        }
+
+        else if (isDropDownOpen === false) {
+            dropDownRef.current && (dropDownRef.current.style.height = "0");
+        }
+    }, [])
+
+
+    const styleChevron = useCallback((chevronRef: RefObject<HTMLDivElement>, isDropDownOpen: boolean) => {
+        if (isDropDownOpen === undefined) {
+            return
+        }
+        else if (isDropDownOpen === true) {
+            chevronRef.current && (chevronRef.current.style.transform = "rotate(-180deg)");
+        }
+
+        else if (isDropDownOpen === false) {
+            chevronRef.current && (chevronRef.current.style.transform = "rotate(0deg)");
+        }
+    }, [])
 
 
     useEffect(() => {
@@ -65,38 +92,12 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
         }
     }, [])
 
-    const styleDropDown = useCallback((dropDownRef: RefObject<HTMLDivElement>) => {
-        if (isDropDownOpen === undefined) {
-            return
-        }
-        else if (isDropDownOpen === true) {
-            dropDownRef.current && (dropDownRef.current.style.height = "60px");
-        }
-
-        else if (isDropDownOpen === false) {
-            dropDownRef.current && (dropDownRef.current.style.height = "0");
-        }
-    }, [isDropDownOpen])
-
-
-    const styleChevron = useCallback((chevronRef: RefObject<HTMLDivElement>) => {
-        if (isDropDownOpen === undefined) {
-            return
-        }
-        else if (isDropDownOpen === true) {
-            chevronRef.current && (chevronRef.current.style.transform = "rotate(-180deg)");
-        }
-
-        else if (isDropDownOpen === false) {
-            chevronRef.current && (chevronRef.current.style.transform = "rotate(0deg)");
-        }
-    }, [isDropDownOpen])
 
     useEffect(() => {
         if (isDropDownOpen === undefined) return
 
-        styleDropDown(dropDownRef)
-        styleChevron(chevronRef)
+        styleDropDown(dropDownRef, isDropDownOpen)
+        styleChevron(chevronRef, isDropDownOpen)
     }, [isDropDownOpen, styleDropDown, styleChevron])
 
     return (
