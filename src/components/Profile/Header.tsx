@@ -1,27 +1,28 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { BsSpotify, BsYoutube } from 'react-icons/bs'
 import { FaTiktok, FaTwitter } from 'react-icons/fa'
 import { AiFillInstagram } from 'react-icons/ai'
 import Container from '../common/Container'
+import UserAvatar from '../common/UserAvatar'
+
 
 
 
 const Header = () => {
+
+
     return (
         <header className='py-8 profile-gradient'>
             <Container className='space-y-10'>
                 <div className='flex space-x-8 items-center'>
-                    <figure>
-                        <Image
-                            src="https://randomuser.me/api/portraits/men/20.jpg"
-                            className='rounded-full'
-                            alt='John image'
-                            width={150}
-                            height={150} />
-                    </figure>
+                    <UserAvatar
+                        name='Walter Stone'
+                        imageUrl=''
+                        className='w-[185px] h-[185px]' />
+
                     <div>
-                        <h3 className='text-4xl text-primary-900 mb-3'>Walter Stone</h3>
+                        <h3 className='text-3xl text-primary-900 mb-3'>Walter Stone</h3>
                         <div className='flex space-x-4 items-center text-primary-700 text-lg mb-5'>
                             <FaTwitter />
                             <AiFillInstagram />
