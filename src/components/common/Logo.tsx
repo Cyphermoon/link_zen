@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Logo = () => {
+interface Props {
+    className?: string
+}
+
+const Logo = ({ className }: Props) => {
     return (
-        <h5 className='text-base font-bold'>Organice</h5>
+        <h5 className={`font-bold uppercase ${className}`}>Organice</h5>
     )
 }
 

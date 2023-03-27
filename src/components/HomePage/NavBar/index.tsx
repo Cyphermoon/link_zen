@@ -38,15 +38,16 @@ const NavBar = () => {
 
 
     return (
-        <nav >
+        <nav className='mb-10' >
             <Container className='flex items-center justify-between relative'>
                 <Logo />
 
                 <div
                     className={`
-                        absolute top-0 left-0 flex flex-col items-center justify-center lg:flex-row lg:justify-between lg:static space-y-4 lg:space-y-0 w-screen h-screen lg:w-auto lg:h-auto bg-primary 
-                        ${navOpened === undefined && "hidden"} 
-                        ${navOpened ? "animate-in slide-in-from-left-full duration-500" : navOpened != undefined && "animate-moveOut"}
+                    absolute flex bg-primary 
+                    left-0 md:-left-20 lg:animate-none flex-col items-center z-20 lg:z-auto justify-center lg:flex lg:flex-row lg:justify-between lg:static space-y-4 lg:grow lg:space-y-0 top-0 w-screen lg:h-auto lg:w-auto h-screen
+                    ${navOpened === undefined && "hidden"}  
+                    ${navOpened ? "animate-in slide-in-from-left-full duration-500" : navOpened != undefined && "animate-moveOut"} 
                     `}>
                     <ul className='flex lg:space-x-8 space-y-4 lg:space-y-0 mx-auto flex-col lg:flex-row' >
                         {navLinks.map(({ text, href }, idx) => (

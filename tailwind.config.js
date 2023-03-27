@@ -8,6 +8,9 @@ module.exports = {
       center: true
     },
     extend: {
+      fontSize: {
+        "xxs": ["0.625rem", "1.2"]
+      },
       keyframes: {
         moveOut: {
           "0%": {
@@ -35,6 +38,10 @@ module.exports = {
       },
       animation: {
         moveOut: "moveOut 450ms ease-in-out forwards",
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
       },
       colors: {
         primary: {
@@ -68,7 +75,10 @@ module.exports = {
           800: "#3b21c7",
           900: "#3300af"
         },
-        secondary: "#BBA4D0"
+        secondary: "#BBA4D0",
+        twitter: "#1D9BF0",
+        linkedin: "#0A66C2",
+        apple: "#000000"
       }
     },
   },
