@@ -15,15 +15,15 @@ const Header = () => {
     return (
         <header className='py-8 profile-gradient'>
             <Container className='space-y-10'>
-                <div className='flex space-x-8 items-center'>
+                <div className='flex flex-col lg:flex-row space-y-4 lg:space-x-8 items-center'>
                     <UserAvatar
                         name='Walter Stone'
                         imageUrl=''
                         className='w-[185px] h-[185px]' />
 
-                    <div>
+                    <div className='text-center lg:text-left'>
                         <h3 className='text-3xl text-primary-900 mb-3'>Walter Stone</h3>
-                        <div className='flex space-x-4 items-center text-primary-700 text-lg mb-5'>
+                        <div className='flex space-x-4 justify-center lg:justify-start items-center text-primary-700 text-lg mb-5'>
                             <FaTwitter />
                             <AiFillInstagram />
                             <BsYoutube />
