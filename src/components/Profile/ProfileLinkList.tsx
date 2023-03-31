@@ -15,9 +15,6 @@ const ProfileLinkList = () => {
         setActiveLink(id)
     }
 
-
-
-
     return (
         <main >
             <Container className='grid grid-cols-4 gap-8 mt-7'>
