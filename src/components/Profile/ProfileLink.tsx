@@ -1,6 +1,8 @@
-import Image from 'next/image'
+import * as Toolbar from '@radix-ui/react-toolbar';
+import Image from 'next/image';
 import React, { useRef } from 'react'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
+import { RiDeleteBin6Line, RiEditBoxLine, RiShareBoxFill, RiShareLine } from 'react-icons/ri'
 import { useBoolean, useClickAnyWhere } from 'usehooks-ts'
 
 interface Props {
@@ -10,6 +12,25 @@ interface Props {
     imageUrl: string
     descOpened?: boolean
     handleDescChanged: (id: number) => void
+}
+
+interface ToolBarItem {
+    value: string,
+    children: React.ReactNode
+}
+
+const ToolBarItem = ({ value, children }: ToolBarItem) => {
+
+    return (
+        <Toolbar.ToggleItem
+            tabIndex={-1}
+            className='py-1 px-2 h-[28px] hover:bg-accent-200 hover:text-white text-md'
+            title={value}
+            value={value}>
+            {children}
+        </Toolbar.ToggleItem>
+    )
+
 }
 
 const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChanged, id, }: Props) => {
@@ -23,12 +44,30 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
     })
 
     return (
-        <div ref={linkRef} className='rounded-2xl px-4 py-5 shadow-sm space-y-4 border-2 border-b border-gray-100 profile-link relative'>
-            <figure>
+        <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-sm border-2 border-b border-gray-100 profile-link relative group'>
+
+            <figure className='px-4 py-4 cursor-pointer relative hover:before:opacity-20 mb-4'>
+                <Toolbar.Root tabIndex={-1} className='flex items-center justify-center p-0 w-max bg-primary-200 absolute right-4 top-2 z-10 opacity-0 group-hover:animate-in group-hover:slide-in-from-right-0 group-hover:opacity-100'>
+                    <Toolbar.ToggleGroup type='single'>
+                        <ToolBarItem value='delete'>
+                            <RiDeleteBin6Line />
+                        </ToolBarItem>
+
+                        <ToolBarItem value='edit'>
+                            <RiEditBoxLine />
+                        </ToolBarItem>
+
+                        <ToolBarItem value='share'>
+                            <RiShareLine />
+                        </ToolBarItem>
+
+                    </Toolbar.ToggleGroup>
+                </Toolbar.Root>
+
                 <Image src={imageUrl} alt={title} width={500} height={20} className="object-contain" />
             </figure>
 
-            <div className='space-y-3'>
+            <div className='space-y-3 px-4 py-2'>
                 <div className='flex justify-between items-center text-md font-medium'>
                     <h4 className='capitalize text-xl'>{title}</h4>
 
@@ -41,9 +80,9 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
                     ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
                     <BsChevronDown
                         onClick={() => handleDescChanged(id)}
-                        className="self-center text-base text-primary-900 cursor-pointer transition-transform hover:scale-105" />
+                        className="self-center text-xl text-white cursor-pointer transition-transform hover:scale-105" />
 
-                    <p className={`w-full text-left transition-opacity duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
+                    <p className={`text-left transition-opacity duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
                         {description}
                     </p>
                 </div>
