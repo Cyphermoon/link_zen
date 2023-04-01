@@ -20,7 +20,7 @@ const ProfileLinkList = () => {
 
     return (
         <main >
-            <Container className='grid grid-cols-dynamic-250 gap-8 mt-7'>
+            <Container className='grid grid-cols-dynamic-250 gap-8'>
 
                 {
                     [...Array(10)].map((link, idx) => {

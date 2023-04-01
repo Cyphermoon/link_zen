@@ -2,12 +2,10 @@ import ActionSection from '@/components/Profile/ActionSection'
 import Footer from '@/components/Profile/Footer'
 import Header from '@/components/Profile/Header'
 import ProfileLinkList from '@/components/Profile/ProfileLinkList'
-import Logo from '@/components/common/Logo'
-import React from 'react'
 
 const Profile = () => {
     return (
-        <main className=''>
+        <main className='space-y-12'>
             <Header />
             <ActionSection />
             <ProfileLinkList />
