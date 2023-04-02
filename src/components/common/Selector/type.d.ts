@@ -1,11 +1,20 @@
-//TODO: optimize the types structure
-
-interface SelectorProp {
+type CommonSelectorProp = {
     id: string,
     handleChangeId: (id: string) => void
-    triggerChildren: React.ReactNode
-    label: string
-    children: React.ReactNode
+}
+
+interface SortOptionProps {
+    id: string;
+    leftIcon: IconType;
+    title: string;
+    type: "asc" | "desc";
+    rightIcon: IconType | string;
+}
+
+interface ViewOptionProps {
+    id: string;
+    leftIcon: IconType;
+    title: string;
 }
 
 
@@ -14,16 +23,21 @@ interface SelectItemProp {
     children: React.ReactNode
 }
 
-interface SortSelectorProp {
-    id: string
-    handleChangeId: (id: string) => void
-    options: any[]
-    selectedOption: any
+type SelectorProp = CommonSelectorProp & {
+    triggerChildren: React.ReactNode
+    label: string
+    children: React.ReactNode
 }
 
-interface ViewSelectorProps {
+
+type SortSelectorProp = CommonSelectorProp & {
+    options: SortOptionProps[]
+    selectedOption: SortOptionProps | undefined
+}
+
+type ViewSelectorProps = CommonSelectorProp & {
     id: string
     handleChangeId: (id: string) => void
-    options: any[]
-    selectedOption: any 
+    options: ViewOptionProps[]
+    selectedOption: ViewOptionProps | undefined
 }

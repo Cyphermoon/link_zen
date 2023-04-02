@@ -11,7 +11,7 @@ import { SortSelector, ViewSelector } from '../common/Selector';
 
 //TODO: figure out a better way to generate id
 
-const sortOptions = [
+const sortOptions: SortOptionProps[] = [
     {
         id: "1",
         leftIcon: <FaRegClock />,
@@ -49,7 +49,7 @@ const sortOptions = [
     },
 ]
 
-const viewOptions = [
+const viewOptions: ViewOptionProps[] = [
     {
         id: "1",
         leftIcon: <BsFillGridFill />,
