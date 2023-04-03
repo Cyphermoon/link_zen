@@ -1,8 +1,6 @@
-import Image from 'next/image'
-import React, { useMemo } from 'react'
+import { AiFillInstagram } from 'react-icons/ai'
 import { BsSpotify, BsYoutube } from 'react-icons/bs'
 import { FaTiktok, FaTwitter } from 'react-icons/fa'
-import { AiFillInstagram } from 'react-icons/ai'
 import Container from '../common/Container'
 import UserAvatar from '../common/UserAvatar'
 
@@ -10,8 +8,6 @@ import UserAvatar from '../common/UserAvatar'
 
 
 const Header = () => {
-
-
     return (
         <header className='py-8 profile-gradient'>
             <Container className='space-y-10'>

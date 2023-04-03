@@ -1,3 +1,4 @@
+
 type CommonSelectorProp = {
     id: string,
     handleChangeId: (id: string) => void
@@ -7,7 +8,8 @@ interface SortOptionProps {
     id: string;
     leftIcon: IconType;
     title: string;
-    type: "asc" | "desc";
+    order?: "asc" | "desc";
+    type: string
     rightIcon: IconType | string;
 }
 

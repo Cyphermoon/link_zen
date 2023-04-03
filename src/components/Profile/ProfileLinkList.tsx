@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react'
-import { useBoolean, useClickAnyWhere } from 'usehooks-ts'
+import { useState } from 'react'
 import Container from '../common/Container'
 import ProfileLink from './ProfileLink'
 
@@ -16,12 +15,9 @@ const ProfileLinkList = () => {
     }
 
 
-
-
     return (
         <main >
             <Container className='grid grid-cols-dynamic-250 gap-8'>
-
                 {
                     [...Array(10)].map((link, idx) => {
                         return (
