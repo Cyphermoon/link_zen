@@ -29,21 +29,28 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
         }
     })
 
+    const handleShareClicked = () => { }
+    const handleCopyClicked = () => { }
+    const handleDeleteClicked = () => { }
+    const handleEditClicked = () => { }
+
 
     return (
         <CustomContextMenu contextChildren={
             <>
-                <ContextMenuItem title='Share'>
+                <ContextMenuItem handleClick={handleShareClicked} title='Share'>
                     <RiShareLine />
                 </ContextMenuItem>
-                <ContextMenuItem title='Copy'>
+                <ContextMenuItem handleClick={handleCopyClicked} title='Copy'>
                     <TbCopy />
                 </ContextMenuItem>
+
                 <ContextMenu.Separator className='h-[1px] my-2 bg-primary-300' />
-                <ContextMenuItem title='Delete'>
+
+                <ContextMenuItem handleClick={handleDeleteClicked} title='Delete'>
                     <RiDeleteBin6Line />
                 </ContextMenuItem>
-                <ContextMenuItem title='Edit'>
+                <ContextMenuItem handleClick={handleEditClicked} title='Edit'>
                     <RiEditBoxLine />
                 </ContextMenuItem>
             </>
