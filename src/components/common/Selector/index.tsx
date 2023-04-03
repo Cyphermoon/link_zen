@@ -1,67 +1,6 @@
 import * as Select from "@radix-ui/react-select"
 import { forwardRef } from "react"
-import { VscCircleLargeFilled } from "react-icons/vsc"
 
-
-export const SortSelector = ({ id, handleChangeId, selectedOption, options }: SortSelectorProp) => {
-    return (
-        <Selector
-            id={id}
-            handleChangeId={handleChangeId}
-            label='Sort By'
-            triggerChildren={
-                <>
-                    <span>{selectedOption?.leftIcon}</span>
-                    <span>{selectedOption?.title}</span>
-                    <span>{selectedOption?.rightIcon}</span>
-                </>
-            } >
-            {options.map((option) => {
-                return (
-                    <SelectItem key={option.id} value={option.id}>
-                        <div className='flex items-center gap-2'>
-                            <VscCircleLargeFilled
-                                className='text-primary-300 group-rdx-highlighted:text-primary group-rdx-state-checked:text-accent' />
-                            <span>{option.leftIcon}</span>
-                            <span> {option.title}</span>
-                            <span>{option.rightIcon}</span>
-
-                        </div>
-                    </SelectItem>
-                )
-            })}
-        </Selector>
-    )
-}
-
-export const ViewSelector = ({ id, handleChangeId, selectedOption, options }: ViewSelectorProps) => {
-    return (
-
-        <Selector
-            id={id}
-            handleChangeId={handleChangeId}
-            label='View'
-            triggerChildren={
-                <>
-                    <span>{selectedOption?.leftIcon}</span>
-                    <span>{selectedOption?.title}</span>
-                </>
-            } >
-            {options.map((option) => {
-                return (
-                    <SelectItem key={option.id} value={option.id}>
-                        <div className='flex items-center gap-2'>
-                            <VscCircleLargeFilled
-                                className='text-primary-300 group-rdx-highlighted:text-primary group-rdx-state-checked:text-accent' />
-                            <span>{option.leftIcon}</span>
-                            <span> {option.title}</span>
-                        </div>
-                    </SelectItem>
-                )
-            })}
-        </Selector>
-    )
-}
 
 const Selector = ({ id, handleChangeId, triggerChildren, label, children }: SelectorProp) => {
     return (
@@ -89,7 +28,10 @@ const Selector = ({ id, handleChangeId, triggerChildren, label, children }: Sele
     )
 }
 
-const SelectItem = forwardRef(({ value, children, ...props }: SelectItemProp, ref: any) => {
+export default Selector
+
+
+export const SelectItem = forwardRef(({ value, children, ...props }: SelectItemProp, ref: any) => {
     return (
         <Select.Item
             value={value}
@@ -106,3 +48,4 @@ const SelectItem = forwardRef(({ value, children, ...props }: SelectItemProp, re
 
 
 SelectItem.displayName = "SelectItem"
+
