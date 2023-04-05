@@ -1,6 +1,8 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { AiOutlineEye } from "react-icons/ai";
 import { clsx } from "clsx";
+import Container from "@/components/common/Container";
+import { BsFillEyeSlashFill } from "react-icons/bs";
 import React from "react";
 
 interface AccordionItem {
@@ -10,18 +12,26 @@ interface AccordionItem {
 
 const items: AccordionItem[] = [
   {
-    header: "What is Radix UI?",
+    header: "Will there be a mobile app?",
     content:
-      "Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.",
+      "Absolutely! Our company recognizes the growing importance of mobile technology, and we're committed to providing our users with the best possible experience across all platforms. Our mobile app is currently in development, and we'll be sure to keep our users informed as we progress towards the release.",
   },
   {
-    header: "Why are goats so popular at Vercel",
+    header: "Is it free",
     content:
-      "Goats are popular at Vercel for a few reasons. First, they provide a healthier and more sustainable solution for grass cutting and vegetation control. Additionally, goats are able to traverse very steep terrain. This makes them perfect for providing maintenance in areas that are difficult to access. Finally, their presence is said to provide a calming atmosphere, which is especially beneficial in stressful engineering environments.",
+      "Our goal is to make our platform as widely available as possible, and to do that, we've made the decision to offer our service for free. We believe that our users should be able to take advantage of our offerings without worrying about any financial burdens.",
   },
+
   {
-    header: "Is it accessible?",
-    content: "Yes!",
+    header: "How do I contact customer support?",
+    content:
+      "We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.",
+  },
+
+  {
+    header: "How do I create nested folders?",
+    content:
+      " While this feature is not available in our MVP, we're working diligently to provide our users with new and innovative ways to generate revenue through our platform. As soon as this feature becomes available, we'll be sure to inform our users.",
   },
 ];
 
@@ -29,45 +39,53 @@ interface AccordionProps {}
 
 const Accordion = (props: AccordionProps) => {
   return (
-    <AccordionPrimitive.Root
-      type="single"
-      defaultValue="item-1"
-      className={clsx("space-y-4 w-full")}
-    >
-      {items.map(({ header, content }, i) => (
-        <AccordionPrimitive.Item
-          key={`header-${i}`}
-          value={`item-${i + 1}`}
-          className="rounded-lg focus-within:ring focus-within:ring-purple-500 focus-within:ring-opacity-75 focus:outline-none w-full"
-        >
-          <AccordionPrimitive.Header className="w-full">
-            <AccordionPrimitive.Trigger
-              className={clsx(
-                "group",
-                "radix-state-open:rounded-t-lg radix-state-closed:rounded-lg",
-                "focus:outline-none",
-                "inline-flex w-full items-center justify-between bg-white px-4 py-2 text-left dark:bg-gray-800"
-              )}
-            >
-              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                {header}
-              </span>
-              <ChevronDownIcon
+    <Container className="py-12 md:py-24">
+      <h3 className="text-center my-12">Frequently Asked Questions</h3>
+      <AccordionPrimitive.Root
+        type="single"
+        defaultValue="item-1"
+        className={clsx("space-y-4 w-full")}
+      >
+        {items.map(({ header, content }, i) => (
+          <AccordionPrimitive.Item
+            key={`header-${i}`}
+            value={`item-${i + 1}`}
+            className="rounded-lg"
+          >
+            <AccordionPrimitive.Header className="w-full">
+              <AccordionPrimitive.Trigger
                 className={clsx(
-                  "ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400",
-                  "group-radix-state-open:rotate-180 group-radix-state-open:duration-300"
+                  "AccordionTrigger",
+                  "group",
+                  "radix-state-open:rounded-xl radix-state-closed:rounded-lg",
+                  "focus:outline-none",
+                  "inline-flex w-full items-center justify-between px-4 py-5 text-left bg-primary rounded-t-lg shadow-md"
                 )}
-              />
-            </AccordionPrimitive.Trigger>
-          </AccordionPrimitive.Header>
-          <AccordionPrimitive.Content className="pt-1 w-full rounded-b-lg bg-white px-4 pb-3 dark:bg-gray-800">
-            <div className="text-sm text-gray-700 dark:text-gray-400">
-              {content}
-            </div>
-          </AccordionPrimitive.Content>
-        </AccordionPrimitive.Item>
-      ))}
-    </AccordionPrimitive.Root>
+              >
+                <span className="text-lg font-medium text-black text-subdue text-base">
+                  {header}
+                </span>
+                <AiOutlineEye
+                  className={clsx(
+                    "Eye ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400",
+                    "group-radix-state-open:rotate-180 group-radix-state-open:duration-300"
+                  )}
+                />
+                <BsFillEyeSlashFill
+                  className={clsx(
+                    "Eye-slash ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400 hidden",
+                    "group-radix-state-open:rotate-180 group-radix-state-open:duration-300"
+                  )}
+                />
+              </AccordionPrimitive.Trigger>
+            </AccordionPrimitive.Header>
+            <AccordionPrimitive.Content className="AccordionContent pt-1 w-full rounded-b-lg px-4 pb-3 bg-primary shadow-md">
+              <div className="text-md text-gray-500">{content}</div>
+            </AccordionPrimitive.Content>
+          </AccordionPrimitive.Item>
+        ))}
+      </AccordionPrimitive.Root>
+    </Container>
   );
 };
 
