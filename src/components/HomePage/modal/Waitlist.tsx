@@ -1,14 +1,21 @@
+import Overlay from "@/components/common/Overlay";
 import React, { useState } from "react";
 import { waitlist } from "./type";
 
-
-const WaitListModal = ({ display }: waitlist) => {
+const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
-    return (
+
+  
+  return (
+    <Overlay
+      handleClick={closeModal}
+       className={modalOpened === false ? "animate-moveOut" : modalOpened === undefined ? "hidden" : ""}
+    >
       <div
-        className={`${display} darker-gradient mx-3  z-50 px-3 md:px-16 py-6 absolute rounded-xl self-center top-16 md:top-24`}
+        className={`${
+          modalOpened && "animate-in slide-in-from-right-full duration-500"} darker-gradient mx-3  z-50 px-3 md:px-16 py-6 absolute rounded-xl`}
         onClick={(e) => handlePropagation(e)}
       >
         <h4 className="text-center text-md font-semibold my-6">
@@ -23,6 +30,7 @@ const WaitListModal = ({ display }: waitlist) => {
               type="text"
               name=""
               id="name"
+              required
               className="outline-none w-full p-3 mt-3 text-md rounded-xl"
               placeholder="Enter your full name"
             />
@@ -35,6 +43,7 @@ const WaitListModal = ({ display }: waitlist) => {
               type="email"
               name=""
               id="email"
+              required
               className="w-full p-3 mt-3 rounded-xl outline-none"
               placeholder="Enter your email"
             />
@@ -48,7 +57,8 @@ const WaitListModal = ({ display }: waitlist) => {
           </button>
         </form>
       </div>
-    );
-}
+    </Overlay>
+  );
+};
 
-export default WaitListModal
+export default WaitListModal;
