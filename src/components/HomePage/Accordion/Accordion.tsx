@@ -25,13 +25,13 @@ const items: AccordionItem[] = [
   {
     header: "How do I contact customer support?",
     content:
-      "We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.",
+      `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
   },
 
   {
     header: "How do I create nested folders?",
     content:
-      " While this feature is not available in our MVP, we're working diligently to provide our users with new and innovative ways to generate revenue through our platform. As soon as this feature becomes available, we'll be sure to inform our users.",
+      " While this feature is not available in our MVP, we're working diligently to provide users the ability to create nested folders through our platform. As soon as this feature becomes available, we'll be sure to inform you!",
   },
 ];
 
@@ -44,6 +44,7 @@ const Accordion = (props: AccordionProps) => {
       <AccordionPrimitive.Root
         type="single"
         defaultValue="item-1"
+        collapsible
         className={clsx("space-y-4 w-full")}
       >
         {items.map(({ header, content }, i) => (
@@ -62,7 +63,7 @@ const Accordion = (props: AccordionProps) => {
                   "inline-flex w-full items-center justify-between px-4 py-5 text-left bg-primary rounded-t-lg shadow-md"
                 )}
               >
-                <span className="text-lg font-medium text-black text-subdue text-base">
+                <span className="font-medium  text-subdue text-base">
                   {header}
                 </span>
                 <AiOutlineEye
