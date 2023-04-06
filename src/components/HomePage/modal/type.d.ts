@@ -1,3 +1,4 @@
 export type waitlist = {
-    display: string
+  modalOpened: boolean | undefined;
+  closeModal: () => void;
 };
