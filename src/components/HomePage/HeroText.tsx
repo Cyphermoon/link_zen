@@ -5,13 +5,14 @@ import Button from '../common/Button'
 interface Props {
   className?: string;
   headerClassName?: string;
-  onModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onModalOpen: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 const HeroText = ({ className, headerClassName, onModalOpen }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     onModalOpen(true);
+    document.body.classList.add("modal-open");
   };
   return (
     <div
