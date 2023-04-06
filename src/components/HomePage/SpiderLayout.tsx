@@ -6,9 +6,8 @@ import PreviewLink from "./PreviewLink";
 
 // new
 export interface sharedWaitlistProps {
-  openModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
-
 
 interface SpiderLegProps {
   className?: string;
@@ -34,9 +33,7 @@ const SpiderLeg = ({
   );
 };
 
-const SpiderLayout = ({openModal}:sharedWaitlistProps) => {
-
-
+const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
   return (
     <div className="grow hidden lg:block  ">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center">
@@ -73,7 +70,7 @@ const SpiderLayout = ({openModal}:sharedWaitlistProps) => {
           className="bottom-[8%] lg:bottom-0 right-2 lg:right-0"
         />
 
-        <div className="grid grid-cols-7 gap-4 max-w-4xl px-5 lg:px-0 animate-in slide-in-from-left-72">
+        <div className="grid grid-cols-7 gap-4 max-w-4xl px-5 lg:px-0">
           <SpiderLeg
             className="col-start-1 col-end-3"
             imageUrl="/asset/left-upper-leg.svg"
