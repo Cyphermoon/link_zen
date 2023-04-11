@@ -3,6 +3,7 @@ import { IconType } from "react-icons";
 interface SocialIconProps {
     Icon: IconType;
     title: string;
+    className?: string
 }
 export const SocialIcon = ({ Icon, title }: SocialIconProps) => {
     return (

@@ -1,7 +1,7 @@
 interface CreateContactRequestProps {
     email: string,
     updateEnabled: boolean,
-    listIds: string[]
+    listIds: number[]
     attributes:{
         FIRSTNAME: string
     }

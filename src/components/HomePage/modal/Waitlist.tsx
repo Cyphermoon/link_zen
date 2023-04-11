@@ -13,17 +13,21 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
       name: "",
       email: ""
     },
-    onSubmit(values) {
+    onSubmit(values, { resetForm }) {
       const requestData: CreateContactRequestProps = {
         email: values.email,
         updateEnabled: true,
-        listIds: ["#3"],
+        listIds: [3],
         attributes: {
           FIRSTNAME: values.name
         }
       }
       createContact(requestData)
-        .then(data => console.log(data))
+        .then(data => {
+          resetForm()
+          closeModal()
+          location.assign("/waitlist-verified")
+        })
         .catch(err => console.error(err))
     }
   })
@@ -71,6 +75,7 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
 
           <button
             type="submit"
+            disabled={formik.isSubmitting}
             className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
           >
             Join the Waitlist
