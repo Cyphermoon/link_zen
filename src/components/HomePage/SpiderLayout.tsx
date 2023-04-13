@@ -21,10 +21,10 @@ const SpiderLeg = ({
   alt = "spider leg",
 }: SpiderLegProps) => {
   return (
-    <figure className={`${className} lg:h-[322px]`}>
+    <figure className={`${className} md:h-[322px]`}>
       <Image
         src={imageUrl}
-        className={`filter-dark lg:filter-light object-contain`}
+        className={`filter-dark md:filter-light object-contain`}
         alt={alt}
         width={230}
         height={23}
@@ -35,7 +35,7 @@ const SpiderLeg = ({
 
 const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
   return (
-    <div className="grow hidden lg:block  ">
+    <div className="grow hidden md:block md:px-3 lg:px-0">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center">
         <PreviewLink
           title="Twitter"
@@ -43,7 +43,7 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
           dateCreated="22/03/23"
           url="https://twitter.com/moon_cypher"
           imageUrl="/asset/twitter-preview.svg"
-          className="top-[8%] lg:top-0 left-2 lg:left-0"
+          className="top-[8%] md:top-0 left-2 md:left-0"
         />
         <PreviewLink
           title="GitHub"
@@ -51,7 +51,7 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
           dateCreated="22/03/23"
           url="https://github.com/Cyphermoon"
           imageUrl="/asset/github-preview.svg"
-          className="top-[8%] lg:top-0 right-2 lg:right-0"
+          className="top-[8%] md:top-0 right-2 md:right-0"
         />
         <PreviewLink
           title="Instagram"
@@ -59,7 +59,7 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
           dateCreated="22/03/23"
           url="https://instagram.com/heisblaq_"
           imageUrl="/asset/instagram-preview.svg"
-          className="bottom-[8%] lg:bottom-0 left-2 lg:left-0"
+          className="bottom-[8%] md:bottom-0 left-2 md:left-0"
         />
         <PreviewLink
           title="Linkedin"
@@ -67,10 +67,10 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
           dateCreated="22/03/23"
           url="https://www.linkedin.com/in/oluwaseun-fashina-7b6b01232/"
           imageUrl="/asset/linkedin-preview.svg"
-          className="bottom-[8%] lg:bottom-0 right-2 lg:right-0"
+          className="bottom-[8%] md:bottom-0 right-2 md:right-0"
         />
 
-        <div className="grid grid-cols-7 gap-4 max-w-4xl px-5 lg:px-0">
+        <div className="grid grid-cols-7 gap-4 max-w-4xl px-5 md:px-0">
           <SpiderLeg
             className="col-start-1 col-end-3"
             imageUrl="/asset/left-upper-leg.svg"
@@ -78,7 +78,7 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
 
           <HeroText
             className="col-start-3 col-end-6 row-start-1 row-end-3"
-            headerClassName="text-2xl lg:text-4xl w-[20ch]"
+            headerClassName="text-2xl md:text-4xl w-[20ch]"
             onModalOpen={openModal}
           />
 

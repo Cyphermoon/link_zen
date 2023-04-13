@@ -6,7 +6,7 @@ import { useState } from "react";
 import WaitListModal from "./modal/Waitlist";
 
 const Header = () => {
-  const lgScreen = 1024;
+  const screenSize = 768;
   const { width } = useWindowSize();
   const [modalState, setModalState] = useState<boolean | undefined>(undefined);
 
@@ -15,8 +15,8 @@ const Header = () => {
   return (
     <header className="py-4 flex flex-col h-screen overflow-x-hidden">
       <NavBar />
-      {width >= lgScreen ? <SpiderLayout openModal={setModalState} /> : null}
-      {width < lgScreen ? <AnimationLayout openModal={setModalState} /> : null}
+      {width >= screenSize ? <SpiderLayout openModal={setModalState} /> : null}
+      {width < screenSize ? <AnimationLayout openModal={setModalState} /> : null}
 
       <WaitListModal
         modalOpened={modalState}
