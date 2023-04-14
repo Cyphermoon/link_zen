@@ -15,8 +15,9 @@ const Header = () => {
   return (
     <header className="py-4 flex flex-col h-screen overflow-x-hidden">
       <NavBar />
-      {width >= screenSize ? <SpiderLayout openModal={setModalState} /> : null}
-      {width < screenSize ? <AnimationLayout openModal={setModalState} /> : null}
+      {width && width >= screenSize ? <SpiderLayout openModal={setModalState} /> : null}
+      {width && width < screenSize ? <AnimationLayout openModal={setModalState} /> : null}
+
 
       <WaitListModal
         modalOpened={modalState}
