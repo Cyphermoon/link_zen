@@ -22,10 +22,10 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
           FIRSTNAME: values.name
         }
       }
+
       createContact(requestData)
         .then(data => {
           resetForm()
-          closeModal()
           location.assign("/waitlist-verified")
         })
         .catch(err => console.error(err))
@@ -34,12 +34,14 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
 
 
   return (
-    <Overlay
-      handleClick={closeModal}
-      className={modalOpened === false ? "animate-moveOut" : modalOpened === undefined ? "hidden" : ""}
-    >
+    <div className={`fixed z-[200] top-0 left-0 ${modalOpened === false ? "animate-moveOut w-screen h-screen" : modalOpened === undefined ? "hidden" : "animate-in slide-in-from-right-full duration-1000 w-screen h-screen"}`}>
+      <Overlay
+        handleClick={closeModal}
+        className={`bg-black opacity-50 blur-sm`}
+      />
+
       <div
-        className={`${modalOpened && "animate-in slide-in-from-right-full duration-500"} darker-gradient mx-3  z-50 px-3 md:px-16 py-6 absolute rounded-xl`}
+        className={`darker-gradient mx-3 px-3 md:px-16 py-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl z-[120] w-11/12 max-w-2xl`}
         onClick={(e) => handlePropagation(e)}
       >
         <h4 className="text-center text-md font-semibold my-6">
@@ -82,7 +84,7 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
           </button>
         </form>
       </div>
-    </Overlay>
+    </div>
   );
 };
 

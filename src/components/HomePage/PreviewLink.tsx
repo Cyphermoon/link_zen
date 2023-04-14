@@ -30,7 +30,6 @@ const PreviewLink = ({ className, imageUrl, folderName, url, dateCreated, title 
 
             <div className='hidden lg:flex justify-between w-full '>
                 <h5 className='text-xs text-gray-600'>{title}</h5>
-                <BsChevronDown />
             </div>
 
             <div className='flex w-full justify-between items-center'>
