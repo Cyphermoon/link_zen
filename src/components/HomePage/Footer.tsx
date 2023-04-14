@@ -1,7 +1,8 @@
 import Container from "../common/Container"
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FooterLink } from "./FooterLink";
-import { SocialIcon } from "./SocialIcon";
+import { SocialIcon } from "../common/SocialIcon";
+import AppConfig from "@/constants/app.constant";
 
 const Footer = () => {
   return (
@@ -11,8 +12,8 @@ const Footer = () => {
           <h4 className="text-primary font-bold">ORGANICE</h4>
 
           <div className="flex space-x-2 justify-center lg:justify-start">
-            <SocialIcon Icon={FaTwitter} title="Twitter" />
-            <SocialIcon Icon={FaLinkedin} title="Linkedin" />
+            <SocialIcon Icon={FaTwitter} title="Twitter" className="text-primary hover:text-primary-300 " href="#" />
+            <SocialIcon Icon={FaLinkedin} title="Linkedin" className="text-primary hover:text-primary-300 " href="#" />
           </div>
         </div>
 
@@ -21,8 +22,8 @@ const Footer = () => {
         </p>
 
         <ul className="order-2 lg:order-3 text-center lg:text-left">
-          <li><FooterLink title="Terms of services" href="#" /></li>
-          <li><FooterLink title="Privacy" href="#" /></li>
+          <li><FooterLink title="Terms of services" href={AppConfig.twitterUrl} /></li>
+          <li><FooterLink title="Privacy" href={AppConfig.linkedinUrl} /></li>
         </ul>
       </Container>
     </footer>

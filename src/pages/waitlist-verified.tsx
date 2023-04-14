@@ -1,5 +1,7 @@
 import Button from '@/components/common/Button'
 import Logo from '@/components/common/Logo'
+import { SocialIcon } from '@/components/common/SocialIcon'
+import AppConfig from '@/constants/app.constant'
 import Link from 'next/link'
 import React from 'react'
 import { FaLinkedin, FaTwitter } from 'react-icons/fa'
@@ -21,9 +23,11 @@ const WaitlistVerified = () => {
                 <Link href="/">
                     <Logo className='text-accent-400 test-base lg:text-xl' />
                 </Link>
+
                 <div className='flex space-x-2 mt-2 justify-center text-xl'>
-                    <FaTwitter className='text-accent hover:scale-125 cursor-pointer transition-transform' />
-                    <FaLinkedin className='text-accent hover:scale-125 cursor-pointer transition-transform' />
+                    <SocialIcon Icon={FaTwitter} title='Twitter' href={`${AppConfig.twitterUrl}`} className={`text-accent hover:scale-125 cursor-pointer transition-transform`} />
+
+                    <SocialIcon Icon={FaLinkedin} title='Linkedin' href={`${AppConfig.linkedinUrl}`} className={`text-accent hover:scale-125 cursor-pointer transition-transform`} />
                 </div>
             </footer>
         </main>
