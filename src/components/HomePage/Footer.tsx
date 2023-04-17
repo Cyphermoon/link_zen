@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="bg-accent py-5">
       <Container className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-10 lg:space-y-0">
         <div className="space-y-2">
-          <h4 className="text-primary text-xl lg:text-2xl font-medium lg:font-bold"><Logo /></h4>
+          <Logo className="text-primary text-xl lg:text-2xl font-medium lg:font-bold" />
 
           <div className="flex space-x-2 justify-center lg:justify-start">
             <SocialIcon Icon={FaTwitter} title="Twitter" className="text-primary hover:text-primary-300 " href="#" />

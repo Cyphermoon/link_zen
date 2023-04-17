@@ -4,7 +4,7 @@ import { MouseEvent } from "react"
 export const useTiltEffect = () => {
     const tiltCard = (e: MouseEvent<HTMLDivElement>) => {
 
-        const multiplier = 25
+        const multiplier = 30
 
         // get the layout dimension
         let cardWidth = e.currentTarget.offsetWidth

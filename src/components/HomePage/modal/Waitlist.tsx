@@ -41,7 +41,7 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
       />
 
       <div
-        className={`darker-gradient mx-3 px-3 md:px-16 py-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl z-[120] w-11/12 max-w-2xl`}
+        className={`darker-gradient px-3 md:px-16 py-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl z-[120] w-11/12 max-w-2xl`}
         onClick={(e) => handlePropagation(e)}
       >
         <h4 className="text-center text-md font-semibold my-6">
