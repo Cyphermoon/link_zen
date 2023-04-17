@@ -35,12 +35,12 @@ const items: AccordionItem[] = [
   },
 ];
 
-interface AccordionProps {}
+interface AccordionProps { }
 
 const Accordion = (props: AccordionProps) => {
   return (
-    <Container className="py-12 md:py-24">
-      <h3 className="text-center my-12">Frequently Asked Questions</h3>
+    <Container className="">
+      <h3 className="text-center mb-12">Frequently Asked Questions</h3>
       <AccordionPrimitive.Root
         type="single"
         defaultValue="item-1"

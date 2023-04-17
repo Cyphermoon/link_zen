@@ -16,7 +16,7 @@ const Features = () => {
   return (
     <main>
       <Container>
-        <h3 className="text-center my-12 md:my-24">Features</h3>
+        <h3 className="text-center mb-12">Features</h3>
         <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12" style={{ perspective: "800px" }}>
           <Box
             title="Url Shortner"

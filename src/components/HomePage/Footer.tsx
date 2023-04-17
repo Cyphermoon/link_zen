@@ -3,13 +3,14 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FooterLink } from "./FooterLink";
 import { SocialIcon } from "../common/SocialIcon";
 import AppConfig from "@/constants/app.constant";
+import Logo from "../common/Logo";
 
 const Footer = () => {
   return (
     <footer className="bg-accent py-5">
       <Container className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-10 lg:space-y-0">
         <div className="space-y-2">
-          <h4 className="text-primary font-bold">ORGANICE</h4>
+          <h4 className="text-primary text-xl lg:text-2xl font-medium lg:font-bold"><Logo /></h4>
 
           <div className="flex space-x-2 justify-center lg:justify-start">
             <SocialIcon Icon={FaTwitter} title="Twitter" className="text-primary hover:text-primary-300 " href="#" />
