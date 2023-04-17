@@ -6,6 +6,7 @@ import Button from '../../common/Button'
 import Container from '../../common/Container'
 import Logo from '../../common/Logo'
 import NavItem from './NavItem'
+import { useWaitListContext } from '@/context/WaitlistProvider'
 
 
 const navLinks: NavItem[] = [
@@ -26,6 +27,7 @@ const navLinks: NavItem[] = [
 
 const NavBar = () => {
     const [navOpened, setNavOpened] = useState<boolean | undefined>(undefined)
+    const { openWaitList } = useWaitListContext()
 
     const getTabIndex = () => {
         // disable tab key when nav is closed
@@ -34,6 +36,10 @@ const NavBar = () => {
 
     const handleHamburgerClicked = () => {
         setNavOpened(!navOpened)
+    }
+
+    const handleWaitListClicked = () => {
+        openWaitList()
     }
 
 
@@ -55,7 +61,7 @@ const NavBar = () => {
                         ))}
                     </ul>
 
-                    <Button href='/get-started' text="Get Started" tabIndex={getTabIndex()} />
+                    <Button type='button' text="Join the Waitlist" tabIndex={getTabIndex()} handleClick={handleWaitListClicked} />
                 </div>
 
                 <button className={`lg:hidden font-bold text-xl z-30 ${navOpened ? "fixed top-5 right-10" : "static"}`} onClick={handleHamburgerClicked}>

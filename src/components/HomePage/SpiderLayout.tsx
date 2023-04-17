@@ -1,13 +1,8 @@
 import Image from "next/image";
-import Button from "../common/Button";
 import Container from "../common/Container";
 import HeroText from "./HeroText";
 import PreviewLink from "./PreviewLink";
 
-// new
-export interface sharedWaitlistProps {
-  openModal: React.Dispatch<React.SetStateAction<boolean | undefined>>;
-}
 
 interface SpiderLegProps {
   className?: string;
@@ -33,7 +28,7 @@ const SpiderLeg = ({
   );
 };
 
-const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
+const SpiderLayout = () => {
   return (
     <div className="grow hidden md:block md:px-3 lg:px-0">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center">
@@ -79,7 +74,6 @@ const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
           <HeroText
             className="col-start-3 col-end-6 row-start-1 row-end-3"
             headerClassName="text-2xl md:text-4xl w-[20ch]"
-            onModalOpen={openModal}
           />
 
           <SpiderLeg

@@ -49,7 +49,7 @@ const Benefit = ({ title, description, imageUrl, reverse, alt = "Product preview
                 <p>{description}</p>
             </div>
 
-            <figure onMouseMove={tiltCard} className={`grow flex justify-center ${reverse ? "lg:justify-start" : "lg:justify-end "}`}>
+            <figure onMouseMove={tiltCard} onMouseOut={removeTiltEffect} className={`grow flex justify-center ${reverse ? "lg:justify-start" : "lg:justify-end "}`}>
                 <Image src={imageUrl} alt={alt} width={width} height={height} className='object-contain drop-shadow-2xl' />
             </figure>
         </div>
