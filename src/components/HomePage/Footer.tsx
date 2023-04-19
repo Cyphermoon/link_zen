@@ -21,7 +21,7 @@ const Footer = () => {
         </p>
 
         <ul className="order-2 lg:order-3 text-center lg:text-left">
-          <li><FooterLink title="Terms and Policy" href="#" /></li>
+          <li><FooterLink title="Terms of services" href="#" /></li>
           <li><FooterLink title="Privacy" href="#" /></li>
         </ul>
       </Container>

@@ -1,14 +1,33 @@
 import Overlay from "@/components/common/Overlay";
-import React, { useState } from "react";
 import { waitlist } from "./type";
-import { Btn } from "@/components/common/Button";
+import { useFormik } from "formik";
+import { createContact } from "@/api/mail";
 
 const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 
-  
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+    },
+    onSubmit(values) {
+      const requestData: CreateContactRequestProps = {
+        email: values.email,
+        updateEnabled: true,
+        listIds: ["#3"],
+        attributes: {
+          FIRSTNAME: values.name,
+        },
+      };
+      createContact(requestData)
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+    },
+  });
+
   return (
     <Overlay
       handleClick={closeModal}
@@ -29,18 +48,18 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
         <h4 className="text-center text-md font-semibold my-6">
           Join Our Waitlist and Get Notified When Our Site is Ready!
         </h4>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <div className=" w-full text-left py-4 my-3">
             <label htmlFor="name" className="font-semibold">
               Name
             </label>
             <input
               type="text"
-              name=""
               id="name"
               required
               className="outline-none w-full p-3 mt-3 text-md rounded-xl"
               placeholder="Enter your full name"
+              {...formik.getFieldProps("name")}
             />
           </div>
           <div className="text-left my-3">
@@ -49,15 +68,20 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
             </label>
             <input
               type="email"
-              name=""
               id="email"
               required
               className="w-full p-3 mt-3 rounded-xl outline-none"
               placeholder="Enter your email"
+              {...formik.getFieldProps("email")}
             />
           </div>
 
-          <Btn className="bg-accent text-white text-md rounded-lg w-full p-4 my-10" label="Join Waitlist"/>
+          <button
+            type="submit"
+            className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
+          >
+            Join the Waitlist
+          </button>
         </form>
       </div>
     </Overlay>
