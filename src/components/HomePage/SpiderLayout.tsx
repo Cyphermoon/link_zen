@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "../common/Button";
+// import Button from "../common/Button";
 import Container from "../common/Container";
 import HeroText from "./HeroText";
 import PreviewLink from "./PreviewLink";
@@ -35,7 +35,7 @@ const SpiderLeg = ({
 
 const SpiderLayout = ({ openModal }: sharedWaitlistProps) => {
   return (
-    <div className="grow hidden lg:block  ">
+    <div className="grow hidden lg:block  mt-10">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center">
         <PreviewLink
           title="Twitter"
