@@ -14,13 +14,16 @@ const Header = () => {
 
   return (
     <header className="py-4 flex flex-col h-screen overflow-x-hidden">
-      <NavBar />
+      <NavBar inverse={true}/>
       {width >= lgScreen ? <SpiderLayout openModal={setModalState} /> : null}
       {width < lgScreen ? <AnimationLayout openModal={setModalState} /> : null}
 
       <WaitListModal
         modalOpened={modalState}
-        closeModal={() => { setModalState(false); document.body.classList.remove("modal-open"); }}
+        closeModal={() => {
+          setModalState(false);
+          document.body.classList.remove("modal-open");
+        }}
       />
     </header>
   );
