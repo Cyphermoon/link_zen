@@ -6,4 +6,5 @@ interface NavItem {
 type NavItemProps = NavItem & {
     type?: "link" | "button"
     tabIndex?: number
+    color:string
 }
