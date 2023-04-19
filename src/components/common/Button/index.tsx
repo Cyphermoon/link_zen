@@ -8,7 +8,14 @@ interface ButtonProps {
   tabIndex?: number;
 }
 
-const Button = ({ href, text, inverse, tabIndex = 0}: ButtonProps) => {
+interface JoinWaitlistProps {
+  label: string;
+  className: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+
+export const Button = ({ href, text, inverse, tabIndex = 0}: ButtonProps) => {
     const bg = inverse ? "bg-primary" : "bg-accent";
     const textClass = inverse ? "text-primary" : "text-white";
 
@@ -23,4 +30,17 @@ const Button = ({ href, text, inverse, tabIndex = 0}: ButtonProps) => {
     );
 };
 
-export default Button;
+export const Btn = ({ label, className, onClick }: JoinWaitlistProps) => {
+
+  return (
+    <button
+          className={className}
+          onClick={onClick}
+    >
+      {label}
+    </button>
+  );
+};
+
+
+
