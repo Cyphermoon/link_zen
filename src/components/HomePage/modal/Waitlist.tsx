@@ -1,6 +1,7 @@
 import Overlay from "@/components/common/Overlay";
 import React, { useState } from "react";
 import { waitlist } from "./type";
+import { Btn } from "@/components/common/Button";
 
 const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -11,11 +12,18 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   return (
     <Overlay
       handleClick={closeModal}
-       className={modalOpened === false ? "animate-moveOut" : modalOpened === undefined ? "hidden" : ""}
+      className={
+        modalOpened === false
+          ? "animate-moveOut"
+          : modalOpened === undefined
+          ? "hidden"
+          : ""
+      }
     >
       <div
         className={`${
-          modalOpened && "animate-in slide-in-from-right-full duration-500"} darker-gradient mx-3  z-50 px-3 md:px-16 py-6 absolute rounded-xl`}
+          modalOpened && "animate-in slide-in-from-right-full duration-500"
+        } darker-gradient mx-3  z-50 px-3 md:px-16 py-6 absolute rounded-xl`}
         onClick={(e) => handlePropagation(e)}
       >
         <h4 className="text-center text-md font-semibold my-6">
@@ -49,12 +57,7 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
             />
           </div>
 
-          <button
-            type="button"
-            className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
-          >
-            Join the Waitlist
-          </button>
+          <Btn className="bg-accent text-white text-md rounded-lg w-full p-4 my-10" label="Join Waitlist"/>
         </form>
       </div>
     </Overlay>
