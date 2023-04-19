@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../common/Button'
+import {Btn} from '../common/Button'
 
 
 interface Props {
@@ -26,13 +26,11 @@ const HeroText = ({ className, headerClassName, onModalOpen }: Props) => {
         <span className="underneath_line mx-2">Links</span> Nicely
       </h1>
 
-      <button
-        type="button"
-        onClick={(e) => handleClick(e)}
+      <Btn
+        label="Join the Waitlist"
         className="bg-accent text-white text-md rounded-lg w-1/2 py-3 px-4"
-      >
-        Join the Waitlist
-      </button>
+        onClick={(e) => handleClick(e)}
+      />
     </div>
   );
 };
