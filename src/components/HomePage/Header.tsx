@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header className="py-4 flex flex-col h-screen overflow-x-hidden">
-      <NavBar />
+      <NavBar inverse={true} />
       {width && width >= screenSize ? <SpiderLayout /> : null}
       {width && width < screenSize ? <AnimationLayout /> : null}
 

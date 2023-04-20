@@ -5,7 +5,7 @@ import HeroText from './HeroText'
 
 const AnimationLayout = () => {
   return (
-    <div className="grow block">
+    <div className="grow block mt-10">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center px-2 space-y-12 ">
         <HeroText headerClassName="text-4xl leading-tight" />
         <AnimationLink
@@ -21,4 +21,4 @@ const AnimationLayout = () => {
   );
 };
 
-export default AnimationLayout
+export default AnimationLayout;

@@ -11,7 +11,7 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const formik = useFormik({
     initialValues: {
       name: "",
-      email: ""
+      email: "",
     },
     onSubmit(values, { resetForm }) {
       const requestData: CreateContactRequestProps = {

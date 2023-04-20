@@ -1,5 +1,6 @@
 import { useWaitListContext } from '@/context/WaitlistProvider';
 import React from 'react';
+import { Btn } from '../common/Button'
 
 
 interface Props {
@@ -27,13 +28,11 @@ const HeroText = ({ className, headerClassName }: Props) => {
         <span className="underneath_line mx-2">Links</span> Nicely
       </h1>
 
-      <button
-        type="button"
-        onClick={(e) => handleClick(e)}
+      <Btn
+        label="Join the Waitlist"
         className="bg-accent text-white text-md rounded-lg w-1/2 py-3 px-4"
-      >
-        Join the Waitlist
-      </button>
+        onClick={(e) => handleClick(e)}
+      />
     </div>
   );
 };

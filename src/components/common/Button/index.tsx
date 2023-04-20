@@ -1,24 +1,7 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
 
-type ButtonProps =
-    {
-        href: string;
-        text: ReactNode;
-        inverse?: boolean;
-        tabIndex?: number;
-        type?: "link"
-        handleClick?: never;
-    } | {
-        text: ReactNode;
-        inverse?: boolean;
-        tabIndex?: number;
-        type: "button"
-        handleClick: () => void;
-        href?: never;
-    };
 
-const Button = ({ href, text, inverse, tabIndex = 0, type, handleClick }: ButtonProps) => {
+const Button = ({ href, text, inverse, className, tabIndex = 0, type, handleClick }: ButtonProps) => {
     const bg = inverse ? "bg-primary" : "bg-accent";
     const textClass = inverse ? "text-accent" : "text-white";
 
@@ -27,7 +10,7 @@ const Button = ({ href, text, inverse, tabIndex = 0, type, handleClick }: Button
             <button
                 tabIndex={tabIndex}
                 onClick={handleClick}
-                className={`px-5 w-max py-2 rounded-lg transition-opacity hover:opacity-80 inline-block capitalize ${bg} ${textClass} text-base`}
+                className={`${className} px-5 w-max py-2 rounded-lg transition-opacity hover:opacity-80 inline-block capitalize ${bg} ${textClass} text-base`}
             >
                 {text}
             </button>
@@ -49,3 +32,16 @@ const Button = ({ href, text, inverse, tabIndex = 0, type, handleClick }: Button
 };
 
 export default Button;
+
+
+export const Btn = ({ label, className, onClick }: JoinWaitlistProps) => {
+
+    return (
+        <button
+            className={className}
+            onClick={onClick}
+        >
+            {label}
+        </button>
+    );
+};
