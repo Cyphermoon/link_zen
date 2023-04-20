@@ -8,10 +8,11 @@ import Container from '../../common/Container'
 import Logo from '../../common/Logo'
 import NavItem from './NavItem'
 import { useWaitListContext } from '@/context/WaitlistProvider'
+import { useRouter } from 'next/router';
 
 const navLinks: NavItem[] = [
   {
-    href: "/features",
+    href: "/#features",
     text: "Features",
   },
   {
@@ -31,6 +32,7 @@ interface navbarProps {
 const NavBar = ({ inverse }: navbarProps) => {
   const [navOpened, setNavOpened] = useState<boolean | undefined>(undefined);
   const { openWaitList } = useWaitListContext()
+  const router = useRouter()
 
 
   const bg = inverse ? "bg-primary" : "bg-accent";
@@ -74,6 +76,7 @@ const NavBar = ({ inverse }: navbarProps) => {
               <NavItem
                 color={linkColor}
                 key={`nav-links-${idx}`}
+                active={router.asPath === href}
                 href={href}
                 text={text}
                 tabIndex={getTabIndex()}
@@ -84,7 +87,13 @@ const NavBar = ({ inverse }: navbarProps) => {
           {/* <Button href='/get-started' text="Get Started" tabIndex={getTabIndex()} /> */}
         </div>
 
-        <Button type='button' text="Join the Waitlist" tabIndex={getTabIndex()} handleClick={handleWaitListClicked} className={`px-5 w-max py-2 rounded-lg inline-block ${btnColor} capitalize text-base ${btnTextColor}`} />
+        <Button
+          type='button'
+          text="Join the Waitlist"
+          tabIndex={getTabIndex()}
+          handleClick={handleWaitListClicked}
+          inverse={!inverse} />
+
 
         <button className={`lg:hidden font-bold text-xl z-30 ${navOpened ? "fixed top-5 right-10" : "static"}`} onClick={handleHamburgerClicked}>
           {

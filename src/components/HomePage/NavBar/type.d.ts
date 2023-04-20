@@ -7,4 +7,5 @@ type NavItemProps = NavItem & {
     type?: "link" | "button"
     tabIndex?: number
     color:string
+    active?: boolean
 }

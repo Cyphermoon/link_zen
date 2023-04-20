@@ -20,9 +20,8 @@ const WaitlistVerified = () => {
             </section>
 
             <footer className='text-center absolute left-1/2 -translate-x-1/2 bottom-5'>
-                <Link href="/">
-                    <Logo className='text-accent-400 test-base lg:text-xl' />
-                </Link>
+                <Logo className='text-accent-400 test-base lg:text-xl' />
+
 
                 <div className='flex space-x-2 mt-2 justify-center text-xl'>
                     <SocialIcon Icon={FaTwitter} title='Twitter' href={`${AppConfig.twitterUrl}`} className={`text-accent hover:scale-125 cursor-pointer transition-transform`} />

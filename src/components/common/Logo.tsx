@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 
 const Logo = ({ className }: Props) => {
     return (
-        <h5 className={`font-bold uppercase ${className}`}>Organice</h5>
+        <h5 className={`font-bold uppercase ${className}`}><Link href="/">Organice</Link></h5>
     )
 }
 

@@ -37,7 +37,7 @@ const WaitListProvider = ({ children }: Props) => {
 
     const closeWaitList = () => {
         //open waitList modal and add scroll block style
-        setModalState(false)
+        setModalState(undefined)
 
         if (window !== undefined) {
             document.body.classList.remove("modal-open")
