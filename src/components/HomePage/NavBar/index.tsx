@@ -56,7 +56,7 @@ const NavBar = ({ inverse }: navbarProps) => {
 
 
   return (
-    <nav className='mb-10' >
+    <nav className='' >
       <Container className='flex items-center justify-between'>
         <Logo className={`${linkColor}`} />
 
