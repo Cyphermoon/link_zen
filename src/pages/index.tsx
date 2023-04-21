@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <WaitListLayout>
       <div className='bg-primary w-screen space-y-28'>
-        <PageHead title='Organice - Home' />
+        <PageHead title='LinkZen - Home' />
         <Header />
         <BenefitSection />
         <Features />
