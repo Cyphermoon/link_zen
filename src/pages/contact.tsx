@@ -1,12 +1,17 @@
+import * as Dialog from '@radix-ui/react-dialog';
+import { sendContactMessage } from "@/api/mail";
 import Container from "@/components/common/Container";
-import clsx from "clsx";
-import { FaLinkedin, FaTwitter } from "react-icons/fa";
-import { Btn } from "../components/common/Button";
-import Navbar from "../components/HomePage/NavBar/index";
 import { SocialIcon } from "@/components/common/SocialIcon";
-import AppConfig from "@/constants/app.constant";
 import WaitListLayout from "@/components/layout/WaitListLayout";
-import { useFormik } from "formik";
+import AppConfig from "@/constants/app.constant";
+import clsx from "clsx";
+import { Formik, useField } from "formik";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
+import Navbar from "../components/HomePage/NavBar/index";
+import { Btn } from "../components/common/Button";
+import SuccessGif from "../components/Contact/successful.gif"
+import Image from 'next/image';
+import { useBoolean } from 'usehooks-ts';
 
 interface FormControlProps {
   label: string;
@@ -19,53 +24,51 @@ interface InputProps {
   placeholder?: string;
   id: string;
   className?: string;
+  name: string
+}
+
+interface ModalProps {
+  state: boolean
+  closeModal: () => void
 }
 
 const inputClass = clsx(
-  "bg-primary text-base text-primary-700 py-4 px-3 rounded-lg outline-none focus:ring-1 focus:ring-primary-500"
+  `bg-primary text-base text-primary-700 py-4 px-3 rounded-lg outline-none focus:ring-1 focus:ring-primary-500`
 );
 
-const FormControl = ({ label, labelId, children }: FormControlProps) => {
+const SuccessModal = ({ state, closeModal }: ModalProps) => {
   return (
-    <div className="space-y-3 flex flex-col">
-      <label
-        className="text-lg font-bold text-primary-800 capitalize mt-4 md:mt-6"
-        htmlFor={labelId}
-      >
-        {label}
-      </label>
-      {children}
-    </div>
-  );
-};
+    <Dialog.Root open={state}>
+      <Dialog.DialogPortal>
+        <Dialog.Overlay
+          onClick={() => closeModal()}
+          className='bg-primary-600 rdx-state-open:animate-in rdx-state-open:fade-in-0 duration-500 fixed inset-0' />
+        <Dialog.Content
+          className='bg-white text-primary-800 w-11/12 max-w-sm rounded-xl fixed top-[50%] left-[50%]  translate-x-[-50%] 
+          translate-y-[-50%] text-center flex flex-col items-center py-3'>
+          <Dialog.Title className='text-2xl font-medium'>Message Sent</Dialog.Title>
 
-const Input = ({ type, id, placeholder, className }: InputProps) => {
-  return (
-    <input
-      type={type}
-      placeholder={placeholder ? placeholder : ""}
-      id={id}
-      required
-      className={inputClass}
-    />
-  );
-};
+          <Image src={SuccessGif} className='h-40 w-auto' alt='success illustration' />
+
+          <p className='text-sm font-normal'>we will get back to you shortly</p>
+        </Dialog.Content>
+      </Dialog.DialogPortal>
+    </Dialog.Root>
+  )
+}
 
 const Contact = () => {
+  const { value, setFalse, setTrue } = useBoolean(false)
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      message: ""
-    },
-    onSubmit(values) {
-      console.log(values)
-    }
-  })
+  const handleSubmit = (values: ContactFormFieldProps) => {
+    sendContactMessage(values)
+      .then(res => setTrue())
+      .catch(err => console.error(err.response ? err.response : err))
+  }
 
   return (
     <WaitListLayout>
+      <SuccessModal state={value} closeModal={setFalse} />
       <div className="h-screen">
         <div className="bg-accent py-6">
           <>
@@ -99,34 +102,88 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md" onSubmit={formik.handleSubmit}>
-              <div>
-                <FormControl label="Name" labelId="name">
-                  <Input id="name" type="text" className="py-12" />
-                </FormControl>
-                <FormControl label="Email" labelId="email">
-                  <Input id="email" type="email" />
-                </FormControl>
-                <FormControl label="Message" labelId="message">
-                  <textarea
-                    rows={6}
-                    id="message"
-                    className={`resize-none ${inputClass}`}
-                    {...formik.getFieldProps("message")}
-                  ></textarea>
-                </FormControl>
-                <Btn
-                  type={"submit"}
-                  className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
-                  label="Send"
-                />
-              </div>
-            </form>
+
+            <Formik
+              initialValues={{
+                name: "",
+                email: "",
+                message: ""
+              }}
+              onSubmit={(values) => handleSubmit(values)} >
+              {
+                (formik) => (
+                  <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md" onSubmit={formik.handleSubmit}>
+                    <FormControl label="Name" labelId="name">
+                      <Input id="name" type="text" name="name" />
+                    </FormControl>
+
+                    <FormControl label="Email" labelId="email">
+                      <Input id="email" type="email" name="email" />
+                    </FormControl>
+
+                    <FormControl label="Message" labelId="message">
+                      <textarea
+                        rows={6}
+                        id="message"
+                        required
+                        className={`resize-none ${inputClass}`}
+                        {...formik.getFieldProps("message")}
+                      />
+                    </FormControl>
+
+                    <Btn
+                      type={"submit"}
+                      className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
+                      label="Send"
+                    />
+                  </form>
+                )
+              }
+            </Formik>
           </div>
         </Container>
-      </div>
-    </WaitListLayout>
+      </div >
+    </WaitListLayout >
   );
 };
 
 export default Contact;
+
+
+
+const FormControl = ({ label, labelId, children }: FormControlProps) => {
+  return (
+    <div className="space-y-3 flex flex-col">
+      <label
+        className="text-lg font-bold text-primary-800 capitalize mt-4 md:mt-6"
+        htmlFor={labelId}
+      >
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+};
+
+const Input = ({ type = "string", placeholder, name, className, ...props }: InputProps) => {
+
+  const [field, meta] = useField({
+    name,
+    type
+  })
+
+
+  return (
+    <>
+      <input
+        type={type}
+        placeholder={placeholder ? placeholder : ""}
+        required
+        className={`${inputClass} ${className}`}
+        {...props}
+        {...field} />
+    </>
+
+  );
+};
+
