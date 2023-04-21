@@ -14,7 +14,7 @@ const items: AccordionItem[] = [
   {
     header: "Will there be a mobile app?",
     content:
-      "Absolutely! Our company recognizes the growing importance of mobile technology, and we're committed to providing our users with the best possible experience across all platforms. Our mobile app is currently in development, and we'll be sure to keep our users informed as we progress towards the release.",
+      "Absolutely! Our company recognizes the growing importance of mobile technology, and we're committed to providing our users with the best possible experience across all platforms. Once our mobile app is in development we'll be sure to keep you informed.",
   },
   {
     header: "Is it free",

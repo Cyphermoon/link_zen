@@ -7,7 +7,7 @@ interface Props {
 
 const Logo = ({ className }: Props) => {
     return (
-        <h5 className={`font-bold uppercase ${className}`}><Link href="/">Organice</Link></h5>
+        <h5 className={`font-bold uppercase ${className}`}><Link href="/">LinkZen</Link></h5>
     )
 }
 

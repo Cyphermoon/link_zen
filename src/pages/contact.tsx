@@ -68,9 +68,9 @@ const Contact = () => {
     <WaitListLayout>
       <div className="h-screen">
         <div className="bg-accent py-6">
-          <div className="">
+          <>
             <Navbar inverse={false} />
-          </div>
+          </>
         </div>
         <Container className="py-12">
           <h2 className="text-accent font-bold text-center">Contact Us</h2>
@@ -84,8 +84,18 @@ const Contact = () => {
                   Social Contacts
                 </h5>
                 <div className="flex space-x-6">
-                  <SocialIcon Icon={FaTwitter} href={`${AppConfig.twitterUrl}`} className="text-primary hover:text-primary-300 " title="Twitter" />
-                  <SocialIcon Icon={FaLinkedin} href={`${AppConfig.linkedinUrl}`} className="text-primary hover:text-primary-300 " title="Linkedin" />
+                  <SocialIcon
+                    Icon={FaTwitter}
+                    href={`${AppConfig.twitterUrl}`}
+                    className="text-primary hover:text-primary-300 "
+                    title="Twitter"
+                  />
+                  <SocialIcon
+                    Icon={FaLinkedin}
+                    href={`${AppConfig.linkedinUrl}`}
+                    className="text-primary hover:text-primary-300 "
+                    title="Linkedin"
+                  />
                 </div>
               </div>
             </div>
