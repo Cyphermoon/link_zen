@@ -6,6 +6,7 @@ import Navbar from "../components/HomePage/NavBar/index";
 import { SocialIcon } from "@/components/common/SocialIcon";
 import AppConfig from "@/constants/app.constant";
 import WaitListLayout from "@/components/layout/WaitListLayout";
+import { useFormik } from "formik";
 
 interface FormControlProps {
   label: string;
@@ -51,6 +52,18 @@ const Input = ({ type, id, placeholder, className }: InputProps) => {
 };
 
 const Contact = () => {
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: ""
+    },
+    onSubmit(values) {
+      console.log(values)
+    }
+  })
+
   return (
     <WaitListLayout>
       <div className="h-screen">
@@ -76,7 +89,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md">
+            <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md" onSubmit={formik.handleSubmit}>
               <div>
                 <FormControl label="Name" labelId="name">
                   <Input id="name" type="text" className="py-12" />
@@ -89,9 +102,11 @@ const Contact = () => {
                     rows={6}
                     id="message"
                     className={`resize-none ${inputClass}`}
+                    {...formik.getFieldProps("message")}
                   ></textarea>
                 </FormControl>
                 <Btn
+                  type={"submit"}
                   className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
                   label="Send"
                 />
