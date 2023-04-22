@@ -1,5 +1,5 @@
 const AppConfig = {
-    name: "Organice",
+    name: "Linkzen",
     twitterUrl: "",
     linkedinUrl: ""
 }

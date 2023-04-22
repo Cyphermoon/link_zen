@@ -78,9 +78,9 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
           <button
             type="submit"
             disabled={formik.isSubmitting}
-            className="bg-accent text-white text-md rounded-lg w-full p-4 my-10"
+            className={`bg-accent text-white text-md rounded-lg w-full p-4 my-10 ${formik.isSubmitting ? "opacity-50" : ""}`}
           >
-            Join the Waitlist
+            {!formik.isSubmitting ? "Join the Waitlist" : null}
           </button>
         </form>
       </div>

@@ -18,8 +18,9 @@ type ButtonProps =
     };
 
 interface JoinWaitlistProps {
-    type: "button" | "submit" | "reset"
+    type?: "button" | "submit" | "reset"
     label: string;
     className: string;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    disabled?:boolean
 }

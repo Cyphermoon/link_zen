@@ -24,8 +24,7 @@ const HeroText = ({ className, headerClassName }: Props) => {
         className={`text-primary-900 font-medium lg:font-semibold leading-9 lg:leading-10 mb-6
                 ${headerClassName}`}
       >
-        <span className="underneath_line">LinkZen: </span> Your Ticket to a
-        <span className="underneath_line mx-2">Organized</span> Digital Life
+        Organise and share your links with ease
       </h1>
 
       <Btn

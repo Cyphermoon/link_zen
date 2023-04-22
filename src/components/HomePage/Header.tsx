@@ -1,4 +1,3 @@
-import { useWaitListContext } from "@/context/WaitlistProvider";
 import { useWindowSize } from "usehooks-ts";
 import AnimationLayout from "./AnimationLayout";
 import NavBar from "./NavBar";
@@ -9,7 +8,7 @@ const Header = () => {
   const { width } = useWindowSize();
 
   return (
-    <header className="py-4 flex flex-col h-screen overflow-x-hidden">
+    <header className="pt-4 pb-2 flex flex-col h-screen overflow-x-hidden space-y-4 lg:space-y-8">
       <NavBar inverse={true} />
       {width && width >= screenSize ? <SpiderLayout /> : null}
       {width && width < screenSize ? <AnimationLayout /> : null}

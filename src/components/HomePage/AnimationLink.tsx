@@ -2,9 +2,8 @@ import { getUrlDomain } from '@/utils/link.utils'
 import gsap from 'gsap'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode, RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs'
-import { useBoolean } from 'usehooks-ts'
 import LinkTag from '../common/LinkTag'
 
 interface Props {

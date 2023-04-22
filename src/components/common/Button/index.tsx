@@ -34,13 +34,14 @@ const Button = ({ href, text, inverse, className, tabIndex = 0, type, handleClic
 export default Button;
 
 
-export const Btn = ({ type, label, className, onClick }: JoinWaitlistProps) => {
+export const Btn = ({ type, label, className, onClick, ...rest }: JoinWaitlistProps) => {
 
     return (
         <button
-            type={type}
+            type={type || "button"}
             className={className}
             onClick={onClick}
+            {...rest}
         >
             {label}
         </button>
