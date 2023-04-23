@@ -11,8 +11,8 @@ const About = () => {
         <div className="bg-accent py-4">
           <NavBar inverse={false} />
 
-          <div className="my-12 md:my-12 flex flex-col items-center px-6 text-center text-primary">
-            <h5 className="lg:w-1/3 font-normal text-5xl my-12">
+          <Container className="my-5 md:my-12 flex flex-col items-center text-center text-primary">
+            <h5 className="font-semibold text-4xl lg:text-6xl my-8 lg:w-1/2">
               We make working with links very easy
             </h5>
             <p className="lg:w-1/2">
@@ -24,7 +24,7 @@ const About = () => {
               {"That's"} not all! We will provide you with a professional
               dashboard to make managing your links much much organized!
             </p>
-          </div>
+          </Container>
         </div>
 
         <div className="my-12 md:my-24">

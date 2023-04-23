@@ -1,14 +1,12 @@
-import Link from 'next/link'
-import React, { useState } from 'react'
-import { FaTimes } from 'react-icons/fa'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { Btn } from "../../common/Button";
-import Button from '../../common/Button'
-import Container from '../../common/Container'
-import Logo from '../../common/Logo'
-import NavItem from './NavItem'
-import { useWaitListContext } from '@/context/WaitlistProvider'
+import { useWaitListContext } from '@/context/WaitlistProvider';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import Button from '../../common/Button';
+import Container from '../../common/Container';
+import Logo from '../../common/Logo';
+import NavItem from './NavItem';
 
 const navLinks: NavItem[] = [
   {
@@ -84,18 +82,18 @@ const NavBar = ({ inverse }: navbarProps) => {
             ))}
           </ul>
 
-          {/* <Button href='/get-started' text="Get Started" tabIndex={getTabIndex()} /> */}
+
+          <Button
+            type='button'
+            text="Join the Waitlist"
+            tabIndex={getTabIndex()}
+            handleClick={handleWaitListClicked}
+            inverse={!inverse} />
         </div>
 
-        <Button
-          type='button'
-          text="Join the Waitlist"
-          tabIndex={getTabIndex()}
-          handleClick={handleWaitListClicked}
-          inverse={!inverse} />
 
 
-        <button className={`lg:hidden font-bold text-xl z-30 ${navOpened ? "fixed top-5 right-10" : "static"}`} onClick={handleHamburgerClicked}>
+        <button className={`lg:hidden font-bold text-2xl z-30 ${navOpened ? "fixed top-5 right-2" : "static"} ${!inverse ? "text-primary" : "text-primary-800"}`} onClick={handleHamburgerClicked}>
           {
             navOpened ?
               <FaTimes className={`animate-in spin-in-180 fade-in-0 duration-500`} /> :
