@@ -1,7 +1,8 @@
 const AppConfig = {
     name: "Linkzen",
     twitterUrl: "https://twitter.com/linkzen_",
-    linkedinUrl: ""
+    linkedinUrl: "",
+    siteUrl: ""
 }
 
 export default AppConfig

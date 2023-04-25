@@ -16,7 +16,7 @@ export default function Home() {
       <div className='bg-primary w-screen space-y-28'>
         <PageHead
           title={`${AppConfig.name} - Home`}
-          description='Linkzen allows you to save, organize and share any links. You can also create a personal page that showcases your essential links' />
+          description='Linkzen is a platform that enables you to save, organize, and share links of your choice. Additionally, you can create a personalized page to display your important links.' />
 
         <Header />
         <BenefitSection />
