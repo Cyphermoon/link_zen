@@ -9,7 +9,8 @@ interface Props {
 }
 
 const PageHead = ({ title, description, author, ogImage }: Props) => {
-    const ogImageUrl = ogImage || '/default-og-image.png';
+    const ogImageUrl = ogImage || '/images/og-image.png';
+
     return (
         <Head>
             <title>{title}</title>
