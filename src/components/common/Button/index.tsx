@@ -20,6 +20,7 @@ const Button = ({ href, text, inverse, className, tabIndex = 0, type, handleClic
     return (
         <Link
             href={href}
+            title={text}
             tabIndex={tabIndex}
             className={`px-5 w-max py-2 rounded-lg transition-opacity hover:opacity-80 inline-block capitalize ${bg} ${textClass} text-base`}
         >

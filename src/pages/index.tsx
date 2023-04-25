@@ -14,7 +14,10 @@ export default function Home() {
   return (
     <WaitListLayout>
       <div className='bg-primary w-screen space-y-28'>
-        <PageHead title={`${AppConfig.name} - Home`} />
+        <PageHead
+          title={`${AppConfig.name} - Home`}
+          description='Linkzen allows you to save, organize and share any links. You can also create a personal page that showcases your essential links' />
+
         <Header />
         <BenefitSection />
         <Features />

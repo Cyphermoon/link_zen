@@ -25,7 +25,7 @@ const items: AccordionItem[] = [
   {
     header: "How do I contact customer support?",
     content:
-      `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
+      `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to contact.linkzen@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
   },
 
   {

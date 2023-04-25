@@ -6,7 +6,7 @@ const NavItem = ({ text, href, type = "link", tabIndex = 0, color, active }: Nav
         return <Button text={text} href={href} />
     }
 
-    return <Link tabIndex={tabIndex} href={href} className={`${color} text-base ${active ? "underline font-bold" : ""}`}>{text}</Link>
+    return <Link title={text} tabIndex={tabIndex} href={href} className={`${color} text-base ${active ? "underline font-bold" : ""}`}>{text}</Link>
 
 }
 

@@ -93,7 +93,7 @@ const NavBar = ({ inverse }: navbarProps) => {
 
 
 
-        <button className={`lg:hidden font-bold text-2xl z-30 ${navOpened ? "fixed top-5 right-2" : "static"} ${!inverse ? "text-primary" : "text-primary-800"}`} onClick={handleHamburgerClicked}>
+        <button title='hamburger-icon' className={`lg:hidden font-bold text-2xl z-30 ${navOpened ? "fixed top-5 right-2" : "static"} ${!inverse ? "text-primary" : "text-primary-800"}`} onClick={handleHamburgerClicked}>
           {
             navOpened ?
               <FaTimes className={`animate-in spin-in-180 fade-in-0 duration-500`} /> :
