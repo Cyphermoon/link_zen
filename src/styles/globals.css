@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   overflow-x: hidden;
 }
-body.modal-open{
+body.modal-open {
   overflow: hidden;
 }
 
@@ -42,6 +42,17 @@ body.modal-open{
     font-family: "Roboto";
     font-weight: 900;
     src: url("/fonts/roboto/Roboto-Black.ttf");
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    font-weight: 400;
+    src: url("/fonts/poppins/Poppins-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-weight: 500;
+    src: url("/fonts/poppins/Poppins-Medium.ttf");
   }
 
   /*Typography*/
@@ -135,7 +146,6 @@ body.modal-open{
 }
 
 @layer components {
-
   /*******
   Preview Link
   ***********/
