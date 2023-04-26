@@ -24,18 +24,17 @@ const items: AccordionItem[] = [
 
   {
     header: "How do I contact customer support?",
-    content:
-      `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
+    content: `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to temperaturecaleb@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
   },
 
   {
     header: "How do I create nested folders?",
     content:
-      " While this feature is not available in our MVP, we're working diligently to provide users the ability to create nested folders through our platform. As soon as this feature becomes available, we'll be sure to inform you!",
+      " To create a nested folder, all you need to do is simply click on the plus ( + ) icon inside the folder you want to nest another folder in, and select Create Folder!",
   },
 ];
 
-interface AccordionProps { }
+interface AccordionProps {}
 
 const Accordion = (props: AccordionProps) => {
   return (
