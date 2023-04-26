@@ -1,6 +1,5 @@
 import AppConfig from '@/constants/app.constant';
-import Head from 'next/head'
-import React from 'react'
+import Head from 'next/head';
 
 interface Props {
     title: string,

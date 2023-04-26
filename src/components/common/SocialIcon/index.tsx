@@ -10,7 +10,7 @@ interface SocialIconProps {
 export const SocialIcon = ({ Icon, title, className, href }: SocialIconProps) => {
     return (
         <Link href={href}>
-            <Icon title={title} className={`transition-colors duration-300 text-xl ${className}`} />
+            <Icon title={title} className={`${className} transition-colors duration-300 text-xl  `} />
         </Link>
     );
 };

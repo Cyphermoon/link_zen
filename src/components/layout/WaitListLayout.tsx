@@ -6,7 +6,7 @@ interface Props {
 }
 
 const WaitListLayout = ({ children }: Props) => {
-    const { modalState, closeWaitList, setModalState } = useWaitListContext()
+    const { modalState, closeWaitList } = useWaitListContext()
 
     return (
         <>

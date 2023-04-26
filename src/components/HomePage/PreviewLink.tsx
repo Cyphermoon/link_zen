@@ -1,8 +1,6 @@
 import { getUrlDomain } from '@/utils/link.utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { BsChevronDown } from 'react-icons/bs'
-import React from 'react'
 
 interface Props {
     className?: string
