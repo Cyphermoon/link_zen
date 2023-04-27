@@ -2,7 +2,6 @@ import Container from "@/components/common/Container";
 import Navbar from "../components/HomePage/NavBar/index";
 import WaitListLayout from "@/components/layout/WaitListLayout";
 import Footer from "@/components/HomePage/Footer";
-import AppConfig from "@/constants/app.constant";
 import Link from "next/link";
 
 const TermsOfServices = () => {
@@ -14,7 +13,7 @@ const TermsOfServices = () => {
         </div>
 
         <Container>
-          <div className="my-10 lg:my-20">
+          <div className="my-10 lg:my-20 text-primary-800">
             <h1 className="font-900 font-roboto text-4xl lg:text-6xl my-4">
               Terms of Services
             </h1>
@@ -78,10 +77,10 @@ const TermsOfServices = () => {
               LinkZen, you agree to our privacy policy. You can find our full
               privacy policy{""}
               <Link
-                href={AppConfig.privacy}
+                href={"/privacy"}
                 className="text-md font-normal underline color-accent mx-2"
               >
-              Here
+                Here
               </Link>{" "}
               .
             </p>
@@ -148,7 +147,7 @@ const TermsOfServices = () => {
               other intangible losses resulting from the use or inability to use
               our service. You agree to indemnify and hold harmless LinkZen and
               its affiliates, officers, agents, employees, and partners from any
-              claim or demand, including reasonable attorneys' fees, made by any
+              claim or demand, including reasonable {"attorneys'"} fees, made by any
               third party due to or arising out of your use of the service, your
               violation of these Terms of Service, or your violation of any
               rights of another.{" "}

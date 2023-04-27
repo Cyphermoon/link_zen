@@ -1,9 +1,9 @@
-import Container from "../common/Container"
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FooterLink } from "./FooterLink";
-import { SocialIcon } from "../common/SocialIcon";
-import AppConfig from "@/constants/app.constant";
+import Container from "../common/Container";
 import Logo from "../common/Logo";
+import { SocialIcon } from "../common/SocialIcon";
+import { FooterLink } from "./FooterLink";
+import AppConfig from "@/constants/app.constant";
 
 const Footer = () => {
   return (
@@ -13,8 +13,17 @@ const Footer = () => {
           <Logo className="text-primary text-xl lg:text-2xl font-medium lg:font-bold" />
 
           <div className="flex space-x-2 justify-center lg:justify-start">
-            <SocialIcon Icon={FaTwitter} title="Twitter" className="text-primary hover:text-primary-300 " href="#" />
-            <SocialIcon Icon={FaLinkedin} title="Linkedin" className="text-primary hover:text-primary-300 " href="#" />
+            <SocialIcon
+              Icon={FaTwitter}
+              title="Twitter"
+              href={AppConfig.twitterUrl}
+              className="text-primary hover:text-primary-300 " />
+
+            <SocialIcon
+              Icon={FaLinkedin}
+              title="Linkedin"
+              href={AppConfig.linkedinUrl}
+              className="text-primary hover:text-primary-300 " />
           </div>
         </div>
 
@@ -23,8 +32,8 @@ const Footer = () => {
         </p>
 
         <ul className="order-2 lg:order-3 text-center lg:text-left">
-          <li><FooterLink title="Terms of services" href={AppConfig.termsOfservices} /></li>
-          <li><FooterLink title="Privacy" href={AppConfig.privacy} /></li>
+          <li><FooterLink title="Terms of services" href={"/terms-of-services"} /></li>
+          <li><FooterLink title="Privacy" href={"/privacy"} /></li>
         </ul>
       </Container>
     </footer>
