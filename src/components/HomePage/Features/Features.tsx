@@ -3,6 +3,9 @@ import { GrMultiple } from "react-icons/gr";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdOutlineVisibility } from "react-icons/md";
 import { BsBell } from 'react-icons/bs'
+import { VscPreview } from "react-icons/vsc";
+import { TbFolders } from 'react-icons/tb'
+import {AiOutlineShop} from 'react-icons/ai'
 import { MdOutlineMobileScreenShare } from 'react-icons/md'
 import Container from '../../common/Container';
 
@@ -30,22 +33,22 @@ const Features = () => {
             <MdOutlineVisibility className="text-7xl" />
           </Box>
           <Box
-            title="Color Tag"
-            body="Customize the display color of your links and make it look even more appealing"
+            title="Inbuilt Browser"
+            body="View the content of your links without leaving the page"
           >
-            <IoColorPaletteOutline className="text-7xl" />
+            <VscPreview className="text-7xl" />
           </Box>
           <Box
-            title="Multi-Link Creation"
-            body="You can create multiple links in a row or provide a json, csv file"
+            title="Nested Folders"
+            body="Easily create folders in folders to store even more related links"
           >
-            <GrMultiple className="text-7xl font-thin" />
+            <TbFolders className="text-7xl font-thin" />
           </Box>
           <Box
-            title="Reach more People"
-            body="Share your links with anyone or to your social media to increase your audience"
+            title="Market place"
+            body="Discover useful links from digital creators and other LinkZen users"
           >
-            <MdOutlineMobileScreenShare className="text-7xl font-thin" />
+            <AiOutlineShop className="text-7xl font-thin" />
           </Box>
 
           <Box

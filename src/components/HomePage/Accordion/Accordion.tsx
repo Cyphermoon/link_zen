@@ -4,10 +4,11 @@ import { clsx } from "clsx";
 import Container from "@/components/common/Container";
 import { BsFillEyeSlashFill } from "react-icons/bs";
 import React from "react";
+import Link from "next/link";
 
 interface AccordionItem {
   header: string;
-  content: string;
+  content: string | React.ReactNode;
 }
 
 const items: AccordionItem[] = [
@@ -24,14 +25,15 @@ const items: AccordionItem[] = [
 
   {
     header: "How do I contact customer support?",
-    content:
-      `We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to contact.linkzen@gmail.com. Our team of experts is always ready to assist you with any questions or concerns you may have.`,
+    content: <p className="my-2">
+      We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to <Link className="text-primary-700 underline text-md" href="mailto:contact.linkzen@gmail.com">contact.linkzen@gmail.com.</Link> Our team of experts is always ready to assist you with any questions or concerns you may have.
+    </p>
   },
 
   {
     header: "How do I create nested folders?",
     content:
-      " While this feature is not available in our MVP, we're working diligently to provide users the ability to create nested folders through our platform. As soon as this feature becomes available, we'll be sure to inform you!",
+      " To create a nested folder, all you need to do is simply click on the plus ( + ) icon inside the folder you want to nest another folder in, and select Create Folder!",
   },
 ];
 
@@ -81,7 +83,9 @@ const Accordion = (props: AccordionProps) => {
               </AccordionPrimitive.Trigger>
             </AccordionPrimitive.Header>
             <AccordionPrimitive.Content className="AccordionContent pt-1 w-full rounded-b-lg px-4 pb-3 bg-primary shadow-md">
-              <div className="text-md text-gray-500">{content}</div>
+              <div className="text-md text-gray-500">
+                {typeof content === "string" ? <p className="my-2">{content}</p> : content}
+              </div>
             </AccordionPrimitive.Content>
           </AccordionPrimitive.Item>
         ))}
