@@ -5,7 +5,7 @@ import { MdOutlineVisibility } from "react-icons/md";
 import { BsBell } from 'react-icons/bs'
 import { VscPreview } from "react-icons/vsc";
 import { TbFolders } from 'react-icons/tb'
-import {AiOutlineShop} from 'react-icons/ai'
+import { AiOutlineShop } from 'react-icons/ai'
 import { MdOutlineMobileScreenShare } from 'react-icons/md'
 import Container from '../../common/Container';
 
