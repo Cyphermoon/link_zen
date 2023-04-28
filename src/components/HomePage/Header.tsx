@@ -1,20 +1,20 @@
-import { useWindowSize } from 'usehooks-ts'
-import AnimationLayout from './AnimationLayout'
-import NavBar from './NavBar'
-import SpiderLayout from './SpiderLayout'
-
+import { useWindowSize } from "usehooks-ts";
+import AnimationLayout from "./AnimationLayout";
+import NavBar from "./NavBar";
+import SpiderLayout from "./SpiderLayout";
 
 const Header = () => {
-  const lgScreen = 1024
-  const { width } = useWindowSize()
+  const screenSize = 768;
+  const { width } = useWindowSize();
 
   return (
-    <header className='py-4 flex flex-col h-screen'>
-      <NavBar />
-      {width >= lgScreen ? <SpiderLayout /> : null}
-      {width < lgScreen ? <AnimationLayout /> : null}
-    </header >
-  )
-}
+    <header className="pt-4 pb-2 flex flex-col h-screen overflow-x-hidden space-y-4 lg:space-y-8">
+      <NavBar inverse={true} />
+      {width && width >= screenSize ? <SpiderLayout /> : null}
+      {width && width < screenSize ? <AnimationLayout /> : null}
 
-export default Header
+    </header>
+  );
+};
+
+export default Header;

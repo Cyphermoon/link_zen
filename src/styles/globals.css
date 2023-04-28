@@ -2,153 +2,210 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  html{
+body {
+  overflow-x: hidden;
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+@layer base {
+  html {
     font-family: "Roboto", Verdana, Helvetica, Tahoma, sans-serif;
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 100;
-    src: url('/fonts/roboto/Roboto-Thin.ttf');
+    src: url("/fonts/roboto/Roboto-Thin.ttf");
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 300;
-    src: url('/fonts/roboto/Roboto-Light.ttf');
+    src: url("/fonts/roboto/Roboto-Light.ttf");
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 400;
-    src: url('/fonts/roboto/Roboto-Regular.ttf');
+    src: url("/fonts/roboto/Roboto-Regular.ttf");
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 500;
-    src: url('/fonts/roboto/Roboto-Medium.ttf');
+    src: url("/fonts/roboto/Roboto-Medium.ttf");
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 700;
-    src: url('/fonts/roboto/Roboto-Bold.ttf');
+    src: url("/fonts/roboto/Roboto-Bold.ttf");
   }
   @font-face {
     font-family: "Roboto";
     font-weight: 900;
-    src: url('/fonts/roboto/Roboto-Black.ttf');
+    src: url("/fonts/roboto/Roboto-Black.ttf");
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    font-weight: 400;
+    src: url("/fonts/poppins/Poppins-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-weight: 500;
+    src: url("/fonts/poppins/Poppins-Medium.ttf");
   }
 
   /*Typography*/
 
-  h1{
-    @apply text-5xl font-semibold
+  h1 {
+    @apply text-5xl font-semibold;
   }
 
-  h2{
-    @apply text-5xl capitalize
+  h2 {
+    @apply text-5xl capitalize;
   }
 
-  h3{
-    @apply text-3xl capitalize font-bold
+  h3 {
+    @apply text-3xl capitalize font-bold;
   }
 
-  h4{
-    @apply text-2xl capitalize font-bold
+  h4 {
+    @apply text-2xl capitalize font-bold;
   }
 
-  p{
-    @apply text-base
+  p {
+    @apply text-base;
   }
 
-  button{
-    @apply text-sm
+  button {
+    @apply text-sm;
   }
-  
-  a{
-    @apply text-lg
+
+  a {
+    @apply text-lg;
   }
 }
 
-@layer utilities{
-  .site-gradient{
-    background: linear-gradient(154.97deg, rgba(255, 224, 239, 0.65) 4.36%, rgba(134, 133, 239, 0) 108.32%);
+@layer utilities {
+  .site-gradient {
+    background: linear-gradient(
+      154.97deg,
+      rgba(255, 224, 239, 0.65) 4.36%,
+      rgba(134, 133, 239, 0) 108.32%
+    );
   }
 
-  .profile-gradient{
-    background: linear-gradient(154.97deg, rgba(255, 204, 229, 0.73) 4.36%, rgba(113, 112, 255, 0.15) 108.32%);;
+  .profile-gradient {
+    background: linear-gradient(
+      154.97deg,
+      rgba(255, 204, 229, 0.73) 4.36%,
+      rgba(113, 112, 255, 0.15) 108.32%
+    );
   }
 
-  .underneath_line{
+  .darker-gradient {
+    background: linear-gradient(
+      154.97deg,
+      rgba(255, 204, 229, 0.99) 40.36%,
+      rgba(113, 112, 255, 0.99) 80.32%
+    );
+  }
+
+  .underneath_line {
     position: relative;
-    display:inline-block;
-    z-index:1;
+    display: inline-block;
+    z-index: 1;
   }
 
-  .underneath_line::before{
+  .underneath_line::before {
     content: "";
-    position:absolute;
-    bottom:7px;
-    left:0;
-    width:100%;
-    height:7px;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    width: 100%;
+    height: 7px;
     background-color: theme("colors.accent.100");
     z-index: -1;
   }
 
   @media screen and (min-width: theme("screens.lg")) {
-    .underneath_line::before{
-
+    .underneath_line::before {
       bottom: 5px;
     }
   }
 
-  .filter-light{
-    filter: invert(50%) sepia(2%) saturate(3%) hue-rotate(320deg) brightness(91%) contrast(87%);
+  .filter-light {
+    filter: invert(50%) sepia(2%) saturate(3%) hue-rotate(320deg)
+      brightness(91%) contrast(87%);
   }
 
-  .filter-dark{
-    filter:  invert(0%) sepia(0%) saturate(7500%) hue-rotate(270deg) brightness(103%) contrast(108%);
+  .filter-dark {
+    filter: invert(0%) sepia(0%) saturate(7500%) hue-rotate(270deg)
+      brightness(103%) contrast(108%);
   }
 }
 
-@layer components{
-  /* .spider-grid{
-    display:grid;
-    gap: .5em;
-    grid-template-areas: 
-      "upper-left main-text upper-right"
-      "lower-left main-text lower-right"
-  }
-
-  .spider-grid > .upper-left{
-    grid-area: upper-left;
-  }
-
-  .spider-grid > .upper-right{
-    grid-area: upper-right
-  }
-
-  .spider-grid > .lower-left{
-    grid-area: lower-left
-  }
-
-  .spider-grid > .lower-right{
-    grid-area: lower-right;
-  }
-
-  .spider-grid > .main-text{
-    grid-area: main-text;
-  } */
-
-  .preview-link-img::before{
+@layer components {
+  /*******
+  Preview Link
+  ***********/
+  .preview-link-img::before {
     content: "";
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
-    height:100%;
+    height: 100%;
     background-color: theme("colors.primary.50");
-    opacity: .1;
+    opacity: 0.1;
     z-index: 1;
   }
-  
+
+  .Eye-slash {
+    transition: transform 300ms;
+  }
+  .AccordionTrigger[data-state="open"] > .Eye-slash {
+    display: block;
+  }
+
+  .AccordionTrigger[data-state="open"] > .Eye {
+    display: none;
+  }
+
+  .AccordionTrigger[data-state="open"] {
+    background: linear-gradient(
+      154.97deg,
+      rgba(255, 224, 239, 0.65) 4.36%,
+      rgba(134, 133, 239, 0) 108.32%
+    );
+  }
+
+  /* styles.css */
+  .AccordionContent {
+    overflow: hidden;
+  }
+  .AccordionContent[data-state="open"] {
+    animation: slideDown 300ms ease-out;
+  }
+  .AccordionContent[data-state="closed"] {
+    animation: slideUp 300ms ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
