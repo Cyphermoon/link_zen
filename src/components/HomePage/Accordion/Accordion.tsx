@@ -5,6 +5,7 @@ import Container from "@/components/common/Container";
 import { BsFillEyeSlashFill } from "react-icons/bs";
 import React from "react";
 import Link from "next/link";
+import AppConfig from "@/constants/app.constant";
 
 interface AccordionItem {
   header: string;
@@ -26,7 +27,7 @@ const items: AccordionItem[] = [
   {
     header: "How do I contact customer support?",
     content: <p className="my-2">
-      We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to <Link className="text-primary-700 underline text-md" href="mailto:contact.linkzen@gmail.com">contact.linkzen@gmail.com.</Link> Our team of experts is always ready to assist you with any questions or concerns you may have.
+      We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to <Link className="text-primary-700 underline text-md" href={`mailto:${AppConfig.mail}`}>{AppConfig.mail}</Link> Our team of experts is always ready to assist you with any questions or concerns you may have.
     </p>
   },
 

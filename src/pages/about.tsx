@@ -12,7 +12,7 @@ const About = () => {
           <NavBar inverse={false} />
 
           <Container className="my-5 md:my-12 flex flex-col items-center text-center text-primary">
-            <h5 className="font-semibold text-4xl lg:text-6xl my-8 lg:w-1/2">
+            <h5 className="font-semibold text-4xl lg:text-6xl my-8 lg:w-7/12">
               We make working with links very easy
             </h5>
             <p className="lg:w-1/2">

@@ -4,8 +4,12 @@ import Logo from "../common/Logo";
 import { SocialIcon } from "../common/SocialIcon";
 import { FooterLink } from "./FooterLink";
 import AppConfig from "@/constants/app.constant";
+import { useRouter } from "next/router";
 
 const Footer = () => {
+  const router = useRouter()
+
+
   return (
     <footer className="bg-accent py-5">
       <Container className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-10 lg:space-y-0">
@@ -32,8 +36,13 @@ const Footer = () => {
         </p>
 
         <ul className="order-2 lg:order-3 text-center lg:text-left">
-          <li><FooterLink title="Terms of services" href={"/terms-of-services"} /></li>
-          <li><FooterLink title="Privacy" href={"/privacy"} /></li>
+          <li>
+            <FooterLink title="Terms of services" href={"/terms-of-services"} active={router.asPath === "/terms-of-services"} />
+          </li>
+
+          <li>
+            <FooterLink title="Privacy" href={"/privacy"} active={router.asPath === "/privacy"} />
+          </li>
         </ul>
       </Container>
     </footer>

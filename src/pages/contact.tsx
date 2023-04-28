@@ -12,6 +12,7 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import * as Yup from "yup";
 import Navbar from "../components/HomePage/NavBar/index";
 import { Btn } from "../components/common/Button";
+import Link from "next/link";
 
 
 const ContactFormSchema = Yup.object().shape({
@@ -57,26 +58,42 @@ const Contact = () => {
               <h5 className="text-primary font-normal text-4xl hidden lg:block">
                 We would love to hear from you
               </h5>
-              <div className="mt-auto">
-                <h5 className="text-xl text-primary-50 pb-6 lg:py-4">
-                  Social Contacts
-                </h5>
-                <div className="flex space-x-6">
-                  <SocialIcon
-                    Icon={FaTwitter}
-                    href={`${AppConfig.twitterUrl}`}
-                    className="text-primary hover:text-primary-300 "
-                    title="Twitter"
-                  />
-                  <SocialIcon
-                    Icon={FaLinkedin}
-                    href={`${AppConfig.linkedinUrl}`}
-                    className="text-primary hover:text-primary-300 "
-                    title="Linkedin"
-                  />
+
+              <div className="mt-auto space-y-10">
+                <div className="" >
+                  <h5 className="text-xl text-primary-50 pb-2 lg:py-1">
+                    Social Contacts
+                  </h5>
+                  <div className="flex space-x-6">
+                    <SocialIcon
+                      Icon={FaTwitter}
+                      href={`${AppConfig.twitterUrl}`}
+                      className="text-primary hover:text-primary-300 "
+                      title="Twitter"
+                    />
+                    <SocialIcon
+                      Icon={FaLinkedin}
+                      href={`${AppConfig.linkedinUrl}`}
+                      className="text-primary hover:text-primary-300 "
+                      title="Linkedin"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <h5 className="text-xl text-primary-50 pb-2 lg:py-1">
+                    Mail
+                  </h5>
+
+                  <Link
+                    className="text-primary underline hover:text-primary-300 transition-colors"
+                    href={`mailto:${AppConfig.mail}`}
+                  >{AppConfig.mail}
+                  </Link>
                 </div>
               </div>
             </div>
+
 
             <Formik
               initialValues={{

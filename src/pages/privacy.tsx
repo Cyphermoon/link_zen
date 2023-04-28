@@ -2,6 +2,7 @@ import Container from "@/components/common/Container";
 import Navbar from "../components/HomePage/NavBar/index";
 import WaitListLayout from "@/components/layout/WaitListLayout";
 import Footer from "@/components/HomePage/Footer";
+import Link from "next/link";
 
 const Policy = () => {
   return (
@@ -39,7 +40,7 @@ const Policy = () => {
               your email address and name. We never sell or share your personal
               information with third parties. Your information is securely
               stored and only accessible to authorized personnel who need it to
-              perform their job duties." Of course, you should customize this
+              perform their job {'duties."'} Of course, you should customize this
               note to reflect your specific data collection practices and
               policies
             </p>
@@ -115,13 +116,13 @@ const Policy = () => {
             <div className="my-8 md:my-12">
               <p className="font-poppins font-semibold">
                 If you have any questions or concerns regarding our Privacy
-                Policy, please contact us at{" "}
-                <a
-                  href="mailto:contact.linkzen@gmail.com"
+                Policy, please contact us on our{" "}
+                <Link
+                  href="/contact"
                   className="text-md font-normal underline color-accent mx-2"
                 >
-                  Linkzen customer care
-                </a>{" "}
+                  contact page
+                </Link>{" "}
                 We will make every effort to resolve your concerns.
               </p>
             </div>
