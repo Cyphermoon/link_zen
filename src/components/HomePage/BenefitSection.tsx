@@ -14,7 +14,7 @@ interface BenefitProps {
 
 const BenefitSection = () => {
   return (
-    <section className="profile-gradient py-14">
+    <section className="profile-gradient py-14 mt-[0]">
       <Container className="space-y-24 lg:space-y-40">
         <Benefit
           title="Efficient link management"
@@ -54,7 +54,7 @@ const Benefit = ({
         } items-center space-y-8 lg:space-y-0 text-primary-800`}
       style={{ perspective: "800px" }}
     >
-      <div className="space-y-4 w-full lg:w-5/12">
+      <div className="space-y-4 w-full md:text-center lg:text-left lg:w-5/12">
         <h3 className="text-3xl">{title}</h3>
         <p>{description}</p>
       </div>
@@ -70,7 +70,7 @@ const Benefit = ({
           alt={alt}
           width={width}
           height={height}
-          className="object-contain drop-shadow-2xl"
+          className="object-contain drop-shadow-xl md:drop-shadow-2xl"
         />
       </figure>
     </div>

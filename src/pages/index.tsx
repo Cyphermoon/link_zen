@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <WaitListLayout>
-      <div className='bg-primary w-screen space-y-28'>
+      <div className='bg-primary w-screen space-y-20 lg:space-y-28'>
         <PageHead
           title={`${AppConfig.name} - Home`}
           description='Linkzen is a platform that enables you to save, organize, and share links of your choice. Additionally, you can create a personalized page to display your important links.' />

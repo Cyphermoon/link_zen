@@ -61,7 +61,7 @@ const NavBar = ({ inverse }: navbarProps) => {
         <div
           className={`
                     fixed flex ${bg}
-                    left-0  lg:animate-none flex-col items-center z-20 lg:z-auto justify-center lg:flex lg:flex-row lg:justify-between lg:static space-y-4 lg:grow lg:space-y-0 top-0 w-screen lg:h-auto lg:w-auto h-screen
+                    left-0  lg:animate-none flex-col items-center z-20 lg:z-auto justify-center lg:flex lg:flex-row text-center lg:text-left lg:justify-between lg:static space-y-4 lg:grow lg:space-y-0 top-0 w-screen lg:h-auto lg:w-auto h-screen
                     ${navOpened === undefined && "hidden"}  
                     ${navOpened
               ? "animate-in slide-in-from-left-full duration-500"

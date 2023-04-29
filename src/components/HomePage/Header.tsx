@@ -8,7 +8,7 @@ const Header = () => {
   const { width } = useWindowSize();
 
   return (
-    <header className="pt-4 pb-2 flex flex-col h-screen overflow-x-hidden space-y-4 lg:space-y-8">
+    <header className="pt-4 pb-2 flex flex-col h-screen max-h-[700px] lg:max-h-[1000px] overflow-x-hidden">
       <NavBar inverse={true} />
       {width && width >= screenSize ? <SpiderLayout /> : null}
       {width && width < screenSize ? <AnimationLayout /> : null}
