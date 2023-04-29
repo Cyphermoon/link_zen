@@ -30,7 +30,7 @@ const SpiderLeg = ({
 
 const SpiderLayout = () => {
   return (
-    <div className="grow hidden md:block md:px-3 lg:px-0 mt-4 lg:mt-8">
+    <div className="grow h-full hidden md:block md:px-3 lg:px-0 mt-4 max-h-[900px] lg:mt-8">
       <Container className="relative h-full max-w-5xl text-center flex flex-col justify-center items-center">
         <PreviewLink
           title="Twitter"
