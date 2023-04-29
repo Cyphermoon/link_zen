@@ -21,7 +21,7 @@ const HeroText = ({ className, headerClassName }: Props) => {
       className={`flex flex-col text-center justify-center items-center ${className}`}
     >
       <h1
-        className={`text-primary-900 font-medium lg:font-semibold leading-9 lg:leading-10 mb-6
+        className={`text-primary-900 font-medium lg:font-semibold lg:leading-10 mb-6
                 ${headerClassName}`}
       >
         Organise and share your links with ease
@@ -29,7 +29,7 @@ const HeroText = ({ className, headerClassName }: Props) => {
 
       <Btn
         label="Join the Waitlist"
-        className="bg-accent text-white text-md rounded-lg w-1/2 py-3 px-4"
+        className="bg-accent text-white text-md rounded-lg py-3 px-4 lg:w-1/2"
         onClick={(e) => handleClick(e)}
       />
     </div>
