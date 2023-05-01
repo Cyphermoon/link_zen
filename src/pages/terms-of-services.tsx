@@ -13,7 +13,7 @@ const TermsOfServices = () => {
         </div>
 
         <Container>
-          <div className="my-10 lg:my-20 text-primary-800">
+          <div className="my-10 lg:my-20">
             <h1 className="font-900 font-roboto text-4xl lg:text-6xl my-4">
               Terms of Services
             </h1>
