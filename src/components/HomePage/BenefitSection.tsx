@@ -25,9 +25,8 @@ const BenefitSection = () => {
         />
 
         <Benefit
-          // Your digital world is an extension of who you are, and you can create a stunning digital representation of yourself. Showcase your digital world with a
           title="Personalized profile page"
-          description="LinkZen gives you a personalized profile page that captures your personality, highlights and your favorite resources. You can share it with anyone, anywhere!"
+          description="LinkZen gives you a personalized profile page that showcases all your public links in one place. You can share it with anyone, anywhere!"
           imageUrl="/images/profile_page_preview.png"
           reverse={true}
           width={486}
