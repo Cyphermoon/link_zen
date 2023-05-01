@@ -22,7 +22,7 @@ const Features = () => {
         <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
           <Box
             title="Url Shortner"
-            body="Long, clunky links can be a hassle to share. You can easily reduce the length of your links with our url shortner"
+            body="Easily reduce the length of your links with our url shortner"
           >
             <FiLink2 className="text-7xl" />
           </Box>

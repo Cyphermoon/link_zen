@@ -18,15 +18,16 @@ const BenefitSection = () => {
       <Container className="space-y-24 lg:space-y-40">
         <Benefit
           title="Efficient link management"
-          description=" Say goodbye to cluttered bookmarks and disorganized tabs, and hello to a streamlined and efficient approach to link management. In addition to storing and organizing links, our user-friendly dashboard also allows you to organize your related links into folders for quick and easy access."
+          description="Linkzen provides you with an easy way to store and organize your links. With our user-friendly dashboard you can also create folders to group related links and find what you need faster."
           imageUrl="/images/dashboard_page_preview.png"
           width={600}
           height={400}
         />
 
         <Benefit
-          title="Showcase your digital world"
-          description="Your digital world is an extension of who you are, and with LinkZen's Profile Pages, you can create a stunning digital representation of yourself. Showcase your digital world with a personalized profile page that captures your personality, highlights and your favorite resources. LinkZen also provide you with a unique url that you can share to your other social media platforms."
+          // Your digital world is an extension of who you are, and you can create a stunning digital representation of yourself. Showcase your digital world with a
+          title="Personalized profile page"
+          description="LinkZen gives you a personalized profile page that captures your personality, highlights and your favorite resources. You can share it with anyone, anywhere!"
           imageUrl="/images/profile_page_preview.png"
           reverse={true}
           width={486}
