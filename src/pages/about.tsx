@@ -3,7 +3,6 @@ import NavBar from "@/components/HomePage/NavBar";
 import Container from "@/components/common/Container";
 import WaitListLayout from "@/components/layout/WaitListLayout";
 
-
 const About = () => {
   return (
     <WaitListLayout>
@@ -31,39 +30,47 @@ const About = () => {
           <Container>
             <div className="my-16 md:my-20">
               <h5 className="font-semibold text-4xl text-accent">Story</h5>
-              <p className="text-subdue my-6">
+              <p className="text-subdue my-6 font-poppins">
                 Our journey started with a simple problem: the hassle of
                 constantly bookmarking frequently accessed links and keeping
                 links to important resources in note apps. We quickly realized
                 that there was a larger problem at hand - the need for a
                 platform that could help people manage and organize their
-                digital resources as well as their online presence. LinkZen is
-                a simple solution to a common problem faced by individuals and
-                businesses. With so many different platforms to promote oneself
-                or {"one's"} business, it can be difficult to keep track of them
-                all. LinkZen provides a single, customizable profile dashboard
-                that enables users to store any type of link, shorten links url
-                to make it look even more nicer, make links private or public,
-                add tags or categories, search for other public useful links and
+                digital resources as well as their online presence. <br />
+                <br />
+                LinkZen is a simple solution to a common problem faced by
+                individuals and businesses. With so many different platforms to
+                promote oneself or {"one's"} business, it can be difficult to
+                keep track of them all.
+                <br />
+                <br />
+                LinkZen provides a single, customizable profile dashboard that
+                enables users to store any type of link, shorten links url to
+                make it look even more nicer, make links private or public, add
+                tags or categories, search for other public useful links and
                 easily organize their social media accounts.
               </p>
             </div>
-            <div className="my-16 md:my-20">
+            <div className="my-16 md:my-20 font-poppins">
               <h5 className="font-semibold text-4xl text-accent">Vision</h5>
               <p className="text-subdue my-6">
                 Our vision is to create a centralized hub for digital resources,
                 where users can access their content in a fast and organized
-                manner. We believe that by streamlining the process of sharing
-                and discovering content, we can empower digital creators,
-                business owners and help them build a sustainable online
-                presence. Individuals who wants to use it personally are not
-                excluded too, you can add links and make them private for your
-                use only. {"We're"} not stopping here - we have big plans for
-                the future, including adding monetization features and creating
-                new tools for digital or affiliate marketers. We believe that
-                LinkZen has the potential to change the way people interact
-                with digital content, and {"we're"} excited to be at the
-                forefront of this movement.
+                manner. We believe that by streamlining the process of sharing and
+                discovering content, we can empower digital creators, business
+                owners and help them build a sustainable online presence.
+                <br />
+                <br />
+                Individuals who wants to use it personally are not excluded too,
+                you can add links and make them private for your use only.{" "}
+                {"We're"} not stopping here - we have big plans for the future,
+                including adding monetization features and creating new tools
+                for digital or affiliate marketers.
+                <br />
+                <br />
+                We believe that LinkZen has the potential to change the way
+                people interact with digital content, and {"we're"} excited to
+                be at the forefront of this movement.
               </p>
             </div>
           </Container>
