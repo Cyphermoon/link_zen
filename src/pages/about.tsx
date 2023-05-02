@@ -14,7 +14,7 @@ const About = () => {
             <h5 className="font-semibold text-4xl lg:text-6xl my-8 lg:w-7/12">
               We make working with links very easy
             </h5>
-            <p className="lg:w-1/2">
+            <p className="lg:w-1/2 font-poppins">
               Welcome to LinkZen, the web app that provides you with a seamless
               way to store and organize your links. With LinkZen, you can
               organize and manage your online presence by creating a profile
