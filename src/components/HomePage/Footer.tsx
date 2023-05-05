@@ -5,6 +5,7 @@ import { SocialIcon } from "../common/SocialIcon";
 import { FooterLink } from "./FooterLink";
 import AppConfig from "@/constants/app.constant";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Footer = () => {
   const router = useRouter()
@@ -32,7 +33,8 @@ const Footer = () => {
         </div>
 
         <p className="text-accent-100 text-sm lg:self-end order-3 lg:order-2">
-          COPYRIGHT &#169; 2023 - CREATED BY KELVIN AND SEUN
+          COPYRIGHT &#169; 2023 - CREATED BY {' '}
+          <Link className="text-sm font-semibold" href={"https://portfolio-site-cyphermoon.vercel.app/"}>KELVIN</Link> AND <Link className="text-sm font-semibold" href={"https://oluwaseun.vercel.app/"}>SEUN</Link>
         </p>
 
         <ul className="order-2 lg:order-3 text-center lg:text-left">
