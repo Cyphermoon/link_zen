@@ -5,6 +5,7 @@ type boxContent = {
     divStyles?: string,
     hStyles?: string,
     pStyles?: string,
+    tiltCard?: boolean
 
 }
 
