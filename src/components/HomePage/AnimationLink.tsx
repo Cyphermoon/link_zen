@@ -24,6 +24,34 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
     const chevronRef = useRef<HTMLDivElement>(null)
 
 
+    const styleDropDown = useCallback((dropDownRef: RefObject<HTMLDivElement>, isDropDownOpen: boolean) => {
+        if (isDropDownOpen === undefined) {
+            return
+        }
+        else if (isDropDownOpen === true) {
+            dropDownRef.current && (dropDownRef.current.style.height = "60px");
+        }
+
+        else if (isDropDownOpen === false) {
+            dropDownRef.current && (dropDownRef.current.style.height = "0");
+        }
+    }, [])
+
+
+    const styleChevron = useCallback((chevronRef: RefObject<HTMLDivElement>, isDropDownOpen: boolean) => {
+        if (isDropDownOpen === undefined) {
+            return
+        }
+        else if (isDropDownOpen === true) {
+            chevronRef.current && (chevronRef.current.style.transform = "rotate(-180deg)");
+        }
+
+        else if (isDropDownOpen === false) {
+            chevronRef.current && (chevronRef.current.style.transform = "rotate(0deg)");
+        }
+    }, [])
+
+
     useEffect(() => {
         const ctx = gsap.context(() => {
             t1.current = gsap.timeline({
@@ -64,38 +92,12 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
         }
     }, [])
 
-    const styleDropDown = useCallback((dropDownRef: RefObject<HTMLDivElement>) => {
-        if (isDropDownOpen === undefined) {
-            return
-        }
-        else if (isDropDownOpen === true) {
-            dropDownRef.current && (dropDownRef.current.style.height = "60px");
-        }
-
-        else if (isDropDownOpen === false) {
-            dropDownRef.current && (dropDownRef.current.style.height = "0");
-        }
-    }, [isDropDownOpen])
-
-
-    const styleChevron = useCallback((chevronRef: RefObject<HTMLDivElement>) => {
-        if (isDropDownOpen === undefined) {
-            return
-        }
-        else if (isDropDownOpen === true) {
-            chevronRef.current && (chevronRef.current.style.transform = "rotate(-180deg)");
-        }
-
-        else if (isDropDownOpen === false) {
-            chevronRef.current && (chevronRef.current.style.transform = "rotate(0deg)");
-        }
-    }, [isDropDownOpen])
 
     useEffect(() => {
         if (isDropDownOpen === undefined) return
 
-        styleDropDown(dropDownRef)
-        styleChevron(chevronRef)
+        styleDropDown(dropDownRef, isDropDownOpen)
+        styleChevron(chevronRef, isDropDownOpen)
     }, [isDropDownOpen, styleDropDown, styleChevron])
 
     return (
