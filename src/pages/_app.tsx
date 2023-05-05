@@ -1,6 +1,13 @@
+import WaitListProvider from '@/context/WaitlistProvider'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+
+    <WaitListProvider>
+      <Component {...pageProps} />
+    </WaitListProvider>
+
+  )
 }

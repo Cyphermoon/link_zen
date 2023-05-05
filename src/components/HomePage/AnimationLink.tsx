@@ -60,7 +60,7 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
                     duration: 1.75
                 }
             })
-                .to('[data-animate="fade-in"', {
+                .to('[data-animate="fade-in"]', {
                     scale: "1",
                     opacity: "1",
                     duration: 2,
@@ -68,7 +68,7 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
                 .to('[data-animate="rotate-chevron"]', {
                     rotate: -180,
                 }, "<50%")
-                .to('[data-animate="dropdown"', {
+                .to('[data-animate="dropdown"]', {
                     height: "60px",
                 }, "<20%")
                 .from('[data-animate="links-stagger"] > *', {
@@ -77,7 +77,7 @@ const AnimationLayout = ({ className, imageUrl, folderName, url, dateCreated, ti
                     duration: 1.2,
                     opacity: 0,
                 }, "<10%")
-                .to('[data-animate="slide-in"', {
+                .to('[data-animate="slide-in"]', {
                     left: 0,
                     opacity: 1,
                     onComplete() {
