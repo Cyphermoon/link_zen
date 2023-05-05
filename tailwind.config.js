@@ -85,8 +85,11 @@ module.exports = {
         secondary: "#BBA4D0",
         twitter: "#1D9BF0",
         linkedin: "#0A66C2",
-        apple: "#000000",
+        apple: "#000000"
       },
+      gridTemplateColumns: {
+        'dynamic-250': 'repeat(auto-fit, minmax(250px, 1fr))',
+      }
     },
   },
   plugins: [

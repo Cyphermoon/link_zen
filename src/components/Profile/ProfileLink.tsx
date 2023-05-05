@@ -1,7 +1,13 @@
-import Image from 'next/image'
-import React, { useRef } from 'react'
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
-import { useBoolean, useClickAnyWhere } from 'usehooks-ts'
+import * as ContextMenu from '@radix-ui/react-context-menu';
+import Image from 'next/image';
+import { useRef } from 'react';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { RiDeleteBin6Line, RiEditBoxLine, RiShareLine } from 'react-icons/ri';
+import { TbCopy } from 'react-icons/tb';
+import { useClickAnyWhere } from 'usehooks-ts';
+import CustomContextMenu from '../common/CustomContextMenu';
+import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
+import ProfileLinkToolBar from './ProfileLinkToolBar';
 
 interface Props {
     title: string
@@ -12,20 +18,52 @@ interface Props {
     handleDescChanged: (id: number) => void
 }
 
+
 const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChanged, id, }: Props) => {
+    const linkRef = useRef<HTMLDivElement>(null)
+
+    useClickAnyWhere((e) => {
+        if (!descOpened) return
+        if (linkRef.current && !linkRef.current.contains(e.target as Node)) {
+            handleDescChanged(id)
+        }
+    })
+
+    const handleShareClicked = () => { }
+    const handleCopyClicked = () => { }
+    const handleDeleteClicked = () => { }
+    const handleEditClicked = () => { }
+
 
     return (
-        <>
-            <div
-                className={`fixed top-0 left-0 w-screen h-screen opacity-5 bg-black ${descOpened ? "block" : "hidden"} z-10`}
-                onClick={() => handleDescChanged(id)} />
+        <CustomContextMenu contextChildren={
+            <>
+                <ContextMenuItem handleClick={handleShareClicked} title='Share'>
+                    <RiShareLine />
+                </ContextMenuItem>
+                <ContextMenuItem handleClick={handleCopyClicked} title='Copy'>
+                    <TbCopy />
+                </ContextMenuItem>
 
-            <div className={`rounded-2xl px-4 py-5 shadow-sm space-y-4 border-2 border-b border-gray-100 profile-link relative ${descOpened ? "z-50" : ""}`}>
-                <figure>
+                <ContextMenu.Separator className='h-[1px] my-2 bg-primary-300' />
+
+                <ContextMenuItem handleClick={handleDeleteClicked} title='Delete'>
+                    <RiDeleteBin6Line />
+                </ContextMenuItem>
+                <ContextMenuItem handleClick={handleEditClicked} title='Edit'>
+                    <RiEditBoxLine />
+                </ContextMenuItem>
+            </>
+        }>
+            <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-sm border-2 border-b border-gray-100 profile-link relative'>
+
+                <figure className='px-4 py-4 cursor-pointer relative hover:before:opacity-20 mb-4 group'>
+                    <ProfileLinkToolBar />
+
                     <Image src={imageUrl} alt={title} width={500} height={20} className="object-contain" />
                 </figure>
 
-                <div className='space-y-3'>
+                <div className='px-4 py-2'>
                     <div className='flex justify-between items-center text-md font-medium'>
                         <h4 className='capitalize text-xl'>{title}</h4>
 
@@ -34,22 +72,20 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
                             className={`transition-transform duration-700 ${descOpened ? "-rotate-180" : "rotate-0"} cursor-pointer`} />
                     </div>
 
-                    <div className={`text-primary-800 text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom 
-                    ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
+                    <div className={`text-primary-800 text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
                         <BsChevronDown
                             onClick={() => handleDescChanged(id)}
-                            className="self-center text-base text-white cursor-pointer transition-transform hover:scale-105" />
+                            className="self-center text-xl text-white cursor-pointer transition-transform hover:scale-105" />
 
-                        <p className={`w-full text-left transition-opacity duration-200 rounded-3xl 
-                            ${descOpened ? "opacity-100" : "opacity-0"}`}>
+                        <p className={`text-left transition-opacity duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
                             {description}
                         </p>
                     </div>
                 </div>
             </div>
-        </>
-
+        </CustomContextMenu>
     )
+
 }
 
 export default ProfileLink
