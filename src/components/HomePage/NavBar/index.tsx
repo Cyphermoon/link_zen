@@ -1,9 +1,9 @@
+import Btn from '@/components/common/Button';
 import { useWaitListContext } from '@/context/WaitlistProvider';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import Button from '../../common/Button';
 import Container from '../../common/Container';
 import Logo from '../../common/Logo';
 import NavItem from './NavItem';
@@ -35,8 +35,6 @@ const NavBar = ({ inverse }: navbarProps) => {
 
   const bg = inverse ? "bg-primary" : "bg-accent";
   const linkColor = inverse ? "text-subdue" : "text-primary";
-  const btnColor = inverse ? "bg-accent" : "bg-primary";
-  const btnTextColor = inverse ? "text-primary" : "text-accent";
 
   const getTabIndex = () => {
     // disable tab key when nav is closed
@@ -83,12 +81,12 @@ const NavBar = ({ inverse }: navbarProps) => {
           </ul>
 
 
-          <Button
-            type='button'
-            text="Join the Waitlist"
+          <Btn
+            variant={!inverse ? "inverse" : "normal"}
             tabIndex={getTabIndex()}
-            handleClick={handleWaitListClicked}
-            inverse={!inverse} />
+            handleClick={handleWaitListClicked} >
+            Join the Waitlist
+          </Btn>
         </div>
 
 

@@ -2,6 +2,7 @@ import Overlay from "@/components/common/Overlay";
 import { waitlist } from "./type";
 import { useFormik } from "formik";
 import { createContact } from "@/api/mail";
+import Btn from "@/components/common/Button";
 
 const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -75,13 +76,14 @@ const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
             />
           </div>
 
-          <button
+          <Btn
+            fullWidth
             type="submit"
             disabled={formik.isSubmitting}
-            className={`bg-accent text-white text-md rounded-lg w-full p-4 my-10 ${formik.isSubmitting ? "opacity-50" : ""}`}
+            className={`my-10 !p-4 ${formik.isSubmitting ? "opacity-50" : ""}`}
           >
             {!formik.isSubmitting ? "Join the Waitlist" : null}
-          </button>
+          </Btn>
         </form>
       </div>
     </div>

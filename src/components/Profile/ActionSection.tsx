@@ -1,4 +1,5 @@
 import { SORT_OPTIONS, VIEW_OPTIONS, } from '@/constants/dropdownOptions.constant';
+import Link from 'next/link';
 import { useState } from 'react';
 import Container from '../common/Container';
 import SortSelector from '../common/Selector/SortSelector';
@@ -14,10 +15,11 @@ const ActionSection = () => {
     return (
         <section>
             <Container className='flex justify-between'>
-                <button
+                <Link
+                    href="/profile/edit"
                     className='rounded-md px-4 py-2 text-lg capitalize bg-accent text-white hover:bg-white hover:text-accent hover:ring-2 hover:ring-accent transition-colors duration-200 ease-out'>
                     new
-                </button>
+                </Link>
                 <div className='flex gap-4'>
                     <SortSelector
                         id={selectedSortId}

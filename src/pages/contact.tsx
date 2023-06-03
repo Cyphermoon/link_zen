@@ -11,8 +11,8 @@ import { useState } from "react";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import * as Yup from "yup";
 import Navbar from "../components/HomePage/NavBar/index";
-import { Btn } from "../components/common/Button";
 import Link from "next/link";
+import Btn from "@/components/common/Button";
 
 
 const ContactFormSchema = Yup.object().shape({
@@ -107,11 +107,11 @@ const Contact = () => {
                 (formik) => (
                   <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md" onSubmit={formik.handleSubmit}>
                     <FormControl label="Name" labelId="name">
-                      <FormikInput id="name" type="text" name="name" />
+                      <FormikInput id="name" type="text" name="name" className={inputClass} />
                     </FormControl>
 
                     <FormControl label="Email" labelId="email">
-                      <FormikInput id="email" type="email" name="email" />
+                      <FormikInput id="email" type="email" name="email" className={inputClass} />
                     </FormControl>
 
                     <FormControl label="Message" labelId="message">
@@ -120,13 +120,13 @@ const Contact = () => {
 
                     <Btn
                       type={"submit"}
+                      fullWidth
                       className={
-                        `bg-accent text-white text-md rounded-lg w-full p-4 my-10 
-                          ${formik.isSubmitting ? "pointer-events-none opacity-50" : ""}`
+                        `!p-4 my-10 ${formik.isSubmitting ? "pointer-events-none opacity-50" : ""}`
                       }
-                      label={formik.isSubmitting ? "" : "Send"}
-                      disabled={formik.isSubmitting}
-                    />
+                      disabled={formik.isSubmitting}>
+                      {formik.isSubmitting ? "" : "Send"}
+                    </Btn>
                   </form>
                 )
               }

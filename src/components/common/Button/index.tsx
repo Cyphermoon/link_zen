@@ -1,50 +1,28 @@
-import Link from 'next/link';
+import clsx from "clsx";
 
 
-const Button = ({ href, text, inverse, className, tabIndex = 0, type, handleClick }: ButtonProps) => {
-    const bg = inverse ? "bg-primary" : "bg-accent";
-    const textClass = inverse ? "text-accent" : "text-white";
+const Btn = ({ children, variant = "normal", fullWidth, className, tabIndex = 0, handleClick, ...rest }: CustomButtonProps) => {
 
-    if (type === "button") {
-        return (
-            <button
-                tabIndex={tabIndex}
-                onClick={handleClick}
-                className={`${className} px-5 w-max py-2 rounded-lg transition-opacity hover:opacity-80 inline-block capitalize ${bg} ${textClass} text-base`}
-            >
-                {text}
-            </button>
-        )
-    }
-
-    return (
-        <Link
-            href={href}
-            title={text}
-            tabIndex={tabIndex}
-            className={`px-5 w-max py-2 rounded-lg transition-opacity hover:opacity-80 inline-block capitalize ${bg} ${textClass} text-base`}
-        >
-
-            {text}
-
-        </Link>
-    );
-
-};
-
-export default Button;
-
-
-export const Btn = ({ type, label, className, onClick, ...rest }: JoinWaitlistProps) => {
+    const ButtonClass = clsx(`px-5 inline-block py-2 rounded-lg transition hover:opacity-80 hover:scale-95 capitalize text-base`, {
+        "bg-accent text-white": variant === "normal",
+        "bg-primary text-accent": variant === "inverse",
+        "border-2 border-accent text-accent bg-transparent": variant === "outline",
+        "w-full": fullWidth
+    })
 
     return (
         <button
-            type={type || "button"}
-            className={className}
-            onClick={onClick}
+            tabIndex={tabIndex}
+            onClick={handleClick}
+            className={`${ButtonClass} ${className}`}
             {...rest}
         >
-            {label}
+            {children}
         </button>
-    );
+    )
 };
+
+export default Btn;
+
+
+

@@ -1,7 +1,8 @@
 import React from 'react'
 import Container from '../common/Container'
-import Button from '../common/Button'
+
 import { useWaitListContext } from '@/context/WaitlistProvider'
+import Btn from '../common/Button'
 
 const CTASection = () => {
     const { openWaitList } = useWaitListContext()
@@ -16,7 +17,9 @@ const CTASection = () => {
                 <h2 className='font-semibold lg:font-bold text-4xl lg:text-5xl lg:leading-tight w-full lg:w-6/12'>
                     Get organised with your links today
                 </h2>
-                <Button type='button' handleClick={handleWaitlistClicked} inverse text="Join the Waitlist" />
+                <Btn type='button' handleClick={handleWaitlistClicked} variant="inverse">
+                    Join the Waitlist
+                </Btn>
             </Container>
         </section>
     )
