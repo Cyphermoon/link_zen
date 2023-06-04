@@ -1,13 +1,14 @@
 import Container from "@/components/common/Container";
-import Navbar from "../components/HomePage/NavBar/index";
-import WaitListLayout from "@/components/layout/WaitListLayout";
 import Footer from "@/components/HomePage/Footer";
+import RootLayout from "@/components/layout/RootLayout";
+import WaitListWrapper from "@/components/layout/WaitListWrapper";
 import Link from "next/link";
+import Navbar from "../components/HomePage/NavBar/index";
 
 const TermsOfServices = () => {
   return (
-    <WaitListLayout>
-      <div>
+    <RootLayout font="poppins">
+      <WaitListWrapper>
         <div className="bg-accent py-6">
           <Navbar inverse={false} />
         </div>
@@ -18,7 +19,7 @@ const TermsOfServices = () => {
               Terms of Services
             </h1>
 
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               The purpose of these terms of service is to outline the rules and
               guidelines that govern the use of the LinkZen platform, as well as
               to protect the interests of both LinkZen and its users. These
@@ -30,10 +31,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               User Obligations
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               As a user of LinkZen, you are responsible for ensuring that your
               use of the platform complies with these terms of service, as well
               as with any applicable laws and regulations. This includes
@@ -48,10 +49,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Account Creation and Security
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               As a user of LinkZen, you are responsible for ensuring that your
               use of the platform complies with these terms of service, as well
               as with any applicable laws and regulations. This includes
@@ -66,10 +67,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Privacy Policy
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               At LinkZen, we take your privacy seriously. We understand the
               importance of keeping your personal information safe and secure.
               Our privacy policy outlines the information we collect from you
@@ -87,10 +88,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Intellectual Property
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               All content and materials provided on LinkZen, including but not
               limited to the website, mobile application, logos, images, and
               text, are the intellectual property of LinkZen and are protected
@@ -103,10 +104,10 @@ const TermsOfServices = () => {
             </p>
           </div>
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Termination and Suspension
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               We reserve the right to terminate or suspend your account or
               access to LinkZen at any time and without notice, for any reason,
               including, but not limited to, a breach of these Terms of Service
@@ -120,10 +121,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Dispute resolution and governing law
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               Any dispute, controversy, or claim arising out of or relating to
               the use of LinkZen or the interpretation, performance, breach,
               termination, or validity of these terms of service shall be
@@ -137,10 +138,10 @@ const TermsOfServices = () => {
             </p>
           </div>
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Limitation of Liability
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               LinkZen will not be liable for any direct, indirect, incidental,
               special, consequential or exemplary damages, including but not
               limited to, damages for loss of profits, goodwill, use, data or
@@ -155,10 +156,10 @@ const TermsOfServices = () => {
           </div>
 
           <div className="my-8 md:my-10">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Changes to the Terms of Service
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               We reserve the right to modify or update these Terms of Service
               from time to time. You are responsible for reviewing these changes
               and continuing to use LinkZen after such modifications have been
@@ -169,8 +170,8 @@ const TermsOfServices = () => {
           </div>
         </Container>
         <Footer />
-      </div>
-    </WaitListLayout>
+      </WaitListWrapper>
+    </RootLayout>
   );
 };
 

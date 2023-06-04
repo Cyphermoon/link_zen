@@ -5,7 +5,7 @@ interface Props {
     children: React.ReactNode
 }
 
-const WaitListLayout = ({ children }: Props) => {
+const WaitListWrapper = ({ children }: Props) => {
     const { modalState, closeWaitList } = useWaitListContext()
 
     return (
@@ -18,4 +18,4 @@ const WaitListLayout = ({ children }: Props) => {
     )
 }
 
-export default WaitListLayout
+export default WaitListWrapper

@@ -46,9 +46,6 @@ module.exports = {
         height: "height",
         spacing: "margin, padding",
       },
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-      },
       colors: {
         primary: {
           50: "#f9f9f9",

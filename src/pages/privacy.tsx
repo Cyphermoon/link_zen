@@ -1,13 +1,14 @@
 import Container from "@/components/common/Container";
 import Navbar from "../components/HomePage/NavBar/index";
-import WaitListLayout from "@/components/layout/WaitListLayout";
 import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
+import WaitListWrapper from "@/components/layout/WaitListWrapper";
+import RootLayout from "@/components/layout/RootLayout";
 
 const Policy = () => {
   return (
-    <WaitListLayout>
-      <div>
+    <RootLayout font="poppins">
+      <WaitListWrapper>
         <div className="bg-accent py-6">
           <Navbar inverse={false} />
         </div>
@@ -18,7 +19,7 @@ const Policy = () => {
               Policy
             </h1>
 
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               Welcome to LinkZen! We respect your privacy and are committed to
               protecting your personal information. This Privacy Policy explains
               how we collect, use, and share your personal information when you
@@ -31,10 +32,10 @@ const Policy = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               Personal Information
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               At LinkZen, we take your privacy seriously. We only collect the
               personal information necessary to provide our services, such as
               your email address and name. We never sell or share your personal
@@ -47,10 +48,10 @@ const Policy = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               How we use your personal information
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               We use the personal information we collect from you for a variety
               of purposes, including but not limited to: providing you with the
               products or services you have requested; improving our products
@@ -62,10 +63,10 @@ const Policy = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               How the personal information is protected
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               At LinkZen, we understand the importance of protecting your
               personal information. We take appropriate measures to safeguard
               your information from unauthorized access, alteration, disclosure,
@@ -79,10 +80,10 @@ const Policy = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               How personal information is shared
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               At LinkZen, we understand the importance of privacy and protecting
               your personal information. We do not sell, rent, or trade your
               personal information to third parties without your explicit
@@ -99,10 +100,10 @@ const Policy = () => {
           </div>
 
           <div className="my-8 md:my-12">
-            <h5 className="font-semibold font-poppins text-2xl lg:text-3xl my-2">
+            <h5 className="font-semibold text-2xl lg:text-3xl my-2">
               User&apos;s rights
             </h5>
-            <p className="font-poppins font-normal">
+            <p className="font-normal">
               Users have certain rights regarding their personal information.
               These include the right to access and receive a copy of their
               personal information, the right to request correction or deletion
@@ -114,7 +115,7 @@ const Policy = () => {
             </p>
 
             <div className="my-8 md:my-12">
-              <p className="font-poppins font-semibold">
+              <p className="font-semibold">
                 If you have any questions or concerns regarding our Privacy
                 Policy, please contact us on our{" "}
                 <Link
@@ -129,8 +130,8 @@ const Policy = () => {
           </div>
         </Container>
         <Footer />
-      </div>
-    </WaitListLayout>
+      </WaitListWrapper>
+    </RootLayout>
   );
 };
 

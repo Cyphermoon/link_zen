@@ -16,7 +16,7 @@ const PageHead = ({ title, description, author, ogImage }: Props) => {
             <title>{title}</title>
             {description && <meta name="description" content={description} />}
             <meta name="keywords" content={`linkzen, links, bookmark-alternative, bookmark, store links, organize links, manage links, shorten url`} />
-            <meta name="author" content={author} />
+            <meta name="author" content={author || "Kelvin, Cypher Moon, Seun Fashina"} />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
 
             <meta property="og:title" content={title} />

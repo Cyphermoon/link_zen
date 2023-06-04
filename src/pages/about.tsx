@@ -1,15 +1,19 @@
 import Footer from "@/components/HomePage/Footer";
 import NavBar from "@/components/HomePage/NavBar";
 import Container from "@/components/common/Container";
-import WaitListLayout from "@/components/layout/WaitListLayout";
+import WaitListWrapper from "@/components/layout/WaitListWrapper";
+import RootLayout from "@/components/layout/RootLayout";
+import AppConfig from "@/constants/app.constant";
+
 
 const About = () => {
   return (
-    <WaitListLayout>
-      <div className="">
+    <RootLayout metadata={{
+      title: `${AppConfig.name} - About`
+    }}>
+      <WaitListWrapper>
         <div className="bg-accent py-4">
           <NavBar inverse={false} />
-
           <Container className="my-5 md:my-12 flex flex-col items-center text-center text-primary">
             <h5 className="font-semibold text-4xl lg:text-6xl my-8 lg:w-7/12">
               We make working with links very easy
@@ -25,7 +29,6 @@ const About = () => {
             </p>
           </Container>
         </div>
-
         <div className="my-12 md:my-24">
           <Container>
             <div className="my-16 md:my-20">
@@ -76,8 +79,8 @@ const About = () => {
           </Container>
         </div>
         <Footer />
-      </div>
-    </WaitListLayout>
+      </WaitListWrapper>
+    </RootLayout>
   );
 };
 
