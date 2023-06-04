@@ -16,7 +16,7 @@ const ActionSection = () => {
         <section>
             <Container className='flex justify-between'>
                 <Link
-                    href="/profile/edit"
+                    href="/profile/link/add"
                     className='rounded-md px-4 py-2 text-lg capitalize bg-accent text-white hover:bg-white hover:text-accent hover:ring-2 hover:ring-accent transition-colors duration-200 ease-out'>
                     new
                 </Link>
