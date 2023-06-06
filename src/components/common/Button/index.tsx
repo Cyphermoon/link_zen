@@ -12,7 +12,7 @@ const Btn = ({
 }: CustomButtonProps) => {
     // Generate dynamic class names based on variant and fullWidth
     const buttonClass = clsx(
-        `px-5 inline-block py-2 rounded-lg transition  capitalize text-base`,
+        `px-5 inline-block py-2 rounded-lg transition  capitalize text-base cursor-pointer`,
         {
             "bg-accent text-white": variant === "normal",
             "bg-primary text-accent": variant === "inverse",

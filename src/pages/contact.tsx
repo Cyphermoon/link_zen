@@ -107,7 +107,7 @@ const Contact = () => {
                 onSubmit={handleSubmit} >
                 {
                   (formik) => (
-                    <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md" onSubmit={formik.handleSubmit}>
+                    <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md space-y-4 lg:space-y-6" onSubmit={formik.handleSubmit}>
                       <FormControl label="Name" labelId="name">
                         <FormikInput id="name" type="text" name="name" className={inputClass} />
                       </FormControl>
