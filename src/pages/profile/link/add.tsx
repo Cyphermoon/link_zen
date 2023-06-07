@@ -7,7 +7,8 @@ import RootLayout from '@/components/layout/RootLayout';
 import { IoImageOutline } from 'react-icons/io5';
 import * as Yup from 'yup';
 import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
-import { isValidImageSize } from '@/utils/image.utils';
+import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
+import { truncateText } from '@/utils';
 
 
 interface AddProfileLinkFormFields {
@@ -162,7 +163,7 @@ const AddProfileLink = () => {
                                                     <IoImageOutline className={`mr-1 ${fileName ? 'mb-2' : ''}`} />
                                                     {fileName ? (
                                                         <span className="mb-2 animate-in fade-in-0 duration-300">
-                                                            {fileName}
+                                                            {truncateText(fileName, 50)}
                                                         </span>
                                                     ) : (
                                                         <span>
@@ -218,7 +219,7 @@ const AddProfileLink = () => {
                                         title={formik.values.title}
                                         url={formik.values.url}
                                         description={formik.values.description}
-                                        imageUrl={(formik.values.linkImage && URL.createObjectURL(formik.values.linkImage)) ?? ""}
+                                        imageUrl={(formik.values.linkImage && convertImageToFileURL(formik.values.linkImage)) ?? "/asset/linkzen.png"}
                                     />
 
                                 </section>

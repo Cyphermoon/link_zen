@@ -24,6 +24,7 @@ const ProfileLinkList = () => {
                                 descOpened={idx === activeLink}
                                 handleDescChanged={handleActiveLink}
                                 id={idx}
+                                url="https://cyphermoon.com"
                                 key={`profile-link-${idx}`}
                                 title='Best of Project'
                                 description='i have been going on around on which project is should start working on because i just feel like i need to do something to make the world a better place, that was when the thought for this project came along '

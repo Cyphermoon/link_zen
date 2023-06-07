@@ -1,3 +1,5 @@
+import { truncateText } from '@/utils';
+import { getUrlDomain } from '@/utils/link.utils';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import Image from 'next/image';
 import { useRef } from 'react';
@@ -13,13 +15,14 @@ interface Props {
     title: string
     id: number
     description: string
+    url: string
     imageUrl: string
     descOpened?: boolean
     handleDescChanged: (id: number) => void
 }
 
 
-const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChanged, id, }: Props) => {
+const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChanged, id, url }: Props) => {
     const linkRef = useRef<HTMLDivElement>(null)
 
     useClickAnyWhere((e) => {
@@ -64,12 +67,19 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
                 </figure>
 
                 <div className='px-4 py-2'>
-                    <div className='flex justify-between items-center text-md font-medium'>
-                        <h4 className='capitalize text-xl'>{title}</h4>
+                    <div>
+                        <div className='flex justify-between items-center text-md font-medium'>
+                            <h4 className='capitalize text-lg font-medium'>
+                                {truncateText(title, 30)}
+                            </h4>
 
-                        <BsChevronUp
-                            onClick={() => handleDescChanged(id)}
-                            className={`transition-transform duration-700 ${descOpened ? "-rotate-180" : "rotate-0"} cursor-pointer`} />
+                            <BsChevronUp
+                                onClick={() => handleDescChanged(id)}
+                                className={`transition-transform duration-700 ${descOpened ? "-rotate-180" : "rotate-0"} cursor-pointer`} />
+                        </div>
+                        <span className={`underline text-xs text-primary-600 font-thin transition-opacity`}>
+                            {url ? getUrlDomain(url) : ""}
+                        </span>
                     </div>
 
                     <div className={`text-primary-800 text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
