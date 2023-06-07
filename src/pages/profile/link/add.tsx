@@ -6,7 +6,9 @@ import { FormControl, FormikInput, FormikTextarea } from '@/components/forms';
 import RootLayout from '@/components/layout/RootLayout';
 import { IoImageOutline } from 'react-icons/io5';
 import * as Yup from 'yup';
-import { isValidImageSize } from '@/utils';
+import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
+import { isValidImageSize } from '@/utils/image.utils';
+
 
 interface AddProfileLinkFormFields {
     title: string;
@@ -16,7 +18,7 @@ interface AddProfileLinkFormFields {
 }
 
 const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string().max(30, "Title must be under 30 characters").required('Title is required'),
     url: Yup.string().url('Invalid URL').required('URL is required'),
     description: Yup.string().required('Description is required'),
     linkImage: Yup.mixed().nullable().test(
@@ -109,8 +111,8 @@ const AddProfileLink = () => {
                     {(formik) => {
                         return (
                             <>
-                                <section className="w-full lg:w-7/12 py-10 px-6">
-                                    <h2 className="text-3xl font-medium text-center mb-10">Create a profile link</h2>
+                                <section className="w-full lg:w-7/12 py-7 lg:py-10 px-4 lg:px-6">
+                                    <h2 className="text-3xl font-medium text-center mb-7 lg:mb-10">Create a profile link</h2>
 
                                     <form onSubmit={formik.handleSubmit} className="space-y-4 lg:space-y-6 mb-3">
                                         <FormControl label="Title" labelId="title">
@@ -192,6 +194,7 @@ const AddProfileLink = () => {
                                             <FormikTextarea
                                                 name="description"
                                                 id="description"
+                                                rows={5}
                                                 className={INPUT_CLASS}
                                             />
                                         </FormControl>
@@ -207,8 +210,17 @@ const AddProfileLink = () => {
                                         </Btn>
                                     </form>
                                 </section>
-                                <section className="w-full lg:w-5/12 bg-profile-gradient py-10 px-6">
-                                    <h2 className="text-3xl font-medium text-center mb-10">Link Preview</h2>
+                                <section className="w-full lg:w-5/12 bg-profile-gradient py-10 px-6 ">
+                                    <h2 className="text-3xl font-medium text-center mb-10 lg:mb-20">Link Preview</h2>
+
+
+                                    <ProfilePreviewLink
+                                        title={formik.values.title}
+                                        url={formik.values.url}
+                                        description={formik.values.description}
+                                        imageUrl={(formik.values.linkImage && URL.createObjectURL(formik.values.linkImage)) ?? ""}
+                                    />
+
                                 </section>
                             </>
                         );
