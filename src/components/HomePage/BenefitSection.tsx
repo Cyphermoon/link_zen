@@ -14,7 +14,7 @@ interface BenefitProps {
 
 const BenefitSection = () => {
   return (
-    <section className="profile-gradient py-14">
+    <section className="bg-profile-gradient py-14">
       <Container className="space-y-24 lg:space-y-40">
         <Benefit
           title="Efficient link management"

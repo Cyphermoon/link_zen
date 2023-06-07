@@ -9,7 +9,7 @@ import UserAvatar from '../common/UserAvatar'
 
 const Header = () => {
     return (
-        <header className='py-8 profile-gradient'>
+        <header className='py-8 bg-profile-gradient'>
             <Container className='space-y-10'>
                 <div className='flex flex-col lg:flex-row space-y-4 lg:space-x-8 items-center'>
                     <UserAvatar
