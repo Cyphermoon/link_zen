@@ -1,4 +1,4 @@
-import { sendContactMessage } from "@/api/mail";
+import { sendContactMessage } from "@/service/mail";
 import Container from "@/components/common/Container";
 import { SocialIcon } from "@/components/common/SocialIcon";
 import { FormControl, FormikInput, FormikTextarea } from "@/components/forms";

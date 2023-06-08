@@ -1,7 +1,7 @@
 import Overlay from "@/components/common/Overlay";
 import { waitlist } from "./type";
 import { useFormik } from "formik";
-import { createContact } from "@/api/mail";
+import { createContact } from "@/service/mail";
 import Btn from "@/components/common/Button";
 
 const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {

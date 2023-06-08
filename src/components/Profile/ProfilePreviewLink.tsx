@@ -45,12 +45,12 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
                 </ContextMenuItem>
             </>
         }>
-            <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-md border-2 border-b border-gray-100 profile-link relative w-11/12 max-w-xs mx-auto py-2'>
+            <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-md border-2 border-b border-gray-100 profile-link relative w-11/12 max-w-xs mx-auto pb-2'>
 
-                <figure className='cursor-pointer overflow-hidden w-full h-[300px] relative hover:before:opacity-20 mb-4 group'>
+                <figure className='cursor-pointer overflow-hidden rounded-tl-2xl rounded-tr-2xl w-full h-[300px] relative hover:before:opacity-20 mb-4 group'>
                     <ProfileLinkToolBar />
 
-                    <Image src={imageUrl} alt={title} fill={true} className="object-contain" />
+                    <Image src={imageUrl} alt={title} fill={true} className="object-cover" />
                 </figure>
 
                 <div className='px-4'>

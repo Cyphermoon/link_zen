@@ -122,6 +122,7 @@ const EditProfile = () => {
                                                         </div>
                                                         <FormikInput
                                                             id={socialMedia.name}
+                                                            type="url"
                                                             name={`socialMedias.${index}.url`}
                                                             className={`${INPUT_CLASS} bg-primary !py-2.5`}
                                                         />

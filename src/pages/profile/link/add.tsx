@@ -4,8 +4,9 @@ import { INPUT_CLASS } from '@/components/forms/commonStyles.constant';
 import FormikDragAndDrop from '@/components/forms/FormikDragAndDrop';
 import RootLayout from '@/components/layout/RootLayout';
 import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
+import { shortenUrl } from '@/service/link';
 import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, FormikHelpers, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 
@@ -39,6 +40,12 @@ const AddProfileLink = () => {
         console.log('form values', values);
     };
 
+    const handleShortenUrl = (formik: FormikProps<AddProfileLinkFormFields>) => {
+        shortenUrl(formik.values.url)
+            .then((link) => formik.setFieldValue("url", link))
+            .catch(err => console.error(err))
+    }
+
     return (
         <RootLayout>
             <div className="flex flex-col lg:flex-row justify-start min-h-screen">
@@ -64,7 +71,17 @@ const AddProfileLink = () => {
                                         </FormControl>
 
                                         <FormControl label="Url" labelId="url">
-                                            <FormikInput name="url" id="url" className={INPUT_CLASS} />
+                                            <div className='flex space-x-2'>
+                                                <div className='grow'>
+                                                    <FormikInput name="url" id="url" className={`${INPUT_CLASS} w-full`} />
+                                                </div>
+                                                <Btn
+                                                    type={"button"}
+                                                    title='Shorten a url if you feel it is too long'
+                                                    handleClick={(e) => handleShortenUrl(formik)}>
+                                                    Shorten Url
+                                                </Btn>
+                                            </div>
                                         </FormControl>
 
                                         <FormControl label="Upload Image" labelId="linkImage">
