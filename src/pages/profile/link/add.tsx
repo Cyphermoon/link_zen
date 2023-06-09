@@ -7,6 +7,8 @@ import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
 import { shortenUrl } from '@/service/link';
 import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
 import { Formik, FormikHelpers, FormikProps } from 'formik';
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import * as Yup from 'yup';
 
 
@@ -32,7 +34,22 @@ const validationSchema = Yup.object().shape({
     ),
 });
 
+const errorToast = (message: string) => {
+    return toast.error(message, {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored"
+    })
+}
+
 const AddProfileLink = () => {
+    const [loading, setLoading] = useState(false)
+
     const handleSubmit = (
         values: AddProfileLinkFormFields,
         helpers: FormikHelpers<AddProfileLinkFormFields>
@@ -40,10 +57,22 @@ const AddProfileLink = () => {
         console.log('form values', values);
     };
 
+
     const handleShortenUrl = (formik: FormikProps<AddProfileLinkFormFields>) => {
+        setLoading(true)
+
+        if (!formik.values.url) {
+            errorToast("Link field is empty")
+            setLoading(false)
+            return
+        }
+
         shortenUrl(formik.values.url)
             .then((link) => formik.setFieldValue("url", link))
-            .catch(err => console.error(err))
+            .catch(err => {
+                errorToast("An error occured")
+            })
+            .finally(() => setLoading(false))
     }
 
     return (
@@ -71,12 +100,18 @@ const AddProfileLink = () => {
                                         </FormControl>
 
                                         <FormControl label="Url" labelId="url">
-                                            <div className='flex space-x-2'>
+                                            <div className='flex space-x-2 items-end'>
                                                 <div className='grow'>
-                                                    <FormikInput name="url" id="url" className={`${INPUT_CLASS} w-full`} />
+                                                    <FormikInput
+                                                        name="url"
+                                                        id="url"
+                                                        className={`${INPUT_CLASS} w-full ${loading ? "bg-primary-300" : ""}`}
+                                                        disabled={loading}
+                                                    />
                                                 </div>
                                                 <Btn
                                                     type={"button"}
+                                                    className="h-[56px] whitespace-nowrap"
                                                     title='Shorten a url if you feel it is too long'
                                                     handleClick={(e) => handleShortenUrl(formik)}>
                                                     Shorten Url
@@ -101,7 +136,7 @@ const AddProfileLink = () => {
                                             type="submit"
                                             fullWidth
                                             disableZoomOutEffect
-                                            // disabled={formik.isSubmitting}
+                                            disabled={formik.isSubmitting}
                                             className="py-3"
                                         >
                                             Save Link

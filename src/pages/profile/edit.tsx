@@ -8,6 +8,7 @@ import { Formik, FormikHelpers, FieldArray } from 'formik'
 import * as Yup from 'yup'
 import Image from 'next/image'
 import React from 'react'
+import { isValidImageSize } from '@/utils/image.utils'
 
 interface SocialMedia {
     name: string;
@@ -24,7 +25,13 @@ interface EditProfileFormFieldsProps {
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    photo: Yup.mixed().nullable().notRequired(),
+    photo: Yup.mixed()
+        .nullable()
+        .notRequired()
+        .test("Image Validation", "Image size must be less than 3mb", (value: any) => {
+            if (value) return isValidImageSize(value.size)
+            return true
+        }),
     bio: Yup.string().required('Bio is required'),
     socialMedias: Yup.array().of(
         Yup.object().shape({

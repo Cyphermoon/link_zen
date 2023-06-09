@@ -1,4 +1,4 @@
-import {  Urbanist, DM_Sans, Roboto, Poppins } from 'next/font/google';
+import {  Urbanist, DM_Sans, Roboto, Poppins, Nunito } from 'next/font/google';
  
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -26,3 +26,9 @@ export const roboto = Roboto({
   variable: "--font-roboto",
   weight: ["400", "500", "700"]
 });
+
+export const nunito = Nunito({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito"
+})

@@ -1,9 +1,9 @@
 import PageHead from '@/components/common/PageHead'
-import { poppins, roboto } from 'font'
+import { nunito, poppins, roboto } from 'font'
 
 
 
-type AvailableFontsType = "roboto" | "poppins"
+type AvailableFontsType = "roboto" | "poppins" | "nunito"
 
 interface Props {
     className?: string
@@ -21,7 +21,8 @@ const RootLayout = ({ className, children, metadata, font = "roboto" }: Props) =
     // default to roboto font 
     let fontClass = {
         poppins: poppins.className,
-        roboto: roboto.className
+        roboto: roboto.className,
+        nunito: nunito.className
     }[font]
 
     return (
