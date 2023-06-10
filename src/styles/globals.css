@@ -125,7 +125,6 @@ body.modal-open {
     padding: theme("space.2") theme("space.4");
     z-index: 20;
     word-wrap: break-word;
-    word-break: break-all;
   }
   
 }

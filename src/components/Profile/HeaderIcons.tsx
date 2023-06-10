@@ -2,20 +2,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+type HeaderSocialMedia = "twitter" | "facebook" | "instagram" | "youtube" | "spotify" | "tiktok"
+
 interface Props {
     iconUrl: string,
     mainUrl: string
-    name: string
+    name: HeaderSocialMedia
 }
 
 
 
-const HeaderIcons = ({ iconUrl, mainUrl, name }: Props) => {
+const HeaderSocialIcon = ({ iconUrl, mainUrl, name }: Props) => {
     return (
-        <Link href={mainUrl} className="cursor-pointer transition-shadow hover:translate-y-4" >
-            <Image src={iconUrl} width={50} height={50} alt={name} />
+        <Link href={mainUrl} className="cursor-pointer transition hover:opacity-80 hover:scale-95" >
+            <Image src={iconUrl} width={19} height={19} alt={name} className="object-fill" />
         </Link>
     )
 }
 
-export default HeaderIcons
+export default HeaderSocialIcon

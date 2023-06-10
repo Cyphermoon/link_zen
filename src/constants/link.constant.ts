@@ -1,0 +1,1 @@
+export const LINK_TITLE_LENGTH = 30

@@ -6,9 +6,9 @@ import RootLayout from '@/components/layout/RootLayout';
 import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
 import { shortenUrl } from '@/service/link';
 import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
+import { errorToast } from '@/utils/toast.utils';
 import { Formik, FormikHelpers, FormikProps } from 'formik';
 import { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
 import * as Yup from 'yup';
 
 
@@ -19,46 +19,15 @@ interface AddProfileLinkFormFields {
     linkImage: any;
 }
 
-const validationSchema = Yup.object().shape({
-    title: Yup.string().max(30, "Title must be under 30 characters").required('Title is required'),
-    url: Yup.string().url('Invalid URL').required('URL is required'),
-    description: Yup.string().required('Description is required'),
-    linkImage: Yup.mixed().nullable().test(
-        'fileSize',
-        'Maximum image size of 3mb',
-        (value: any) => {
-            if (value) return isValidImageSize(value.size);
-
-            return true;
-        }
-    ),
-});
-
-const errorToast = (message: string) => {
-    return toast.error(message, {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored"
-    })
-}
-
 const AddProfileLink = () => {
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = (
-        values: AddProfileLinkFormFields,
-        helpers: FormikHelpers<AddProfileLinkFormFields>
-    ) => {
+    const handleSubmit = (values: AddProfileLinkFormFields, helpers: FormikHelpers<AddProfileLinkFormFields>) => {
         console.log('form values', values);
     };
 
-
     const handleShortenUrl = (formik: FormikProps<AddProfileLinkFormFields>) => {
+        // calls API to to shorten url
         setLoading(true)
 
         if (!formik.values.url) {
@@ -91,6 +60,7 @@ const AddProfileLink = () => {
                     {(formik) => {
                         return (
                             <>
+                                {/* Add link form  */}
                                 <section className="w-full lg:w-7/12 py-7 lg:py-10 px-4 lg:px-6">
                                     <h2 className="text-3xl font-medium text-center mb-7 lg:mb-10">Create a profile link</h2>
 
@@ -143,9 +113,10 @@ const AddProfileLink = () => {
                                         </Btn>
                                     </form>
                                 </section>
+
+                                {/* link preview section */}
                                 <section className="w-full lg:w-5/12 bg-profile-gradient py-10 px-6 ">
                                     <h2 className="text-3xl font-medium text-center mb-10 lg:mb-20">Link Preview</h2>
-
 
                                     <ProfilePreviewLink
                                         title={formik.values.title}
@@ -165,3 +136,21 @@ const AddProfileLink = () => {
 };
 
 export default AddProfileLink;
+
+
+
+const validationSchema = Yup.object().shape({
+    title: Yup.string().max(30, "Title must be under 30 characters").required('Title is required'),
+    url: Yup.string().url('Invalid URL').required('URL is required'),
+    description: Yup.string().required('Description is required'),
+    linkImage: Yup.mixed().nullable().test(
+        'fileSize',
+        'Maximum image size of 3mb',
+        (value: any) => {
+            if (value) return isValidImageSize(value.size);
+
+            return true;
+        }
+    ),
+});
+

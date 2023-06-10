@@ -13,7 +13,7 @@ const CustomContextMenu = ({ children, contextChildren }: Props) => {
                 {children}
             </ContextMenu.Trigger>
             <ContextMenu.Portal>
-                <ContextMenu.Content className='rounded-lg py-1 min-w-[130px]  bg-primary flex flex-col'>
+                <ContextMenu.Content className='rounded-lg py-1 z-10 min-w-[130px]  bg-primary flex flex-col'>
                     {contextChildren}
                 </ContextMenu.Content>
             </ContextMenu.Portal>

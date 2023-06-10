@@ -2,7 +2,6 @@ import { sendContactMessage } from "@/service/mail";
 import Container from "@/components/common/Container";
 import { SocialIcon } from "@/components/common/SocialIcon";
 import { FormControl, FormikInput, FormikTextarea } from "@/components/forms";
-import { inputClass } from "@/components/forms/commonStyles.constant";
 import { NotificationModal } from "@/components/modals";
 import AppConfig from "@/constants/app.constant";
 import { Formik, FormikHelpers } from "formik";
@@ -14,6 +13,7 @@ import Link from "next/link";
 import Btn from "@/components/common/Button";
 import WaitListWrapper from "@/components/layout/WaitListWrapper";
 import RootLayout from "@/components/layout/RootLayout";
+import { INPUT_CLASS } from "@/components/forms/commonStyles.constant";
 
 
 const ContactFormSchema = Yup.object().shape({
@@ -109,15 +109,15 @@ const Contact = () => {
                   (formik) => (
                     <form className="w-full lg:w-1/2 lg:px-8 py-6 lg:shadow-md space-y-4 lg:space-y-6" onSubmit={formik.handleSubmit}>
                       <FormControl label="Name" labelId="name">
-                        <FormikInput id="name" type="text" name="name" className={inputClass} />
+                        <FormikInput id="name" type="text" name="name" className={INPUT_CLASS} />
                       </FormControl>
 
                       <FormControl label="Email" labelId="email">
-                        <FormikInput id="email" type="email" name="email" className={inputClass} />
+                        <FormikInput id="email" type="email" name="email" className={INPUT_CLASS} />
                       </FormControl>
 
                       <FormControl label="Message" labelId="message">
-                        <FormikTextarea id='message' name='message' className={`${inputClass}`} rows={6} />
+                        <FormikTextarea id='message' name='message' className={`${INPUT_CLASS}`} rows={6} />
                       </FormControl>
 
                       <Btn

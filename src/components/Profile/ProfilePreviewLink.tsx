@@ -1,15 +1,20 @@
-import { truncateText } from '@/utils';
-import { getUrlDomain } from '@/utils/link.utils';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { ContextMenuSeparator } from '@radix-ui/react-context-menu';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-import { RiDeleteBin6Line, RiEditBoxLine, RiShareLine } from 'react-icons/ri';
+import { RiEditBoxLine, RiShareLine } from 'react-icons/ri';
 import { TbCopy } from 'react-icons/tb';
-import { useBoolean, useClickAnyWhere } from 'usehooks-ts';
+import { useBoolean } from 'usehooks-ts';
+
+
 import CustomContextMenu from '../common/CustomContextMenu';
 import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
 import ProfileLinkToolBar from './ProfileLinkToolBar';
+
+import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
+import { truncateText } from '@/utils';
+import { getUrlDomain } from '@/utils/link.utils';
+
 
 interface Props {
     title: string
@@ -38,7 +43,7 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
                     <TbCopy />
                 </ContextMenuItem>
 
-                <ContextMenu.Separator className='h-[1px] my-2 bg-primary-300' />
+                <ContextMenuSeparator className='h-[1px] my-2 bg-primary-300' />
 
                 <ContextMenuItem handleClick={handleEditClicked} title='Edit'>
                     <RiEditBoxLine />
@@ -46,7 +51,7 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
             </>
         }>
             <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-md border-2 border-b border-gray-100 profile-link relative w-11/12 max-w-xs mx-auto pb-2'>
-
+                {/* link image */}
                 <figure className='cursor-pointer overflow-hidden rounded-tl-2xl rounded-tr-2xl w-full h-[300px] relative hover:before:opacity-20 mb-4 group'>
                     <ProfileLinkToolBar />
 
@@ -54,10 +59,11 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
                 </figure>
 
                 <div className='px-4'>
+                    {/* link's title section */}
                     <div>
                         <div className='flex justify-between items-center text-md font-medium'>
                             <h4 className='capitalize text-lg font-medium'>
-                                {truncateText(title, 30)}
+                                {truncateText(title, LINK_TITLE_LENGTH)}
                             </h4>
 
                             <BsChevronUp
@@ -68,8 +74,9 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
                             {url ? getUrlDomain(url) : ""}
                         </span>
                     </div>
+
                     {/* link description section */}
-                    <div className={`text-white bg-primary-800  text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
+                    <div className={`text-white bg-primary-800 text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom ${descOpened ? "scale-y-100 overflow-scroll" : "h-0 scale-y-0 overflow-hidden"} description`}>
                         <BsChevronDown
                             onClick={() => setFalse()}
                             className="self-center text-xl text-white cursor-pointer transition-transform hover:scale-105" />

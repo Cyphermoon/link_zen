@@ -23,25 +23,6 @@ interface EditProfileFormFieldsProps {
     socialMedias: SocialMedia[];
 }
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    photo: Yup.mixed()
-        .nullable()
-        .notRequired()
-        .test("Image Validation", "Image size must be less than 3mb", (value: any) => {
-            if (value) return isValidImageSize(value.size)
-            return true
-        }),
-    bio: Yup.string().required('Bio is required'),
-    socialMedias: Yup.array().of(
-        Yup.object().shape({
-            name: Yup.string().required('Social media name is required'),
-            url: Yup.string().url('Invalid URL format').notRequired(),
-            iconUrl: Yup.string().required('Social media icon URL is required'),
-        })
-    ),
-})
-
 
 const socialMediaPlatforms: SocialMedia[] = [
     {
@@ -158,3 +139,23 @@ const EditProfile = () => {
 }
 
 export default EditProfile;
+
+
+const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    photo: Yup.mixed()
+        .nullable()
+        .notRequired()
+        .test("Image Validation", "Image size must be less than 3mb", (value: any) => {
+            if (value) return isValidImageSize(value.size)
+            return true
+        }),
+    bio: Yup.string().required('Bio is required'),
+    socialMedias: Yup.array().of(
+        Yup.object().shape({
+            name: Yup.string().required('Social media name is required'),
+            url: Yup.string().url('Invalid URL format').notRequired(),
+            iconUrl: Yup.string().required('Social media icon URL is required'),
+        })
+    ),
+})
