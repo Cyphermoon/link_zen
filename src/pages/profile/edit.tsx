@@ -4,11 +4,10 @@ import { FormControl, FormikInput, FormikTextarea } from '@/components/forms'
 import { INPUT_CLASS } from '@/components/forms/commonStyles.constant'
 import FormikDragAndDrop from '@/components/forms/FormikDragAndDrop'
 import RootLayout from '@/components/layout/RootLayout'
-import { Formik, FormikHelpers, FieldArray } from 'formik'
-import * as Yup from 'yup'
-import Image from 'next/image'
-import React from 'react'
 import { isValidImageSize } from '@/utils/image.utils'
+import { FieldArray, Formik, FormikHelpers } from 'formik'
+import Image from 'next/image'
+import * as Yup from 'yup'
 
 interface SocialMedia {
     name: string;
@@ -60,7 +59,7 @@ const EditProfile = () => {
 
     return (
         <RootLayout className='min-h-screen bg-primary-50 space-y-5 lg:space-y-8 pb-10'>
-            <SimpleBanner />
+            <SimpleBanner withBackArrow />
             <section className='lg:shadow-lg lg:rounded-xl lg:ring-1 lg:ring-primary-200 w-full max-w-3xl p-5 mx-auto'>
                 <h3 className='mb-3 lg:mb-4 text-center'>Edit Profile</h3>
                 <Formik

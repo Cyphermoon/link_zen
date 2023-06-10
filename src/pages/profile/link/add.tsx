@@ -1,15 +1,22 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { Formik, FormikHelpers, FormikProps } from 'formik';
+import * as Yup from 'yup';
+import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
+
 import Btn from '@/components/common/Button';
 import { FormControl, FormikInput, FormikTextarea } from '@/components/forms';
 import { INPUT_CLASS } from '@/components/forms/commonStyles.constant';
 import FormikDragAndDrop from '@/components/forms/FormikDragAndDrop';
-import RootLayout from '@/components/layout/RootLayout';
+import Footer from '@/components/Profile/Footer';
 import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
+import RootLayout from '@/components/layout/RootLayout';
+
 import { shortenUrl } from '@/service/link';
 import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
 import { errorToast } from '@/utils/toast.utils';
-import { Formik, FormikHelpers, FormikProps } from 'formik';
-import { useState } from 'react';
-import * as Yup from 'yup';
+import BackArrow from '@/components/common/BackArrow';
+
 
 
 interface AddProfileLinkFormFields {
@@ -46,7 +53,7 @@ const AddProfileLink = () => {
 
     return (
         <RootLayout>
-            <div className="flex flex-col lg:flex-row justify-start min-h-screen">
+            <div className="flex flex-col lg:flex-row justify-start min-h-screen mb-10">
                 <Formik
                     initialValues={{
                         title: '',
@@ -62,7 +69,12 @@ const AddProfileLink = () => {
                             <>
                                 {/* Add link form  */}
                                 <section className="w-full lg:w-7/12 py-7 lg:py-10 px-4 lg:px-6">
-                                    <h2 className="text-3xl font-medium text-center mb-7 lg:mb-10">Create a profile link</h2>
+                                    <div className='mb-7 lg:mb-10 flex items-center w-full'>
+                                        <BackArrow />
+                                        <h2 className="text-3xl font-medium text-center grow">
+                                            Create a profile link
+                                        </h2>
+                                    </div>
 
                                     <form onSubmit={formik.handleSubmit} className="space-y-4 lg:space-y-6 mb-3">
                                         <FormControl label="Title" labelId="title">
@@ -131,6 +143,7 @@ const AddProfileLink = () => {
                     }}
                 </Formik>
             </div>
+            <Footer withUnderline />
         </RootLayout>
     );
 };

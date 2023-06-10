@@ -1,10 +1,19 @@
 import React from 'react'
+import BackArrow from './BackArrow'
+import Container from './Container'
 import Logo from './Logo'
 
-const SimpleBanner = () => {
+interface Props {
+    withBackArrow?: boolean
+}
+
+const SimpleBanner = ({ withBackArrow }: Props) => {
     return (
-        <header className='bg-accent flex justify-center py-3'>
-            <Logo className='text-primary-50' />
+        <header className='bg-accent py-3'>
+            <Container className='flex items-center'>
+                {withBackArrow && <BackArrow className='text-primary-50' />}
+                <Logo className='text-primary-50 grow text-center' />
+            </Container>
         </header>
     )
 }
