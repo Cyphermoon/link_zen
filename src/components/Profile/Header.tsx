@@ -19,6 +19,7 @@ const Header = () => {
 
                     <UserAvatar
                         name='Cypher Moon'
+                        id="123"
                         imageUrl=''
                         className='w-[185px] h-[185px]' />
 
