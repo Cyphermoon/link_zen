@@ -1,9 +1,11 @@
-import Link from 'next/link'
+import Logo from '@/components/common/Logo'
 import clsx from 'clsx'
 import { RxCross1 } from 'react-icons/rx'
 import SidebarLink from './SideBarLink'
-import Logo from '@/components/common/Logo'
 import SidebarSection from './SidebarSection'
+
+//TODO: create a component for sidebar links with tags
+//TODO: create a dropdown for sidebar option
 
 
 interface Props {
@@ -13,7 +15,7 @@ interface Props {
 
 const Sidebar = ({ opened, toggle }: Props) => {
 
-    const SIDEBAR_CLASS = clsx("dashboard-gradient fixed isolate lg:static z-20 top-0 left-0 w-9/12 lg:w-3/12 lg:max-w-[200px] h-screen space-y-8 lg:before:hidden before:fixed before:bg-black/20 before:w-screen before:h-screen before:top-0 before:left-full transition-all duration-500 lg:translate-x-0 lg:pointer-events-auto lg:opacity-100 py-5 overflow-y-auto", {
+    const SIDEBAR_CLASS = clsx("bg-dashboard-opaque lg:bg-dashboard-transparent fixed isolate lg:static z-20 top-0 left-0 w-9/12 lg:w-3/12 lg:max-w-[200px] h-screen space-y-8 lg:before:hidden before:fixed before:bg-black/20 before:w-screen before:h-screen before:top-0 before:left-full transition-all duration-500 lg:translate-x-0 lg:pointer-events-auto lg:opacity-100 py-5 overflow-y-auto", {
         "opacity-100 pointer-events-auto translate-x-0": opened,
         "pointer-events-none opacity-0 -translate-x-full": !opened
     })

@@ -90,6 +90,9 @@ module.exports = {
       backgroundImage: {
         'site-gradient': 'linear-gradient(154.97deg, rgba(255, 224, 239, 0.65) 4.36%, rgba(134, 133, 239, 0) 108.32%)',
         'profile-gradient': 'linear-gradient(154.97deg, rgba(255, 204, 229, 0.73) 4.36%, rgba(113, 112, 255, 0.15) 108.32%)',
+        'button-gradient': 'linear-gradient(180deg, #FFCEEB 0%, #DABFF6 100%)',
+        'dashboard-opaque': 'linear-gradient(155deg, #FFCCE5 13.61%, #C0BFFF 68.75%)',
+        'dashboard-transparent': 'linear-gradient(136deg, rgba(255, 204, 229, 0.73) 10%, rgba(113, 112, 255, 0.15) 96.89%);'
       },
     },
   },
