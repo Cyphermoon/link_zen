@@ -1,23 +1,16 @@
 import Container from '@/components/common/Container'
+import DropdownMenuItem from '@/components/common/DropdownMenuItem'
 import UserAvatar from '@/components/common/UserAvatar'
 import SearchBar from '@/components/Dashboard/Searchbar'
 import Sidebar from '@/components/Dashboard/SideBar'
 import RootLayout from '@/components/layout/RootLayout'
 import AppConfig from '@/constants/app.constant'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Link from 'next/link'
-import { forwardRef, Ref, useState } from 'react'
+import { useState } from 'react'
+import { IoLogOutOutline } from 'react-icons/io5'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { useBoolean } from 'usehooks-ts'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { IoLogOutOutline } from 'react-icons/io5'
-
-
-//TODO:  create a dropdown for profile
-
-interface DropdownItemProps extends DropdownMenu.DropdownMenuItemProps {
-    children: React.ReactNode
-    className?: string
-}
 
 
 const UserDashBoard = () => {
@@ -117,19 +110,6 @@ const UserDashBoard = () => {
         </RootLayout>
     )
 }
-
-const DropdownMenuItem = forwardRef(({ children, className, ...props }: DropdownItemProps, ref: Ref<HTMLDivElement>) => {
-    return (
-        <DropdownMenu.Item
-            ref={ref}
-            className={`text-sm text-primary-800 px-3 py-1 rdx-highlighted:bg-accent rdx-highlighted:text-white outline-none border-none rounded-md cursor-pointer capitalize ${className}`}
-            {...props}>
-            {children}
-        </DropdownMenu.Item>
-    )
-})
-
-DropdownMenuItem.displayName = "DropDownItem"
 
 
 export default UserDashBoard

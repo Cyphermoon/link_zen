@@ -1,6 +1,7 @@
 import Logo from '@/components/common/Logo'
 import clsx from 'clsx'
 import { RxCross1 } from 'react-icons/rx'
+import { FolderContextMenu } from '../ContextMenus'
 import SidebarLink from './SideBarLink'
 import SidebarSection from './SidebarSection'
 
@@ -11,6 +12,11 @@ import SidebarSection from './SidebarSection'
 interface Props {
     opened: boolean
     toggle: () => void
+}
+
+interface CountLayoutProps {
+    text: string;
+    number: number;
 }
 
 const Sidebar = ({ opened, toggle }: Props) => {
@@ -82,31 +88,27 @@ const Sidebar = ({ opened, toggle }: Props) => {
                         <SidebarLink
                             href='#'
                             content={
-                                <div className='flex items-center justify-between pr-1.5'>
-                                    <span>life</span>
-                                    <span>1</span>
-                                </div>
-                            } />
+                                <CountLayout text="life" number={1} />
+                            }
+                        />
+                    </li>
+                    <li>
+                        <FolderContextMenu>
+                            <SidebarLink
+                                href='#'
+                                content={
+                                    <CountLayout text="game" number={2} />
+                                }
+                            />
+                        </FolderContextMenu>
                     </li>
                     <li>
                         <SidebarLink
                             href='#'
                             content={
-                                <div className='flex items-center justify-between pr-1.5'>
-                                    <span>game</span>
-                                    <span>2</span>
-                                </div>
-                            } />
-                    </li>
-                    <li>
-                        <SidebarLink
-                            href='#'
-                            content={
-                                <div className='flex items-center justify-between pr-1.5'>
-                                    <span>movie</span>
-                                    <span>3</span>
-                                </div>
-                            } />
+                                <CountLayout text="movie" number={3} />
+                            }
+                        />
                     </li>
                 </ul>
             </SidebarSection>
@@ -116,4 +118,15 @@ const Sidebar = ({ opened, toggle }: Props) => {
 
 
 export default Sidebar
+
+const CountLayout = ({ text, number }: CountLayoutProps) => {
+    return (
+        <div className='flex items-center justify-between pr-1.5'>
+            <span>{text}</span>
+            <span className='group-hover:hidden'>{number}</span>
+        </div>
+    );
+};
+
+
 

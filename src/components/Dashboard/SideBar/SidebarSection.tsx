@@ -10,8 +10,8 @@ interface Props {
 const SidebarSection = ({ headerText, handleClick, children }: Props) => {
     return (
         <div>
-            <div className='flex items-center justify-between px-4'>
-                <h3 className={`text-sm font-semibold`}>{headerText}</h3>
+            <div className='flex items-center justify-between px-4 mb-1'>
+                <h3 className={`text-sm font-semibold mb-`}>{headerText}</h3>
                 {handleClick &&
                     <div
                         onClick={handleClick}
