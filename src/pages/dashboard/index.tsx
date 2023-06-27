@@ -5,11 +5,19 @@ import Sidebar from '@/components/Dashboard/SideBar'
 import RootLayout from '@/components/layout/RootLayout'
 import AppConfig from '@/constants/app.constant'
 import Link from 'next/link'
-import { useState } from 'react'
+import { forwardRef, Ref, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { useBoolean } from 'usehooks-ts'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { IoLogOutOutline } from 'react-icons/io5'
+
 
 //TODO:  create a dropdown for profile
+
+interface DropdownItemProps extends DropdownMenu.DropdownMenuItemProps {
+    children: React.ReactNode
+    className?: string
+}
 
 
 const UserDashBoard = () => {
@@ -49,11 +57,54 @@ const UserDashBoard = () => {
                                 visit profile
                             </Link>
 
-                            <UserAvatar
-                                name='Cypher Moon'
-                                id="123"
-                                imageUrl=''
-                                className='w-[43px] h-[43px] border-2 border-primary-300 bg-gray-200 p-0.5 cursor-pointer' />
+                            <DropdownMenu.Root>
+                                <DropdownMenu.Trigger className='outline-none'>
+                                    <UserAvatar
+                                        name='Cypher Moon'
+                                        id="123"
+                                        imageUrl=''
+                                        className='w-[43px] h-[43px] border-2 border-primary-300 bg-gray-200 p-0.5 cursor-pointer' />
+                                </DropdownMenu.Trigger>
+                                <DropdownMenu.Portal>
+                                    <DropdownMenu.Content
+                                        sideOffset={5}
+                                        avoidCollisions
+                                        collisionPadding={20}
+                                        className='bg-primary rounded-xl shadow-lg min-w-[150px] py-2.5 px-0.5'>
+                                        <DropdownMenu.Group className='block lg:hidden' >
+                                            <DropdownMenuItem className='bg-button-gradient text-sm capitalize text-center !text-gray-800 px-4 py-1.5 transition rdx-highlighted:scale-95 ease-linear duration-100 block rounded-md w-full'>
+                                                install app
+                                            </DropdownMenuItem>
+
+                                            <DropdownMenu.Separator className='h-[1px] bg-primary-200 my-1' />
+                                        </DropdownMenu.Group>
+
+
+                                        <DropdownMenu.Group>
+                                            <DropdownMenuItem>
+                                                Share Profile
+                                            </DropdownMenuItem>
+
+                                            <DropdownMenuItem className='block lg:hidden'>
+                                                Visit Profile
+                                            </DropdownMenuItem>
+
+                                            <DropdownMenuItem>
+                                                Account Settings
+                                            </DropdownMenuItem>
+
+                                            <DropdownMenu.Separator className='h-[1px] bg-primary-200 my-1' />
+
+                                            <DropdownMenuItem className='flex items-center space-x-3 text-red-500 rdx-highlighted:text-white rdx-highlighted:bg-red-500 '>
+                                                <span>Logout</span> <IoLogOutOutline />
+                                            </DropdownMenuItem>
+
+                                        </DropdownMenu.Group>
+                                    </DropdownMenu.Content>
+                                </DropdownMenu.Portal>
+                            </DropdownMenu.Root>
+
+
                         </div>
 
                     </nav>
@@ -66,6 +117,19 @@ const UserDashBoard = () => {
         </RootLayout>
     )
 }
+
+const DropdownMenuItem = forwardRef(({ children, className, ...props }: DropdownItemProps, ref: Ref<HTMLDivElement>) => {
+    return (
+        <DropdownMenu.Item
+            ref={ref}
+            className={`text-sm text-primary-800 px-3 py-1 rdx-highlighted:bg-accent rdx-highlighted:text-white outline-none border-none rounded-md cursor-pointer capitalize ${className}`}
+            {...props}>
+            {children}
+        </DropdownMenu.Item>
+    )
+})
+
+DropdownMenuItem.displayName = "DropDownItem"
 
 
 export default UserDashBoard
