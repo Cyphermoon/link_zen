@@ -1,12 +1,10 @@
 import Logo from '@/components/common/Logo'
 import clsx from 'clsx'
 import { RxCross1 } from 'react-icons/rx'
-import { FolderContextMenu } from '../ContextMenus'
+import { ItemContextMenu } from '../Menu'
+import ItemDropdownMenu from '../Menu/ItemDropdownMenu'
 import SidebarLink from './SideBarLink'
 import SidebarSection from './SidebarSection'
-
-//TODO: create a component for sidebar links with tags
-//TODO: create a dropdown for sidebar option
 
 
 interface Props {
@@ -37,13 +35,19 @@ const Sidebar = ({ opened, toggle }: Props) => {
             <SidebarSection headerText='Generated'>
                 <ul>
                     <li>
-                        <SidebarLink href='#' content='Root' />
+                        <SidebarLink href='#' >
+                            Root
+                        </SidebarLink>
                     </li>
                     <li>
-                        <SidebarLink href='#' content='Frequently Visited' />
+                        <SidebarLink href='#' >
+                            Frequently Visited
+                        </SidebarLink>
                     </li>
                     <li>
-                        <SidebarLink href='#' content='Unused' />
+                        <SidebarLink href='#' >
+                            Unused
+                        </SidebarLink>
                     </li>
                 </ul>
             </SidebarSection>
@@ -51,79 +55,89 @@ const Sidebar = ({ opened, toggle }: Props) => {
             <SidebarSection headerText='Folders' handleClick={() => 1}>
                 <ul>
                     <li>
-                        <SidebarLink href='#' content='Coding tools' />
+                        <ItemContextMenu>
+                            <SidebarLink href="#">Coding tools</SidebarLink>
+                        </ItemContextMenu>
                     </li>
                     <li>
-                        <SidebarLink href='#' content='Books to read' />
+                        <ItemContextMenu>
+                            <SidebarLink href="#">Books to read</SidebarLink>
+                        </ItemContextMenu>
                     </li>
                     <li>
-                        <SidebarLink href='#' content='Design Sites' />
-                    </li>
-                    <li>
-                        <SidebarLink href='#' content='Best Spotify Playlist' />
-                    </li>
-                </ul>
-            </SidebarSection>
-
-            <SidebarSection headerText='Color Tags' handleClick={() => 1}>
-                <ul>
-                    <li>
-                        <SidebarLink href='#' content='Coding tools' />
-                    </li>
-                    <li>
-                        <SidebarLink href='#' content='Books to read' />
-                    </li>
-                    <li>
-                        <SidebarLink href='#' content='Design Sites' />
-                    </li>
-                    <li>
-                        <SidebarLink href='#' content='Best Spotify Playlist' />
-                    </li>
-                </ul>
-            </SidebarSection>
-
-            <SidebarSection headerText='Tags' handleClick={() => 1}>
-                <ul>
-                    <li>
-                        <SidebarLink
-                            href='#'
-                            content={
-                                <CountLayout text="life" number={1} />
-                            }
-                        />
-                    </li>
-                    <li>
-                        <FolderContextMenu>
+                        <ItemContextMenu>
                             <SidebarLink
-                                href='#'
-                                content={
-                                    <CountLayout text="game" number={2} />
-                                }
-                            />
-                        </FolderContextMenu>
+                                href="#"
+                                dropdownItems={<ItemDropdownMenu />}>
+                                Design Sites
+                            </SidebarLink>
+                        </ItemContextMenu>
                     </li>
                     <li>
-                        <SidebarLink
-                            href='#'
-                            content={
+                        <ItemContextMenu>
+                            <SidebarLink
+                                href="#"
+                                dropdownItems={<ItemDropdownMenu />}>
+                                Best Spotify Playlist
+                            </SidebarLink>
+                        </ItemContextMenu>
+                    </li>
+                </ul>
+
+            </SidebarSection>
+
+            {/* <SidebarSection headerText='Tags' handleClick={() => 1}>
+                <ul>
+                    <li>
+                        <SidebarLink href='#'>Music </SidebarLink>
+                    </li>
+                    <li>
+                        <SidebarLink href='#'>Books to read</SidebarLink>
+                    </li>
+                    <li>
+                        <SidebarLink href='#'>Design Sites</SidebarLink>
+                    </li>
+                    <li>
+                        <SidebarLink href='#'>Best Spotify Playlist</SidebarLink>
+                    </li>
+                </ul>
+
+            </SidebarSection> */}
+
+            <SidebarSection headerText="Tags" handleClick={() => 1}>
+                <ul>
+                    <li>
+                        <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />}>
+                            <CountLayout text="life" number={1} />
+                        </SidebarLink>
+                    </li>
+                    <li>
+                        <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />}>
+                            <CountLayout text="game" number={2} />
+                        </SidebarLink>
+                    </li>
+                    <li>
+                        <ItemContextMenu>
+                            <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />}>
                                 <CountLayout text="movie" number={3} />
-                            }
-                        />
+                            </SidebarLink>
+                        </ItemContextMenu>
                     </li>
                 </ul>
             </SidebarSection>
+
         </section>
     )
 }
 
-
 export default Sidebar
+
 
 const CountLayout = ({ text, number }: CountLayoutProps) => {
     return (
         <div className='flex items-center justify-between pr-1.5'>
             <span>{text}</span>
-            <span className='group-hover:hidden'>{number}</span>
+            <span className='group-hover:lg:hidden'>{number}</span>
         </div>
     );
 };

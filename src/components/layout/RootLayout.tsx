@@ -26,7 +26,7 @@ const RootLayout = ({ className, children, metadata, font = "roboto" }: Props) =
     }[font]
 
     return (
-        <main className={`${fontClass} ${className}`}>
+        <main className={`${fontClass} ${className} text-primary-800`}>
             <PageHead
                 title={metadata?.title || "LinkZen"}
                 description={metadata?.description}

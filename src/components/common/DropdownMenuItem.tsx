@@ -1,25 +1,37 @@
-import { forwardRef, Ref } from "react"
+import { forwardRef, Ref } from "react";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-
 interface Props extends DropdownMenu.DropdownMenuItemProps {
-    children: React.ReactNode
-    className?: string
+    title?: string;
+    Icon?: React.ComponentType<any>;
+    children?: React.ReactNode;
+    className?: string;
+    isDanger?: boolean
 }
 
+const DropdownMenuItem = forwardRef(
+    (
+        { title, Icon, isDanger, children, className, ...props }: Props,
+        ref: Ref<HTMLDivElement>
+    ) => {
+        return (
+            <DropdownMenu.Item
+                ref={ref}
+                className={`text-sm text-primary-800 px-3 py-1 rdx-highlighted:bg-accent rdx-highlighted:text-white outline-none border-none rounded-md cursor-pointer capitalize flex items-center space-x-2 ${className} ${isDanger ? "flex items-center space-x-3 text-red-500 rdx-highlighted:text-white rdx-highlighted:bg-red-500" : ""}`}
+                {...props}
+            >
+                {title && Icon && (
+                    <>
+                        <Icon /> <span>{title}</span>
+                    </>
+                )}
 
-const DropdownMenuItem = forwardRef(({ children, className, ...props }: Props, ref: Ref<HTMLDivElement>) => {
-    return (
-        <DropdownMenu.Item
-            ref={ref}
-            className={`text-sm text-primary-800 px-3 py-1 rdx-highlighted:bg-accent rdx-highlighted:text-white outline-none border-none rounded-md cursor-pointer capitalize ${className}`}
-            {...props}>
-            {children}
-        </DropdownMenu.Item>
-    )
-})
+                {children && children}
+            </DropdownMenu.Item>
+        );
+    }
+);
 
-DropdownMenuItem.displayName = "DropDownItem"
+DropdownMenuItem.displayName = "DropdownMenuItem";
 
-
-export default DropdownMenuItem
+export default DropdownMenuItem;

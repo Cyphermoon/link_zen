@@ -58,21 +58,15 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
     return (
         <CustomContextMenu contextChildren={
             <>
-                <ContextMenuItem handleClick={handleShareClicked} title='Share'>
-                    <RiShareLine />
-                </ContextMenuItem>
-                <ContextMenuItem handleClick={handleCopyClicked} title='Copy'>
-                    <TbCopy />
-                </ContextMenuItem>
+                <ContextMenuItem handleClick={handleShareClicked} title="Share" Icon={RiShareLine} />
 
-                <ContextMenuSeparator className='h-[1px] my-2 bg-primary-300' />
+                <ContextMenuItem handleClick={handleCopyClicked} title="Copy" Icon={TbCopy} />
 
-                <ContextMenuItem handleClick={handleDeleteClicked} title='Delete'>
-                    <RiDeleteBin6Line />
-                </ContextMenuItem>
-                <ContextMenuItem handleClick={handleEditClicked} title='Edit'>
-                    <RiEditBoxLine />
-                </ContextMenuItem>
+                <ContextMenuSeparator className="h-[1px] my-2 bg-primary-300" />
+
+                <ContextMenuItem handleClick={handleDeleteClicked} title="Delete" Icon={RiDeleteBin6Line} />
+
+                <ContextMenuItem handleClick={handleEditClicked} title="Edit" Icon={RiEditBoxLine} />
             </>
         }>
             <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-sm border-2 border-b border-gray-100 profile-link relative'>
