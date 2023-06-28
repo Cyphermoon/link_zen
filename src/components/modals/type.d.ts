@@ -5,6 +5,7 @@ interface SharedModalProps {
   
   type BaseModalProps = SharedModalProps & {
     children: React.ReactNode
+    closeOnBackgroundClicked?: boolean
   }
   
   type NotificationModalProps = SharedModalProps & {
