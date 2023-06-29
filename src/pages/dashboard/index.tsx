@@ -1,15 +1,13 @@
-import Container from '@/components/common/Container'
-import DashboardNav from '@/components/Dashboard/DashboardNav'
-import Sidebar from '@/components/Dashboard/SideBar'
+import ZenLink from '@/components/common/ZenLink'
+import DashboardLayout from '@/components/Dashboard/layout'
 import RootLayout from '@/components/layout/RootLayout'
 import AppConfig from '@/constants/app.constant'
-import { useState } from 'react'
-import { useBoolean } from 'usehooks-ts'
+import { useActiveLink } from '@/hooks/link.hook'
+
 
 
 const UserDashBoard = () => {
-    const { value, toggle } = useBoolean(false)
-
+    const { activeLink, handleActiveLink } = useActiveLink(-1)
 
 
     return (
@@ -17,20 +15,29 @@ const UserDashBoard = () => {
             metadata={{
                 title: `${AppConfig.name} - Dashboard`
             }}>
-            <div className='flex'>
-                <Sidebar
-                    opened={value}
-                    toggle={toggle}
-                />
-                <Container className='py-4 grow'>
-                    <DashboardNav toggleNav={toggle} />
+            <DashboardLayout>
+                <div className='grid grid-cols-4 gap-4'>
 
-                    <div>
-                        <h1>Content Appears here</h1>
-                    </div>
-                </Container>
-            </div>
+                    {
+                        [...Array(1)].map((link, idx) => {
+                            return (
+                                <ZenLink
+                                    key={idx}
+                                    id={idx}
+                                    descOpened={idx === activeLink}
+                                    url='https://cyphermoon.vercel.app'
+                                    title='Title'
+                                    dateCreated='28/02/2005'
+                                    imageUrl='/images/og-image.png'
+                                    description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!'
+                                    handleDescChanged={handleActiveLink}
+                                />
 
+                            )
+                        })
+                    }
+                </div>
+            </DashboardLayout>
         </RootLayout>
     )
 }

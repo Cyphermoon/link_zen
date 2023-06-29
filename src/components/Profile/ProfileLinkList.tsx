@@ -1,19 +1,9 @@
-import { useState } from 'react'
+import { useActiveLink } from '@/hooks/link.hook'
 import Container from '../common/Container'
 import ProfileLink from './ProfileLink'
 
 const ProfileLinkList = () => {
-    const [activeLink, setActiveLink] = useState<number>(-1)
-
-    const handleActiveLink = (id: number) => {
-        // change's the currently active link
-        if (activeLink === id) {
-            setActiveLink(-1)
-            return
-        }
-
-        setActiveLink(id)
-    }
+    const { activeLink, handleActiveLink } = useActiveLink(-1)
 
     return (
         <main >

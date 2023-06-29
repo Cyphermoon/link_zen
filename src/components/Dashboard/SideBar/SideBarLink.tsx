@@ -1,8 +1,6 @@
-import DropdownMenuItem from '@/components/common/DropdownMenuItem'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Link from "next/link"
 import { BsThreeDots } from "react-icons/bs"
-import { IoLogOutOutline } from "react-icons/io5"
 
 interface SidebarLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string

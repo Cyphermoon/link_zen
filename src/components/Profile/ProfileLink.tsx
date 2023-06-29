@@ -1,21 +1,21 @@
-import { useRef } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useRef } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { RiDeleteBin6Line, RiEditBoxLine, RiShareLine } from 'react-icons/ri';
 import { TbCopy } from 'react-icons/tb';
-import { useClickAnyWhere } from 'usehooks-ts';
 
 // Import individual components from '@radix-ui/react-context-menu'
 import { ContextMenuSeparator } from '@radix-ui/react-context-menu';
 
+import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
+import { useCloseLinkOnClickOutside } from '@/hooks/link.hook';
 import { truncateText } from '@/utils';
 import { getUrlDomain } from '@/utils/link.utils';
 import CustomContextMenu from '../common/CustomContextMenu';
 import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
 import ProfileLinkToolBar from './ProfileLinkToolBar';
-import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
 
 
 // Props interface for ProfileLink component
@@ -34,13 +34,7 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
     const linkRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
 
-    useClickAnyWhere((e) => {
-        // opens another link's description modal when it is clicked
-        if (!descOpened) return
-        if (linkRef.current && !linkRef.current.contains(e.target as Node)) {
-            handleDescChanged(id)
-        }
-    })
+    useCloseLinkOnClickOutside(descOpened ?? false, id, handleDescChanged, linkRef.current)
 
     const handleImageContainerClicked = (e: React.MouseEvent<HTMLElement>) => {
         // route to url if target matches the container element
@@ -91,6 +85,7 @@ const ProfileLink = ({ title, description, imageUrl, descOpened, handleDescChang
                                 onClick={() => handleDescChanged(id)}
                                 className={`transition-transform duration-700 ${descOpened ? "-rotate-180" : "rotate-0"} cursor-pointer`} />
                         </div>
+
                         <Link href={url} className={`underline text-xs text-primary-600 font-thin transition-opacity`}>
                             {url ? getUrlDomain(url) : ""}
                         </Link>

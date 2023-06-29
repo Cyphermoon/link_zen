@@ -1,6 +1,5 @@
 import Logo from '@/components/common/Logo'
 import clsx from 'clsx'
-import { useState } from 'react'
 import { RxCross1 } from 'react-icons/rx'
 import { useBoolean } from 'usehooks-ts'
 import { ItemContextMenu } from '../Menus'
