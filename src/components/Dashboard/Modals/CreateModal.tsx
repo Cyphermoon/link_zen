@@ -43,7 +43,7 @@ const CreateModal: React.FC<CreateFolderModalProps> = ({
 
     return (
         <BaseModal closeOnBackgroundClicked={false} state={modalState} closeModal={closeModal}>
-            <DialogContent className='bg-white text-primary-800 w-11/12 max-w-lg rounded-xl fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] py-3 px-2 animate-contentShow outline-none'>
+            <DialogContent className='bg-white text-primary-800 w-11/12 max-w-lg rounded-xl fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] p-4 animate-contentShow outline-none'>
 
                 <RxCross1
                     onClick={closeModal}

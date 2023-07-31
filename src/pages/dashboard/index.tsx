@@ -16,7 +16,7 @@ const UserDashBoard = () => {
                 title: `${AppConfig.name} - Dashboard`
             }}>
             <DashboardLayout>
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-1 lg:grid-cols-4 gap-4'>
 
                     {
                         [...Array(1)].map((link, idx) => {
@@ -26,7 +26,7 @@ const UserDashBoard = () => {
                                     id={idx}
                                     descOpened={idx === activeLink}
                                     url='https://cyphermoon.vercel.app'
-                                    title='Title'
+                                    title='Assuming the title is longer'
                                     dateCreated='28/02/2005'
                                     imageUrl='/images/og-image.png'
                                     description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!'
