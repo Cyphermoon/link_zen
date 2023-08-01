@@ -1,13 +1,15 @@
 import * as Select from "@radix-ui/react-select"
 import { forwardRef } from "react"
 
+export const SELECT_TRIGGER_CLASS = "flex flex-row items-center text-base gap-1 px-2 py-1 text-accent-800"
+
 
 const Selector = ({ id, handleChangeId, triggerChildren, label, children }: SelectorProp) => {
     return (
         <Select.Root value={id} onValueChange={handleChangeId}>
             <Select.Trigger className='outline-none bg-accent-50 rounded-lg'>
                 <Select.Value>
-                    <div className='flex flex-row items-center text-base gap-1 px-2 py-1 text-accent-900'>
+                    <div className={SELECT_TRIGGER_CLASS}>
                         {triggerChildren}
                     </div>
                 </Select.Value>

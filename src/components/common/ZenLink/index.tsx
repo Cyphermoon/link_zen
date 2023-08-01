@@ -117,7 +117,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
             </figure>
 
             {/* Title Section */}
-            <div className='flex justify-between w-full text-md text-gray-600 font-medium'>
+            <div className='flex justify-between w-full text-[17px] text-gray-800 font-normal'>
                 <h5 className=''>
                     {truncateText(title, LINK_TITLE_LENGTH)}
                 </h5>

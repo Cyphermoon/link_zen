@@ -1,4 +1,6 @@
+import Container from '@/components/common/Container'
 import ZenLink from '@/components/common/ZenLink'
+import ActionSection from '@/components/Dashboard/ActionSection'
 import DashboardLayout from '@/components/Dashboard/layout'
 import RootLayout from '@/components/layout/RootLayout'
 import AppConfig from '@/constants/app.constant'
@@ -16,7 +18,8 @@ const UserDashBoard = () => {
                 title: `${AppConfig.name} - Dashboard`
             }}>
             <DashboardLayout>
-                <div className='grid justify-items-center md:justify-items-start grid-cols-dynamic-193 lg:grid-cols-3 xl:grid-cols-4 gap-7'>
+                <ActionSection />
+                <Container className='grid justify-items-center md:justify-items-start grid-cols-dynamic-193 lg:grid-cols-3 xl:grid-cols-4 gap-7'>
                     {
                         [...Array(20)].map((link, idx) => {
                             return (
@@ -41,7 +44,7 @@ const UserDashBoard = () => {
                             )
                         })
                     }
-                </div>
+                </Container>
             </DashboardLayout>
         </RootLayout>
     )

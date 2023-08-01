@@ -1,6 +1,5 @@
 import React from 'react'
 import { useBoolean } from 'usehooks-ts'
-import Container from '../common/Container'
 import DashboardNav from './DashboardNav'
 import Sidebar from './SideBar'
 
@@ -17,10 +16,10 @@ const DashboardLayout = ({ children }: Props) => {
                 opened={value}
                 toggle={toggle}
             />
-            <Container className='py-4 grow'>
+            <div className='py-4 grow'>
                 <DashboardNav toggleNav={toggle} />
                 {children}
-            </Container>
+            </div>
         </div>
     )
 }
