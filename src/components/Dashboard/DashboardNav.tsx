@@ -19,7 +19,7 @@ const DashboardNav = ({ toggleNav }: Props) => {
 
 
     return (
-        <nav className='flex justify-between items-center'>
+        <nav className='flex justify-between items-center mb-9'>
             <RxHamburgerMenu
                 className={`text-3xl lg:hidden`}
                 onClick={toggleNav} />
@@ -28,13 +28,13 @@ const DashboardNav = ({ toggleNav }: Props) => {
                 handleChange={setSearchValue}
                 placeholder="Search" />
 
-            <div className='flex items-center space-x-5'>
-                <button className='shadow-sm bg-button-gradient text-sm capitalize rounded-full text-center text-gray-800 px-3.5 py-1.5 transition hover:scale-95 ease-linear duration-100 hidden lg:block'>
+            <div className='flex items-center lg:space-x-5'>
+                <button className='shadow-sm bg-button-gradient text-sm capitalize rounded-full text-center text-gray-800 px-3.5 py-2 transition hover:scale-95 ease-linear duration-100 hidden lg:block whitespace-nowrap'>
                     install app
                 </button>
 
                 <Link
-                    className='shadow-[0px_1px_3px_0px_rgba(0,0,0,0.15)] text-sm capitalize rounded-full text-center text-gray-800 px-3.5 py-1.5 transition-transform duration-100 hover:scale-95 ease-linear hidden lg:block'
+                    className='shadow-[0px_1px_3px_0px_rgba(0,0,0,0.15)] text-sm capitalize rounded-full text-center text-gray-800 px-3.5 py-1.5 transition-transform duration-100 hover:scale-95 ease-linear hidden lg:block whitespace-nowrap'
                     href={"/profile"}>
                     visit profile
                 </Link>

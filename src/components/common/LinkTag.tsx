@@ -8,7 +8,7 @@ interface Props {
 const LinkTag = ({ title, className }: Props) => {
     return (
         <span
-            className={`bg-primary-200 rounded-full py-1 px-2 text-xs text-primary-700  ${className}`}>
+            className={`bg-primary-200 rounded-full py-1 px-2 text-xs text-primary-700 whitespace-nowrap  ${className}`}>
             {title}
         </span>
     )

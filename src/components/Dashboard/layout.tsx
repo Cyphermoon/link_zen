@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }: Props) => {
     const { value, toggle } = useBoolean(false)
 
     return (
-        <div className='flex'>
+        <div className='flex overflow-hidden lg:overflow-visible'>
             <Sidebar
                 opened={value}
                 toggle={toggle}

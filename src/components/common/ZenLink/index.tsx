@@ -22,6 +22,7 @@ import LinkColorTag from './LinkColorTag'
 // TODO refactor the dropdown items
 // TODO create a grid system
 // TODO create action section
+// TODO figure how to properly render the image
 
 interface Props {
     className?: string
@@ -50,7 +51,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
         <div
             ref={linkRef}
             className={`
-            border-2 border-gray-200  p-3 rounded-2xl bg-primary shadow-sm flex flex-col items-start space-y-4 w-fit ${className} relative overflow-hidden group max-w-[280px]
+            border-2 border-gray-200 p-3 rounded-2xl bg-primary shadow-sm flex flex-col items-start space-y-4 w-fit ${className} relative overflow-hidden group w-full lg:max-w-[280px] isolate
             `}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
@@ -90,7 +91,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger asChild className='text-primary-700 block lg:hidden'>
                         <button title='See options'>
-                            <BsThreeDotsVertical className='text-lg' />
+                            <BsThreeDotsVertical className='text-xl' />
                         </button>
                     </DropdownMenu.Trigger>
 
@@ -112,7 +113,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
             </div>
 
             <figure className='preview-link-img rounded-lg overflow-clip relative group mt-7'>
-                <Image src={imageUrl} width={237} height={237} alt="Preview Image" className='object-cover w-[300px]' />
+                <Image src={imageUrl} width={237} height={237} alt="Preview Image" className='object-cover w-[500px]' />
             </figure>
 
             {/* Title Section */}
@@ -126,7 +127,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
             {/* Excerpt  */}
             <div
                 onClick={() => handleDescChanged(id)}
-                className='bg-primary-200 rounded-lg p-2.5 flex items-center w-full cursor-pointer'
+                className='bg-primary-200 rounded-lg py-3 px-2.5 flex items-center w-full cursor-pointer'
             >
                 <p className='grow text-xs'>
                     {truncateText(description, 35)}
@@ -137,7 +138,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
 
 
             {/* Tags */}
-            <div className='flex items-center space-x-2 overflow-x-scroll '>
+            <div className='flex w-full items-center space-x-2 overflow-x-scroll hide-scrollbar '>
                 <LinkColorTag color='#ff0000' name='Red' />
                 <LinkTag title='twitter' />
                 <LinkTag title='life' />
@@ -153,11 +154,11 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
 
 
             {/* description */}
-            <div className={`text-primary-800 bg-primary z-10 text-sm flex flex-col justify-between items-center transition-transform duration-500 origin-bottom px-3 ${descOpened ? "scale-y-100 overflow-scroll" : "scale-y-0 overflow-hidden"} hide-scrollbar absolute inset-0 !m-0`}>
+            <div className={`text-primary-800 bg-primary z-10 text-sm flex flex-col justify-between items-center transition-transform duration-500 origin-top px-3 ${descOpened ? "translate-y-0 overflow-scroll" : "translate-y-full overflow-hidden"} hide-scrollbar absolute inset-0 !m-0`}>
                 <div className='sticky w-full top-0 bg-primary py-2 px-3'>
                     <RxCross1
                         onClick={() => handleDescChanged(id)}
-                        className="self-center text-lg text-red-500 font-bold cursor-pointer mx-auto transition-transform hover:scale-105" />
+                        className="self-center text-xl text-red-600 font-bold cursor-pointer mx-auto transition-transform hover:scale-105" />
                 </div>
 
 

@@ -86,6 +86,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'dynamic-250': 'repeat(auto-fit, minmax(250px, 1fr))',
+        'dynamic-193': 'repeat(auto-fit, minmax(193px, 1fr))',
       },
       backgroundImage: {
         'site-gradient': 'linear-gradient(154.97deg, rgba(255, 224, 239, 0.65) 4.36%, rgba(134, 133, 239, 0) 108.32%)',

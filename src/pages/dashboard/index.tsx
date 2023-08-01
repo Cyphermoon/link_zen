@@ -16,10 +16,9 @@ const UserDashBoard = () => {
                 title: `${AppConfig.name} - Dashboard`
             }}>
             <DashboardLayout>
-                <div className='grid grid-cols-1 lg:grid-cols-4 gap-4'>
-
+                <div className='grid justify-items-center md:justify-items-start grid-cols-dynamic-193 lg:grid-cols-3 xl:grid-cols-4 gap-7'>
                     {
-                        [...Array(1)].map((link, idx) => {
+                        [...Array(20)].map((link, idx) => {
                             return (
                                 <ZenLink
                                     key={idx}
