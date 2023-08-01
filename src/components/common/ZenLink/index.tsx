@@ -7,11 +7,11 @@ import { ToolbarButton } from '@radix-ui/react-toolbar'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
-import { BsChevronDown, BsChevronUp, BsThreeDotsVertical } from 'react-icons/bs'
+import { BsChevronUp, BsThreeDotsVertical } from 'react-icons/bs'
 import { FaCopy, FaEdit } from 'react-icons/fa'
 import { FiShare } from 'react-icons/fi'
 import { RiDeleteBin6Line, RiDeleteBinLine, RiEditBoxLine } from 'react-icons/ri'
-import { useWindowSize } from 'usehooks-ts'
+import { RxCross1 } from 'react-icons/rx'
 import CustomToolbar from '../CustomToolbar'
 import CustomToolbarButton from '../CustomToolbar/ToolBarItem'
 import DropdownMenuItem from '../DropdownMenuItem'
@@ -33,6 +33,11 @@ interface Props {
     title: string
     descOpened: boolean
     handleDescChanged: (id: number) => void
+}
+
+interface UrlDomainProps {
+    url: string
+    className?: string
 }
 
 
@@ -142,25 +147,41 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
 
             {/* Meta Data */}
             <div className='flex w-full justify-between items-center'>
-                <Link href={url} className='text-gray-700 underline text-xs'>
-                    {getUrlDomain(url)}
-                </Link>
+                <UrlDomain url={url} />
                 <span className='text-gray-700 text-xs'>{dateCreated}</span>
             </div>
 
 
             {/* description */}
-            <div className={`text-primary-800 bg-primary z-10 text-sm flex flex-col space-y-6 transition-transform duration-500 origin-bottom px-3 ${descOpened ? "scale-y-100 overflow-scroll" : "scale-y-0 overflow-hidden"} absolute inset-0 !m-0 `}>
-                <BsChevronDown
-                    onClick={() => handleDescChanged(id)}
-                    className="self-center text-xl cursor-pointer transition-transform hover:scale-105 mt-2.5" />
+            <div className={`text-primary-800 bg-primary z-10 text-sm flex flex-col justify-between items-center transition-transform duration-500 origin-bottom px-3 ${descOpened ? "scale-y-100 overflow-scroll" : "scale-y-0 overflow-hidden"} hide-scrollbar absolute inset-0 !m-0`}>
+                <div className='sticky w-full top-0 bg-primary py-2 px-3'>
+                    <RxCross1
+                        onClick={() => handleDescChanged(id)}
+                        className="self-center text-lg text-red-500 font-bold cursor-pointer mx-auto transition-transform hover:scale-105" />
+                </div>
+
 
                 <p className={`text-left text-sm transition-opacity duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
                     {description}
                 </p>
+
+
+                <div className="sticky w-full bottom-0 flex items-center justify-center bg-primary py-2 px-3">
+                    <UrlDomain url={url} className="text-center" />
+                </div>
+
             </div>
         </div >
     )
 }
 
 export default ZenLink
+
+
+const UrlDomain = ({ url, className = "" }: UrlDomainProps) => {
+    return (
+        <Link href={url} className={`text-gray-700 underline text-xs ${className}`} >
+            {getUrlDomain(url)}
+        </Link >
+    )
+}
