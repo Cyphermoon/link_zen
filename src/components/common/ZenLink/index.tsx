@@ -20,8 +20,6 @@ import LinkColorTag from './LinkColorTag'
 
 // TODO optimize the design
 // TODO refactor the dropdown items
-// TODO create a grid system
-// TODO create action section
 // TODO figure how to properly render the image
 
 interface Props {

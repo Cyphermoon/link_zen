@@ -1,15 +1,17 @@
 import Container from '@/components/common/Container'
+import Pagination from '@/components/common/Pagination'
 import ZenLink from '@/components/common/ZenLink'
 import ActionSection from '@/components/Dashboard/ActionSection'
 import DashboardLayout from '@/components/Dashboard/layout'
 import RootLayout from '@/components/layout/RootLayout'
 import AppConfig from '@/constants/app.constant'
 import { useActiveLink } from '@/hooks/link.hook'
-
+import { useState } from 'react'
 
 
 const UserDashBoard = () => {
     const { activeLink, handleActiveLink } = useActiveLink(-1)
+    const [currentPage, setCurrentPage] = useState(1)
 
 
     return (
@@ -44,6 +46,7 @@ const UserDashBoard = () => {
                             )
                         })
                     }
+                    <Pagination currentPage={currentPage} onPageChange={setCurrentPage} pageCount={10} />
                 </Container>
             </DashboardLayout>
         </RootLayout>
