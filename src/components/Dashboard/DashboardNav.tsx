@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import DropdownMenuItem from '../common/DropdownMenuItem'
@@ -14,20 +14,33 @@ interface Props {
 
 }
 
-
 const DashboardNav = ({ toggleNav }: Props) => {
     const [searchValue, setSearchValue] = useState("")
+    const [isSticky, setSticky] = useState(false)
 
+    const handleScroll = () => {
+        window.scrollY > 71 ? setSticky(true) : setSticky(false)
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll)
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+    })
 
     return (
-        <Container>
-            <nav className='flex justify-between items-center mb-9 lg:mb-12'>
+
+        <nav className={`py-3.5 mb-9 lg:mb-12 fixed z-40 w-full lg:w-[calc(100%-200px)] transition-colors duration-500 ${isSticky ? "bg-gray-50/80 backdrop-blur-md shadow-sm" : ""}`}>
+            <Container className='flex justify-between items-center'>
                 <RxHamburgerMenu
                     className={`text-3xl lg:hidden`}
                     onClick={toggleNav} />
 
                 <SearchBar value={searchValue}
                     handleChange={setSearchValue}
+                    variant={isSticky ? "outline" : "fill"}
                     placeholder="Search" />
 
                 <div className='flex items-center lg:space-x-5'>
@@ -91,8 +104,8 @@ const DashboardNav = ({ toggleNav }: Props) => {
 
                 </div>
 
-            </nav>
-        </Container>
+            </Container>
+        </nav >
     )
 }
 

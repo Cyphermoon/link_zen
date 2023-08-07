@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: Props) => {
                 opened={value}
                 toggle={toggle}
             />
-            <div className='py-4 grow'>
+            <div className='grow'>
                 <DashboardNav toggleNav={toggle} />
                 {children}
             </div>
