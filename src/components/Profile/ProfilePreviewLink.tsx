@@ -5,12 +5,9 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { RiEditBoxLine, RiShareLine } from 'react-icons/ri';
 import { TbCopy } from 'react-icons/tb';
 import { useBoolean } from 'usehooks-ts';
-
-
 import CustomContextMenu from '../common/CustomContextMenu';
 import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
 import ProfileLinkToolBar from './ProfileLinkToolBar';
-
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
 import { truncateText } from '@/utils';
 import { getUrlDomain } from '@/utils/link.utils';
@@ -36,18 +33,11 @@ const ProfilePreviewLink = ({ title, description, imageUrl, url }: Props) => {
     return (
         <CustomContextMenu contextChildren={
             <>
-                <ContextMenuItem handleClick={handleShareClicked} title='Share'>
-                    <RiShareLine />
-                </ContextMenuItem>
-                <ContextMenuItem handleClick={handleCopyClicked} title='Copy'>
-                    <TbCopy />
-                </ContextMenuItem>
-
+                <ContextMenuItem handleClick={handleShareClicked} title='Share' Icon={RiShareLine} />
+                <ContextMenuItem handleClick={handleCopyClicked} title='Copy' Icon={TbCopy} />
                 <ContextMenuSeparator className='h-[1px] my-2 bg-primary-300' />
+                <ContextMenuItem handleClick={handleEditClicked} title='Edit' Icon={RiEditBoxLine} />
 
-                <ContextMenuItem handleClick={handleEditClicked} title='Edit'>
-                    <RiEditBoxLine />
-                </ContextMenuItem>
             </>
         }>
             <div tabIndex={1} ref={linkRef} className='rounded-2xl flex flex-col shadow-md border-2 border-b border-gray-100 profile-link relative w-11/12 max-w-xs mx-auto pb-2'>
