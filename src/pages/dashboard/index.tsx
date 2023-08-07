@@ -21,31 +21,33 @@ const UserDashBoard = () => {
             }}>
             <DashboardLayout>
                 <ActionSection />
-                <Container className='grid justify-items-center md:justify-items-start grid-cols-dynamic-193 lg:grid-cols-3 xl:grid-cols-4 gap-7'>
-                    {
-                        [...Array(20)].map((link, idx) => {
-                            return (
-                                <ZenLink
-                                    key={idx}
-                                    id={idx}
-                                    descOpened={idx === activeLink}
-                                    url='https://cyphermoon.vercel.app'
-                                    title='Assuming the title is longer'
-                                    dateCreated='28/02/2005'
-                                    imageUrl='/images/og-image.png'
-                                    description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
+                <Container className='flex flex-col items-start lg:items-center space-y-8'>
+                    <div className='grid w-full justify-items-center md:justify-items-start grid-cols-dynamic-193 md:grid-cols-3 xl:grid-cols-4 gap-7'>
+                        {
+                            [...Array(20)].map((link, idx) => {
+                                return (
+                                    <ZenLink
+                                        key={idx}
+                                        id={idx}
+                                        descOpened={idx === activeLink}
+                                        url='https://cyphermoon.vercel.app'
+                                        title='Assuming the title is longer'
+                                        dateCreated='28/02/2005'
+                                        imageUrl='/images/og-image.png'
+                                        description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf loremLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf loremLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf loremLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf loremLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam!
                                     lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat magnam quam! asjf lorem'
-                                    handleDescChanged={handleActiveLink}
-                                />
+                                        handleDescChanged={handleActiveLink}
+                                    />
 
-                            )
-                        })
-                    }
+                                )
+                            })
+                        }
+                    </div>
                     <Pagination currentPage={currentPage} onPageChange={setCurrentPage} pageCount={10} />
                 </Container>
             </DashboardLayout>
