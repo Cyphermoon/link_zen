@@ -19,7 +19,7 @@ const DashboardNav = ({ toggleNav }: Props) => {
     const [isSticky, setSticky] = useState(false)
 
     const handleScroll = () => {
-        window.scrollY > 71 ? setSticky(true) : setSticky(false)
+        window.scrollY > 55 ? setSticky(true) : setSticky(false)
     }
 
     useEffect(() => {

@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: Props) => {
                 opened={value}
                 toggle={toggle}
             />
-            <div className='grow'>
+            <div className='grow lg:ml-[200px]'>
                 <DashboardNav toggleNav={toggle} />
                 {children}
             </div>

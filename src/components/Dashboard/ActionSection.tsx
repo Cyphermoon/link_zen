@@ -19,7 +19,7 @@ const ActionSection = () => {
                 <h1 className='text-3xl lg:text-4xl font-medium'>Coding Tools</h1>
 
                 {/* Action Section */}
-                <div className='flex gap-4'>
+                <div className='flex space-x-4'>
                     <SortSelector
                         content={{
                             position: "popper"
