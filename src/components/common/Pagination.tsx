@@ -1,3 +1,4 @@
+import { generatePageNumbers } from '@/utils';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface Props {
@@ -13,11 +14,10 @@ const Pagination = ({ pageCount, currentPage, onPageChange }: Props) => {
     const hasPrevious = currentPage > 1;
     const hasNext = nextPage <= pageCount;
 
-    //px-3 py-2 rounded-md border border-gray-200 bg-gray-100
-
     const buttonClass = 'text-xl lg:text-lg w-fit';
 
-    const pageNumbers = Array.from({ length: pageCount }, (_, i) => i + 1);
+
+    const pageNumbers = generatePageNumbers(pageCount, 3, currentPage);
 
     return (
         <div className='flex items-center justify-between w-full overflow-x-scroll hide-scrollbar space-x-6 lg:max-w-2xl'>
@@ -36,14 +36,14 @@ const Pagination = ({ pageCount, currentPage, onPageChange }: Props) => {
                     <span
                         key={`paginate-${idx}`}
                         className={`${page === currentPage ? '!text-white !bg-accent-200' : ''} w-9 h-9 border border-gray-200 lg:border-none rounded-md lg:rounded-full inline-flex items-center justify-center cursor-pointer text-sm lg:text-lg hover:bg-accent-50 hover:text-accent-400`}
-                        onClick={() => onPageChange(page)}
+                        onClick={() => {
+                            typeof page === "number" ? onPageChange(page) : null
+                        }}
                     >
                         {page}
                     </span>
                 ))}
             </div>
-
-
 
             <button
                 className={`${buttonClass} ${hasNext ? "text-gray-600" : "text-gray-300"}`}

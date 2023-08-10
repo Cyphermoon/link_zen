@@ -48,7 +48,7 @@ const UserDashBoard = () => {
                             })
                         }
                     </div>
-                    <Pagination currentPage={currentPage} onPageChange={setCurrentPage} pageCount={10} />
+                    <Pagination currentPage={currentPage} onPageChange={setCurrentPage} pageCount={20} />
                 </Container>
             </DashboardLayout>
         </RootLayout>
