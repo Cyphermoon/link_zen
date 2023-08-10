@@ -20,7 +20,7 @@ const Pagination = ({ pageCount, currentPage, onPageChange }: Props) => {
     const pageNumbers = generatePageNumbers(pageCount, 3, currentPage);
 
     return (
-        <div className='flex items-center justify-between w-full overflow-x-scroll hide-scrollbar space-x-6 lg:max-w-2xl'>
+        <div className='flex items-center justify-between w-full overflow-x-scroll hide-scrollbar space-x-5 lg:max-w-2xl'>
 
             <button
                 className={`${buttonClass} ${hasPrevious ? "text-gray-600" : "text-gray-300"}`}

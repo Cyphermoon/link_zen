@@ -11,6 +11,7 @@ import { BsChevronUp, BsThreeDotsVertical } from 'react-icons/bs'
 import { FaCopy, FaEdit } from 'react-icons/fa'
 import { FiShare } from 'react-icons/fi'
 import { RiDeleteBin6Line, RiDeleteBinLine, RiEditBoxLine } from 'react-icons/ri'
+import { HiViewfinderCircle } from 'react-icons/hi2'
 import { RxCross1 } from 'react-icons/rx'
 import CustomToolbar from '../CustomToolbar'
 import CustomToolbarButton from '../CustomToolbar/ToolBarItem'
@@ -18,7 +19,7 @@ import DropdownMenuItem from '../DropdownMenuItem'
 import LinkTag from '../LinkTag'
 import LinkColorTag from './LinkColorTag'
 
-// TODO optimize the design
+
 // TODO refactor the dropdown items
 // TODO figure how to properly render the image
 
@@ -78,7 +79,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                                 <>
                                     <DropdownMenuItem title="Edit" Icon={FaEdit} />
                                     <DropdownMenuItem title="Share" Icon={FiShare} />
-                                    <DropdownMenuItem title="Copy" Icon={FaCopy} />
+                                    <DropdownMenuItem title="View Image" Icon={HiViewfinderCircle} />
                                     <DropdownMenuItem isDanger title="Delete" Icon={RiDeleteBinLine} />
                                 </>
                             </DropdownMenu.Content>
@@ -103,6 +104,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                                 <DropdownMenuItem title="Edit" Icon={FaEdit} />
                                 <DropdownMenuItem title="Share" Icon={FiShare} />
                                 <DropdownMenuItem title="Copy" Icon={FaCopy} />
+                                <DropdownMenuItem title="View Image" Icon={HiViewfinderCircle} />
                                 <DropdownMenuItem isDanger title="Delete" Icon={RiDeleteBinLine} />
                             </>
                         </DropdownMenu.Content>
@@ -110,8 +112,8 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                 </DropdownMenu.Root>
             </div>
 
-            <figure className='preview-link-img rounded-lg overflow-clip relative group mt-7'>
-                <Image src={imageUrl} width={237} height={237} alt="Preview Image" className='object-cover w-[500px]' />
+            <figure className='preview-link-img w-full h-40 rounded-lg overflow-clip relative group mt-7'>
+                <Image src={imageUrl} alt="Preview Image" fill={true} className="object-cover" />
             </figure>
 
             {/* Title Section */}
