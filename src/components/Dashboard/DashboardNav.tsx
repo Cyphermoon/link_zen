@@ -10,16 +10,16 @@ import Container from '../common/Container'
 
 
 interface Props {
-    toggleNav: () => void
+    openSidebar: () => void
 
 }
 
-const DashboardNav = ({ toggleNav }: Props) => {
+const DashboardNav = ({ openSidebar }: Props) => {
     const [searchValue, setSearchValue] = useState("")
     const [isSticky, setSticky] = useState(false)
 
     const handleScroll = () => {
-        window.scrollY > 55 ? setSticky(true) : setSticky(false)
+        window.scrollY > 30 ? setSticky(true) : setSticky(false)
     }
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const DashboardNav = ({ toggleNav }: Props) => {
             <Container className='flex justify-between items-center'>
                 <RxHamburgerMenu
                     className={`text-3xl lg:hidden`}
-                    onClick={toggleNav} />
+                    onClick={openSidebar} />
 
                 <SearchBar value={searchValue}
                     handleChange={setSearchValue}

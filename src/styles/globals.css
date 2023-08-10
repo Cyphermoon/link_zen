@@ -5,8 +5,13 @@
 body {
   overflow-x: hidden;
 }
+
 body.modal-open {
+  /*This  style is used to disable scrolling*/
+
   overflow: hidden;
+  pointer-events: none;
+  overscroll-behavior: contain;
 }
 
 

@@ -8,16 +8,26 @@ interface Props {
 }
 
 const DashboardLayout = ({ children }: Props) => {
-    const { value, toggle } = useBoolean(false)
+    const { value, toggle, setTrue, setFalse } = useBoolean(false)
+
+    function openSidebar() {
+        setTrue()
+        document && document.body.classList.add("modal-open")
+    }
+
+    function closeSidebar() {
+        setFalse()
+        document && document.body.classList.remove("modal-open")
+    }
 
     return (
         <div className='flex overflow-hidden lg:overflow-visible'>
             <Sidebar
                 opened={value}
-                toggle={toggle}
+                closeSidebar={closeSidebar}
             />
             <div className='grow lg:ml-[200px]'>
-                <DashboardNav toggleNav={toggle} />
+                <DashboardNav openSidebar={openSidebar} />
                 {children}
             </div>
         </div>
