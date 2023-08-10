@@ -1,13 +1,15 @@
 import { VscCircleLargeFilled } from "react-icons/vsc"
 import Selector, { SelectItem } from "."
+import { ViewSelectorProps } from "./type"
 
-const ViewSelector = ({ id, handleChangeId, selectedOption, options }: ViewSelectorProps) => {
+const ViewSelector = ({ id, handleChangeId, selectedOption, options, content }: ViewSelectorProps) => {
     return (
 
         <Selector
             id={id}
             handleChangeId={handleChangeId}
             label='View'
+            content={content}
             triggerChildren={
                 <>
                     <span>{selectedOption?.leftIcon}</span>

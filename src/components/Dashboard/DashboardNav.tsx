@@ -32,7 +32,7 @@ const DashboardNav = ({ toggleNav }: Props) => {
 
     return (
 
-        <nav className={`py-3.5 mb-9 lg:mb-12 fixed z-40 w-full lg:w-[calc(100%-200px)] transition-colors duration-500 ${isSticky ? "bg-gray-50/80 backdrop-blur-md shadow-sm" : ""}`}>
+        <nav className={`py-3.5 mb-9 lg:mb-12 fixed z-50 w-full lg:w-[calc(100%-200px)] transition-colors duration-500 ${isSticky ? "bg-gray-50/80 backdrop-blur-md shadow-sm" : ""}`}>
             <Container className='flex justify-between items-center'>
                 <RxHamburgerMenu
                     className={`text-3xl lg:hidden`}
@@ -67,7 +67,7 @@ const DashboardNav = ({ toggleNav }: Props) => {
                                 sideOffset={5}
                                 avoidCollisions
                                 collisionPadding={20}
-                                className='bg-white border border-primary-100 rounded-xl shadow-lg min-w-[150px] py-2.5 px-0.5'>
+                                className='bg-white z-[70] border border-primary-100 rounded-xl shadow-lg min-w-[150px] py-2.5 px-0.5'>
                                 <DropdownMenu.Group className='block lg:hidden' >
                                     <DropdownMenuItem className='bg-button-gradient text-sm capitalize text-center !text-gray-800 px-4 py-1.5 transition rdx-highlighted:scale-95 ease-linear duration-100 block rounded-md w-full'>
                                         install app

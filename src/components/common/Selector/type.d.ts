@@ -1,7 +1,9 @@
+import { SelectContentProps } from "@radix-ui/react-select";
 
 type CommonSelectorProp = {
     id: string,
     handleChangeId: (id: string) => void
+    content?: SelectContentProps
 }
 
 interface SortOptionProps {

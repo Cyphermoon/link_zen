@@ -21,7 +21,7 @@ const UserDashBoard = () => {
             }}>
             <DashboardLayout>
                 <ActionSection />
-                <Container className='flex flex-col items-start lg:items-center space-y-8'>
+                <Container className='flex flex-col items-start lg:items-center space-y-8 mb-6'>
                     <div className='grid w-full justify-items-center md:justify-items-start grid-cols-dynamic-193 md:grid-cols-3 xl:grid-cols-4 gap-7'>
                         {
                             [...Array(20)].map((link, idx) => {
