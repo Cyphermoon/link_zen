@@ -7,6 +7,7 @@ export const truncateText = (text: string, maxLength: number, omission = '...'):
     return `${text.slice(0, maxLength - omission.length)}${omission}`;
 };
 
+
 export function generatePageNumbers(pageCount: number, range: number, currentPage: number) {
     const pageNumbers = []
 

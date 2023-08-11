@@ -12,7 +12,7 @@ import { ContextMenuSeparator } from '@radix-ui/react-context-menu';
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
 import { useCloseLinkOnClickOutside } from '@/hooks/link.hook';
 import { truncateText } from '@/utils';
-import { getUrlDomain } from '@/utils/link.utils';
+import { getUrlDomain } from '@/utils/link';
 import CustomContextMenu from '../common/CustomContextMenu';
 import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
 import ProfileLinkToolBar from './ProfileLinkToolBar';

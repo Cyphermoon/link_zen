@@ -10,7 +10,7 @@ import ContextMenuItem from '../common/CustomContextMenu/ContextMenuItem';
 import ProfileLinkToolBar from './ProfileLinkToolBar';
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant';
 import { truncateText } from '@/utils';
-import { getUrlDomain } from '@/utils/link.utils';
+import { getUrlDomain } from '@/utils/link';
 
 
 interface Props {

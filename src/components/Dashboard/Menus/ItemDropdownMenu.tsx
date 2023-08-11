@@ -1,4 +1,4 @@
-import DropdownMenuItem from '@/components/common/DropdownMenuItem'
+import DropdownMenuItem from '@/components/common/CustomDropdown/DropdownMenuItem'
 import React from 'react'
 import { BiRename } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'

@@ -1,4 +1,4 @@
-import { getUrlDomain } from '@/utils/link.utils'
+import { getUrlDomain } from '@/utils/link'
 import Image from 'next/image'
 import Link from 'next/link'
 
