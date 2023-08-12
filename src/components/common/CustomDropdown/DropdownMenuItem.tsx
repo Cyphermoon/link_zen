@@ -1,5 +1,6 @@
-import { forwardRef, Ref } from "react";
+import { useModalManager } from "@/components/modals/ModalContext";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { forwardRef, Ref } from "react";
 
 interface Props extends DropdownMenu.DropdownMenuItemProps {
     title?: string;
@@ -7,17 +8,29 @@ interface Props extends DropdownMenu.DropdownMenuItemProps {
     children?: React.ReactNode;
     className?: string;
     isDanger?: boolean
+    confirmationMessage?: (value?: string | number) => string
+    handler?: () => void
 }
 
 const DropdownMenuItem = forwardRef(
     (
-        { title, Icon, isDanger, children, className, ...props }: Props,
+        { title, Icon, isDanger, children, className, confirmationMessage, handler, ...props }: Props,
         ref: Ref<HTMLDivElement>
     ) => {
+
+        const { addModal } = useModalManager()
+
+        async function handleClick() {
+            if (confirmationMessage && await addModal({ title: confirmationMessage(), type: "confirm" })) {
+                handler && handler()
+            }
+        }
+
         return (
             <DropdownMenu.Item
                 ref={ref}
                 className={`text-base lg:text-sm text-primary-700 px-3 py-1 rdx-highlighted:bg-accent rdx-highlighted:text-white outline-none border-none rounded-md cursor-pointer capitalize flex items-center space-x-2 ${className} ${isDanger ? "flex items-center space-x-3 text-red-500 rdx-highlighted:text-white rdx-highlighted:bg-red-500" : ""}`}
+                onClick={handleClick}
                 {...props}
             >
                 {title && Icon && (

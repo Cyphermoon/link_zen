@@ -35,7 +35,7 @@ const Pagination = ({ pageCount, currentPage, onPageChange }: Props) => {
                 {pageNumbers.map((page, idx) => (
                     <span
                         key={`paginate-${idx}`}
-                        className={`${page === currentPage ? '!text-white !bg-accent-200' : ''} w-9 h-9 border border-gray-200 lg:border-none rounded-md lg:rounded-full inline-flex items-center justify-center cursor-pointer text-sm lg:text-lg hover:bg-accent-50 hover:text-accent-400`}
+                        className={`${page === currentPage ? '!text-white !bg-accent-200' : ''} w-9 h-9 border border-gray-200 lg:border-none rounded-md lg:rounded-full inline-flex items-center justify-center cursor-pointer text-sm lg:text-lg lg:hover:bg-accent-50 lg:hover:text-accent-400`}
                         onClick={() => {
                             typeof page === "number" ? onPageChange(page) : null
                         }}

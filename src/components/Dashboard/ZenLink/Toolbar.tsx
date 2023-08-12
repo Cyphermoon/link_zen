@@ -33,10 +33,7 @@ const Toolbar = ({ className = "" }: Props) => {
                 {ZenLinkDropdownOptions.map((option, index) => (
                     <DropdownMenuItem
                         key={index}
-                        title={option.title}
-                        isDanger={option.isDanger}
-                        Icon={option.Icon}
-                        onClick={option.handler} />
+                        {...option} />
                 ))}
             </CustomDropdown>
 

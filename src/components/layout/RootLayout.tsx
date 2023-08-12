@@ -1,5 +1,6 @@
 import PageHead from '@/components/common/PageHead'
 import { nunito, poppins, roboto } from 'font'
+import DialogManager from '../modals/ModalManager'
 
 
 
@@ -32,6 +33,7 @@ const RootLayout = ({ className, children, metadata, font = "roboto" }: Props) =
                 description={metadata?.description}
                 author={metadata?.author}
                 ogImage={metadata?.ogImage} />
+
             {children}
         </main>
     )

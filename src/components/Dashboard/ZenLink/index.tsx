@@ -55,10 +55,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                     {ZenLinkDropdownOptions.map((option, index) => (
                         <DropdownMenuItem
                             key={index}
-                            title={option.title}
-                            isDanger={option.isDanger}
-                            Icon={option.Icon}
-                            onClick={option.handler} />
+                            {...option} />
                     ))}
                 </CustomDropdown>
             </div>

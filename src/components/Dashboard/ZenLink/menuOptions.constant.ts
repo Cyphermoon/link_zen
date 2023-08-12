@@ -10,7 +10,13 @@ const ZenLinkDropdownOptions = [
   { title: "Share", Icon: FiShare, handler: handleShare },
   { title: "Copy", Icon: FaCopy, handler: handleCopy },
   { title: "View Image", Icon: HiViewfinderCircle, handler: handleViewImage },
-  { title: "Delete", Icon: RiDeleteBinLine, isDanger: true, handler: handleDelete },
+  { 
+    title: "Delete", 
+    Icon: RiDeleteBinLine, 
+    isDanger: true, 
+    confirmationMessage:(value?: string | number) => `Are you sure you want to delete this link ${value ? `“:${value}”` : ""}?`, 
+    handler: handleDelete 
+},
 ];
 
 export default ZenLinkDropdownOptions;

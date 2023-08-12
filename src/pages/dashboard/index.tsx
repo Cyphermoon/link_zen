@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@/components/common/Container';
 import Pagination from '@/components/common/Pagination';
 import ZenLink from '@/components/Dashboard/ZenLink';
@@ -7,6 +7,8 @@ import DashboardLayout from '@/components/Dashboard/layout';
 import RootLayout from '@/components/layout/RootLayout';
 import AppConfig from '@/constants/app.constant';
 import { useActiveLink } from '@/hooks/link.hook';
+import { useModalManager } from '@/components/modals/ModalContext';
+import Btn from '@/components/common/Button';
 
 const generateLinks = (activeLink: number, handleActiveLink: (id: number) => void) => {
     return [...Array(20)].map((_, idx) => (
@@ -35,6 +37,7 @@ const UserDashBoard: React.FC = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     const links = generateLinks(activeLink, handleActiveLink);
+
 
     return (
         <RootLayout
