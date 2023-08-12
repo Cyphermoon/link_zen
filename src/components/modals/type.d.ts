@@ -20,6 +20,7 @@ interface ModalProps {
   id: ModalId;
   type: "confirm";
   title: string;
+  description?: string;
   callback: (result: any) => void;
 }
 

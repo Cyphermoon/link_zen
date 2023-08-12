@@ -8,20 +8,24 @@ interface Props extends DropdownMenu.DropdownMenuItemProps {
     children?: React.ReactNode;
     className?: string;
     isDanger?: boolean
-    confirmationMessage?: (value?: string | number) => string
+    confirmation?: {
+        title?: string
+        message?: string
+    }
     handler?: () => void
 }
 
 const DropdownMenuItem = forwardRef(
     (
-        { title, Icon, isDanger, children, className, confirmationMessage, handler, ...props }: Props,
+        { title, Icon, isDanger, children, className, confirmation, handler, ...props }: Props,
         ref: Ref<HTMLDivElement>
     ) => {
 
         const { addModal } = useModalManager()
 
         async function handleClick() {
-            if (confirmationMessage && await addModal({ title: confirmationMessage(), type: "confirm" })) {
+            if (confirmation?.title && await addModal({ title: confirmation.title, type: "confirm", description: confirmation.message })) {
+                console.log("confirmed")
                 handler && handler()
             }
         }

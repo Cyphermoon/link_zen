@@ -5,14 +5,16 @@ import CustomToolbarButton from "@/components/common/CustomToolbar/ToolBarItem";
 import { ToolbarButton } from "@radix-ui/react-toolbar";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
+import { renderDropdownMenuItems } from ".";
 import ZenLinkDropdownOptions from "./menuOptions.constant";
 
 interface Props {
     className?: string
+    linkUrl?: string
 }
 
 
-const Toolbar = ({ className = "" }: Props) => {
+const Toolbar = ({ linkUrl, className = "" }: Props) => {
     return (
         <CustomToolbar
             className={` hidden lg:flex items-center justify-center p-0 w-max bg-primary-600 shadow-lg opacity-0 group-hover:animate-in group-hover:slide-in-from-right-full group-hover:opacity-100 rounded-lg overflow-clip text-white relative ${className}`
@@ -30,11 +32,7 @@ const Toolbar = ({ className = "" }: Props) => {
                         <BsThreeDotsVertical />
                     </ToolbarButton>
                 }>
-                {ZenLinkDropdownOptions.map((option, index) => (
-                    <DropdownMenuItem
-                        key={index}
-                        {...option} />
-                ))}
+                {renderDropdownMenuItems(ZenLinkDropdownOptions, linkUrl)}
             </CustomDropdown>
 
         </CustomToolbar>

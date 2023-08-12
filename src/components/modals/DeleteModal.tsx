@@ -1,5 +1,7 @@
 import { useModal } from '@/hooks/index.hook';
+import parse from 'html-react-parser';
 import * as Dialog from '@radix-ui/react-dialog';
+import Image from 'next/image';
 import Btn from '../common/Button';
 import BaseModal from './BaseModal';
 
@@ -12,7 +14,7 @@ interface Props {
 
 
 const DeleteModal = ({ id, title, description, sendResult, }: Props) => {
-    const { isOpen, closeModal, openModal } = useModal(true);
+    const { isOpen, closeModal } = useModal(true);
 
     function handleClose(result: boolean) {
         return () => {
@@ -24,17 +26,24 @@ const DeleteModal = ({ id, title, description, sendResult, }: Props) => {
     return (
         <BaseModal state={isOpen} closeModal={handleClose(false)}>
             <Dialog.Content
-                className='bg-white text-primary-800 w-11/12 max-w-sm rounded-xl fixed z-[100] top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] text-center flex flex-col items-center py-3 px-2 animate-contentShow'>
-                <Dialog.Title className='text-2xl font-medium'>{title}</Dialog.Title>
-                {description ? <p className='text-sm font-normal'>{description}</p> : null}
+                className='bg-white text-primary-800 w-11/12 max-w-sm rounded-xl fixed z-[100] top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] text-center flex flex-col items-center py-4 px-3 animate-contentShow'>
+                <div>
 
-                <div className='flex items-center justify-center space-x-8'>
-                    <Btn onClick={handleClose(false)}>
-                        Cancel
-                    </Btn>
-                    <Btn onClick={handleClose(true)}>
-                        Delete
-                    </Btn>
+                    <Dialog.Title className={`text-2xl font-medium ${title ? "mb-1" : ""}`}>{title}</Dialog.Title>
+                    {description ? <p className='text-sm font-normal'>{parse(description)}</p> : null}
+
+                    <figure className='inline-block mx-auto'>
+                        <Image src={'/asset/failed.gif'} width={200} height={250} alt={`${"Delete Illustration"}`} />
+                    </figure>
+
+                    <div className='flex items-center justify-center space-x-8'>
+                        <Btn onClick={handleClose(false)} variant='muted'>
+                            Cancel
+                        </Btn>
+                        <Btn onClick={handleClose(true)} variant='danger'>
+                            Delete
+                        </Btn>
+                    </div>
                 </div>
             </Dialog.Content>
         </BaseModal>

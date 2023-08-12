@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import DeleteModal from './DeleteModal'
 import ModalContext from './ModalContext'
 
@@ -42,6 +42,7 @@ const ModalManager = ({ children }: Props) => {
                         id={modal.id}
                         key={modal.id}
                         title={modal.title}
+                        description={modal.description}
                         sendResult={sendResult} />
                 }
                 return null

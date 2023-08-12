@@ -14,7 +14,10 @@ const ZenLinkDropdownOptions = [
     title: "Delete", 
     Icon: RiDeleteBinLine, 
     isDanger: true, 
-    confirmationMessage:(value?: string | number) => `Are you sure you want to delete this link ${value ? `“:${value}”` : ""}?`, 
+    confirmation: (linkName?: string) => ({
+      title: "Delete Link",
+      message: `Are you sure you want to delete ${linkName? `<b>${linkName}</b>` : "this link"} ?`,
+    }),
     handler: handleDelete 
 },
 ];

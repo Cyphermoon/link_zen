@@ -43,7 +43,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
             `}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
-                <Toolbar />
+                <Toolbar linkUrl={url} />
 
                 {/* mobile Dropdown */}
                 <CustomDropdown
@@ -52,11 +52,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                             <BsThreeDotsVertical className='text-xl' />
                         </button>
                     }>
-                    {ZenLinkDropdownOptions.map((option, index) => (
-                        <DropdownMenuItem
-                            key={index}
-                            {...option} />
-                    ))}
+                    {renderDropdownMenuItems(ZenLinkDropdownOptions, url)}
                 </CustomDropdown>
             </div>
 
@@ -86,4 +82,19 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
 }
 
 export default ZenLink
+
+
+export function renderDropdownMenuItems(options: ZenLinkDropdownOptionProps[], linkName?: string) {
+    return options.map((option, index) => {
+        const confirmation = option.confirmation?.(linkName);
+        return (
+            <DropdownMenuItem
+                key={index}
+                {...option}
+                confirmation={confirmation}
+            />
+        );
+    });
+}
+
 

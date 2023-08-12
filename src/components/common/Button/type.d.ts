@@ -2,7 +2,7 @@
 
 interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     tabIndex?: number;
-    variant?: "inverse" | "outline" | "normal" | "darkShade";
+    variant?: "inverse" | "outline" | "normal" | "muted" | "danger";
     className?: string;
     disableZoomOutEffect?: boolean
     fullWidth?: boolean
