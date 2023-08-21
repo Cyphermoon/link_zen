@@ -10,7 +10,6 @@ const ZenLinkDropdownOptions = [
   { title: "Edit", Icon: FaEdit, handler: handleEdit },
   { title: "Share", Icon: FiShare, handler: handleShare },
   { title: "Copy", Icon: FaCopy, handler: handleCopy },
-  { title: "View Image", Icon: HiViewfinderCircle, handler: handleViewImage },
   { 
     title: "Delete", 
     Icon: RiDeleteBinLine, 

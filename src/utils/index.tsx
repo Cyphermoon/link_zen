@@ -50,3 +50,22 @@ export const deleteMessage = (linkName?: string, type?: string) => ({
     title: `Delete ${type ? type : "Link"}`,
     message: `Are you sure you want to delete ${linkName ? `<b>${linkName}</b>` : "this link"} ?`,
 })
+
+export async function downloadFile(url: string, fileName: string) {
+    try {
+        const res = await fetch(url)
+        const blob = await res.blob()
+        const objectUrl = URL.createObjectURL(blob)
+
+        const anchor = document.createElement("a")
+        anchor.setAttribute("href", objectUrl)
+        anchor.setAttribute("download", fileName)
+        anchor.setAttribute("target", "_blank")
+        anchor.click()
+
+        URL.revokeObjectURL(objectUrl)
+        anchor.remove()
+    } catch (e: any) {
+        throw new Error(e.message)
+    }
+}

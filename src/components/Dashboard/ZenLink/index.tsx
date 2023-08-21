@@ -5,6 +5,7 @@ import { truncateText } from '@/utils'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import { HiViewfinderCircle } from 'react-icons/hi2'
 import DropdownMenuItem from '../../common/CustomDropdown/DropdownMenuItem'
 import Excerpt from './Excerpt'
 import FullDescription from './FullDescription'
@@ -26,13 +27,18 @@ interface Props {
     colorTag: { color: string, name: string }
     tags: { name: string }[]
     handleDescChanged: (id: number) => void
+    setImage: React.Dispatch<React.SetStateAction<{ idx: number, visible: boolean, title: string }>>
 }
 
 
-const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, tags, colorTag }: Props) => {
+const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, tags, colorTag, setImage }: Props) => {
 
     const linkRef = useRef<HTMLDivElement>(null)
     useCloseLinkOnClickOutside(descOpened, id, handleDescChanged, linkRef.current)
+
+    function viewImage() {
+        setImage({ idx: 0, visible: true, title })
+    }
 
 
     return (
@@ -43,7 +49,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
             `}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
-                <Toolbar linkUrl={url} />
+                <Toolbar viewImage={viewImage} linkUrl={url} />
 
                 {/* mobile Dropdown */}
                 <CustomDropdown
@@ -52,6 +58,7 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                             <BsThreeDotsVertical className='text-xl' />
                         </button>
                     }>
+                    <DropdownMenuItem Icon={HiViewfinderCircle} title='view image' handler={viewImage} />
                     {renderDropdownMenuItems(ZenLinkDropdownOptions, url)}
                 </CustomDropdown>
             </div>

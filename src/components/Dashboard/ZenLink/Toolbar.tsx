@@ -1,10 +1,12 @@
 import CustomDropdown from "@/components/common/CustomDropdown";
+import DropdownMenuItem from "@/components/common/CustomDropdown/DropdownMenuItem";
 import CustomToolbar from "@/components/common/CustomToolbar";
 import CustomToolbarButton from "@/components/common/CustomToolbar/ToolBarItem";
 import { useModalManager } from "@/components/modals/ModalContext";
 import { deleteMessage, handleConfirmationOrAction } from "@/utils";
 import { ToolbarButton } from "@radix-ui/react-toolbar";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { HiViewfinderCircle } from "react-icons/hi2";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
 import { renderDropdownMenuItems } from ".";
 import { handleDelete } from "./menuHandlers.util";
@@ -13,10 +15,11 @@ import ZenLinkDropdownOptions from "./menuOptions.constant";
 interface Props {
     className?: string
     linkUrl?: string
+    viewImage: () => void
 }
 
 
-const Toolbar = ({ linkUrl, className = "" }: Props) => {
+const Toolbar = ({ linkUrl, viewImage, className = "" }: Props) => {
 
     const { addModal } = useModalManager()
 
@@ -43,6 +46,7 @@ const Toolbar = ({ linkUrl, className = "" }: Props) => {
                         <BsThreeDotsVertical />
                     </ToolbarButton>
                 }>
+                <DropdownMenuItem Icon={HiViewfinderCircle} title='view image' handler={viewImage} />
                 {renderDropdownMenuItems(ZenLinkDropdownOptions, linkUrl)}
             </CustomDropdown>
 
