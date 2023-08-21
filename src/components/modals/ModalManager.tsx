@@ -13,7 +13,7 @@ const ModalManager = ({ children }: Props) => {
 
 
     function addModal(modal: AddModalArg) {
-        return new Promise(resolve => {
+        return new Promise<boolean | null>(resolve => {
             const _modal = {
                 id: Date.now(),
                 callback: resolve,

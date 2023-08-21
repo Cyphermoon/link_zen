@@ -1,4 +1,5 @@
 import { useModalManager } from "@/components/modals/ModalContext";
+import { handleConfirmationOrAction } from "@/utils";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { forwardRef, Ref } from "react";
 
@@ -23,12 +24,12 @@ const DropdownMenuItem = forwardRef(
 
         const { addModal } = useModalManager()
 
-        async function handleClick() {
-            if (confirmation?.title && await addModal({ title: confirmation.title, type: "confirm", description: confirmation.message })) {
-                console.log("confirmed")
-                handler && handler()
-            }
-        }
+        const handleClick = () => (
+            handleConfirmationOrAction({
+                ...confirmation,
+                dialog: addModal
+            }, handler)
+        )
 
         return (
             <DropdownMenu.Item

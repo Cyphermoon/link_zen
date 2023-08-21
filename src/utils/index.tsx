@@ -1,4 +1,3 @@
-
 export const truncateText = (text: string, maxLength: number, omission = '...'): string => {
     if (text.length <= maxLength) {
         return text;
@@ -35,3 +34,19 @@ export function generatePageNumbers(pageCount: number, range: number, currentPag
     return pageNumbers
 }
 
+export function handleConfirmationOrAction(confirmation: Confirmation | null, handler?: HandlerFunction) {
+    if (confirmation?.title) {
+        confirmation.dialog?.({
+            title: confirmation.title,
+            type: "confirm",
+            description: confirmation.message
+        }).then((result) => result && handler?.());
+    } else {
+        handler?.();
+    }
+}
+
+export const deleteMessage = (linkName?: string, type?: string) => ({
+    title: `Delete ${type ? type : "Link"}`,
+    message: `Are you sure you want to delete ${linkName ? `<b>${linkName}</b>` : "this link"} ?`,
+})

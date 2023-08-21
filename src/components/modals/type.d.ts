@@ -24,6 +24,10 @@ interface ModalProps {
   callback: (result: any) => void;
 }
 
-interface AddModalArg extends Omit<ModalProps, "id" | "callback"> { }
+interface AddModalArg extends Omit<ModalProps, "id" | "callback">{}
+
+type addModal = (modal: AddModalArg) => Promise<boolean | null>
+
+
 
 

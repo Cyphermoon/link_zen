@@ -29,7 +29,7 @@ const DeleteModal = ({ id, title, description, sendResult, }: Props) => {
                 className='bg-white text-primary-800 w-11/12 max-w-sm rounded-xl fixed z-[100] top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] text-center flex flex-col items-center py-4 px-3 animate-contentShow'>
                 <div>
 
-                    <Dialog.Title className={`text-2xl font-medium ${title ? "mb-1" : ""}`}>{title}</Dialog.Title>
+                    <Dialog.Title className={`text-2xl font-medium ${description ? "mb-2" : ""}`}>{title}</Dialog.Title>
                     {description ? <p className='text-sm font-normal'>{parse(description)}</p> : null}
 
                     <figure className='inline-block mx-auto'>

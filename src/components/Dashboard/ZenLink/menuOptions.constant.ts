@@ -1,3 +1,4 @@
+import { deleteMessage } from "@/utils";
 import { FaCopy, FaEdit } from "react-icons/fa";
 import { FiShare } from "react-icons/fi";
 import { HiViewfinderCircle } from "react-icons/hi2";
@@ -14,10 +15,7 @@ const ZenLinkDropdownOptions = [
     title: "Delete", 
     Icon: RiDeleteBinLine, 
     isDanger: true, 
-    confirmation: (linkName?: string) => ({
-      title: "Delete Link",
-      message: `Are you sure you want to delete ${linkName? `<b>${linkName}</b>` : "this link"} ?`,
-    }),
+    confirmation: deleteMessage,
     handler: handleDelete 
 },
 ];

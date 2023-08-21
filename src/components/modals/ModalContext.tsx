@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
 interface Props {
-    addModal: (details: AddModalArg) => Promise<any>
+    addModal: (details: AddModalArg) => Promise<boolean | null>
 }
 
 
@@ -17,7 +17,7 @@ export function useModalManager() {
 
 
 const ModalContext = createContext<Props>({
-    addModal: () => Promise.resolve(),
+    addModal: () => Promise.resolve(null),
 })
 
 export default ModalContext
