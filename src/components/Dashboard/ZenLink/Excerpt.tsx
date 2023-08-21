@@ -3,10 +3,10 @@ import { BsChevronUp } from "react-icons/bs";
 import { truncateText } from "@/utils"; // Adjust the path to your utility function if needed
 
 interface Props {
-    id: number;
+    id: string;
     description: string;
     descOpened: boolean;
-    handleDescChanged: (id: number) => void;
+    handleDescChanged: (id: string) => void;
 }
 
 const Excerpt = ({ id, description, descOpened, handleDescChanged }: Props) => {

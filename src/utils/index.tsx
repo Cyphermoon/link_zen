@@ -1,3 +1,5 @@
+import { errorToast, successToast } from "./toast";
+
 export const truncateText = (text: string, maxLength: number, omission = '...'): string => {
     if (text.length <= maxLength) {
         return text;
@@ -69,3 +71,23 @@ export async function downloadFile(url: string, fileName: string) {
         throw new Error(e.message)
     }
 }
+
+export function toggleFullScreen(targetElement: Element | null, isFullscreen: boolean,) {
+    if (isFullscreen) {
+        document.exitFullscreen && document.exitFullscreen();
+    } else {
+        targetElement && targetElement.requestFullscreen();
+    }
+}
+
+export function copyTextToClipboard(text: string) {
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            successToast("Copied Successfully")
+        })
+        .catch(() => {
+            errorToast("Copied Successfully")
+        });
+}
+
+

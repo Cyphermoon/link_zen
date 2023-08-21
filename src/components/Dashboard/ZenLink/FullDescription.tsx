@@ -1,12 +1,13 @@
+
 import React from "react";
 import { RxCross1 } from "react-icons/rx";
 import UrlDomain from "./UrlDomain"; // Make sure to adjust the import path based on your project
 
 interface Props {
-    id: number;
+    id: string;
     description: string;
     descOpened: boolean;
-    handleDescChanged: (id: number) => void;
+    handleDescChanged: (id: string) => void;
     url: string;
 }
 

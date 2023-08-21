@@ -1,23 +1,22 @@
 import CustomDropdown from '@/components/common/CustomDropdown'
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant'
 import { useCloseLinkOnClickOutside } from '@/hooks/link.hook'
-import { truncateText } from '@/utils'
+import { deleteMessage, truncateText } from '@/utils'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
-import { HiViewfinderCircle } from 'react-icons/hi2'
 import DropdownMenuItem from '../../common/CustomDropdown/DropdownMenuItem'
 import Excerpt from './Excerpt'
 import FullDescription from './FullDescription'
-import ZenLinkDropdownOptions from './menuOptions.constant'
+import { handleCopy } from './menuHandlers.util'
 import Tags from './Tags'
 import Toolbar from './Toolbar'
 import UrlDomain from './UrlDomain'
-
+import ZenLinkDropdownOptions from './ZenLinkDropdownOptions'
 
 interface Props {
     className?: string
-    id: number
+    id: string
     imageUrl: string
     description: string
     url: string
@@ -26,20 +25,21 @@ interface Props {
     descOpened: boolean
     colorTag: { color: string, name: string }
     tags: { name: string }[]
-    handleDescChanged: (id: number) => void
+    idx: number
+    handleDescChanged: (id: string) => void
     setImage: React.Dispatch<React.SetStateAction<{ idx: number, visible: boolean, title: string }>>
 }
 
 
-const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, tags, colorTag, setImage }: Props) => {
+
+const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, idx, tags, colorTag, setImage }: Props) => {
 
     const linkRef = useRef<HTMLDivElement>(null)
     useCloseLinkOnClickOutside(descOpened, id, handleDescChanged, linkRef.current)
 
     function viewImage() {
-        setImage({ idx: 0, visible: true, title })
+        setImage({ idx: idx, visible: true, title })
     }
-
 
     return (
         <div
@@ -58,14 +58,23 @@ const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescC
                             <BsThreeDotsVertical className='text-xl' />
                         </button>
                     }>
-                    <DropdownMenuItem Icon={HiViewfinderCircle} title='view image' handler={viewImage} />
-                    {renderDropdownMenuItems(ZenLinkDropdownOptions, url)}
+                    <ZenLinkDropdownOptions
+                        viewImage={viewImage}
+                        handleCopy={handleCopy}
+                        deleteMessage={deleteMessage}
+                        url={url} />
+
                 </CustomDropdown>
             </div>
 
             {/* image preview */}
             <figure className='preview-link-img w-full h-40 rounded-lg overflow-clip relative group mt-7'>
-                <Image src={imageUrl} alt="Preview Image" fill={true} className="object-cover" />
+                <Image
+                    src={imageUrl}
+                    unoptimized={imageUrl.startsWith('https://picsum.photos/')}
+                    alt="Preview Image"
+                    fill={true}
+                    className="object-cover" />
             </figure>
 
             {/* Title Section */}
