@@ -3,6 +3,7 @@ import Pagination from '@/components/common/Pagination';
 import ActionSection from '@/components/Dashboard/ActionSection';
 import DashboardLayout from '@/components/Dashboard/layout';
 import LinkImagesSlider from '@/components/Dashboard/LinkImagesSlider';
+import ShareSocials from '@/components/Dashboard/ShareSocials';
 import ZenLink from '@/components/Dashboard/ZenLink';
 import RootLayout from '@/components/layout/RootLayout';
 import AppConfig from '@/constants/app.constant';
@@ -199,6 +200,7 @@ const UserDashBoard: React.FC = () => {
                         onPageChange={setCurrentPage}
                         pageCount={20}
                     />
+                    <ShareSocials />
                 </Container>
                 <LinkImagesSlider images={images} image={image} setImage={setImage} />
             </DashboardLayout>

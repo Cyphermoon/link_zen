@@ -67,28 +67,28 @@ const LinkImagesSlider: React.FC<LinkImagesSliderProps> = ({ images, image, setI
             toolbarRender={({ onScale, scale, rotate, onRotate }) => {
                 return (
                     <>
-                        <span className='PhotoView-Slider__toolbarIcon' onClick={() => onScale(scale + 1)}>
+                        <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={() => onScale(scale + 1)}>
                             <AiOutlineZoomIn />
                         </span>
 
-                        <span className='PhotoView-Slider__toolbarIcon' onClick={() => onScale(scale - 1)}>
+                        <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={() => onScale(scale - 1)}>
                             <AiOutlineZoomOut />
                         </span>
 
-                        <span className='PhotoView-Slider__toolbarIcon' onClick={() => onRotate(rotate + 90)}>
+                        <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={() => onRotate(rotate + 90)}>
                             <GrRotateRight />
                         </span>
 
-                        <span className='PhotoView-Slider__toolbarIcon' onClick={() => onRotate(rotate - 90)}>
+                        <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={() => onRotate(rotate - 90)}>
                             <GrRotateLeft />
                         </span>
 
-                        <span className='PhotoView-Slider__toolbarIcon' onClick={handleDownload}>
+                        <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={handleDownload}>
                             <MdDownload />
                         </span>
 
                         {document.fullscreenEnabled && (
-                            <span className='PhotoView-Slider__toolbarIcon' onClick={handleFullScreen}>
+                            <span className='PhotoView-Slider__toolbarIcon text-xl lg:text-lg mr-0.5' onClick={handleFullScreen}>
                                 {fullscreen ? <RxExitFullScreen /> : <RxEnterFullScreen />}
                             </span>
                         )}

@@ -32,7 +32,9 @@ interface Props {
 
 
 
-const ZenLink = ({ className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, idx, tags, colorTag, setImage }: Props) => {
+const ZenLink = ({
+    className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, idx, tags, colorTag, setImage
+}: Props) => {
 
     const linkRef = useRef<HTMLDivElement>(null)
     useCloseLinkOnClickOutside(descOpened, id, handleDescChanged, linkRef.current)
