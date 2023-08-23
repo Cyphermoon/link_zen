@@ -35,6 +35,7 @@ const RootLayout = ({ className, children, metadata, font = "roboto" }: Props) =
                 ogImage={metadata?.ogImage} />
 
             {children}
+            <input readOnly type="text" id="copyText" className='w-0 h-0 pointer-events-none absolute top-[-999px] left-[-999px] opacity-0' tabIndex={0} />
         </main>
     )
 }

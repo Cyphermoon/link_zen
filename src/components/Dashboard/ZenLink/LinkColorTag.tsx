@@ -12,7 +12,7 @@ const LinkColorTag = ({ color, name }: Props) => {
                 backgroundColor: color
             }}
             title={`${name} color tag`}
-            className={`w-3.5 h-3.5 rounded-full`}>
+            className={`min-w-[14px] h-[14px] rounded-full`}>
         </span>
     )
 }

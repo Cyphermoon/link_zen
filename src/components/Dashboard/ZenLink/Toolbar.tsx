@@ -13,9 +13,10 @@ interface Props {
     className?: string
     linkUrl: string
     viewImage: () => void
+    handleShare: () => void
 }
 
-const Toolbar = ({ linkUrl, viewImage, className = "" }: Props) => {
+const Toolbar = ({ linkUrl, viewImage, handleShare, className = "" }: Props) => {
 
     const { addModal } = useModalManager()
 
@@ -45,6 +46,7 @@ const Toolbar = ({ linkUrl, viewImage, className = "" }: Props) => {
                 <ZenLinkDropdownOptions
                     viewImage={viewImage}
                     handleCopy={handleCopy}
+                    handleShare={handleShare}
                     deleteMessage={deleteMessage}
                     url={linkUrl} />
             </CustomDropdown>

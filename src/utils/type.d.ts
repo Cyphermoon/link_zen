@@ -1,7 +1,7 @@
 interface Confirmation {
     title?: string;
     message?: string;
-    dialog?: addModal
+    dialog?: AddModal
 }
 
 type HandlerFunction = () => void;

@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
 interface Props {
-    addModal: (details: AddModalArg) => Promise<boolean | null>
+    addModal: AddModal
 }
 
 

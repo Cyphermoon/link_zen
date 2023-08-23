@@ -200,7 +200,6 @@ const UserDashBoard: React.FC = () => {
                         onPageChange={setCurrentPage}
                         pageCount={20}
                     />
-                    <ShareSocials />
                 </Container>
                 <LinkImagesSlider images={images} image={image} setImage={setImage} />
             </DashboardLayout>

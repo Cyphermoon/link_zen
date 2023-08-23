@@ -41,7 +41,7 @@ export function handleConfirmationOrAction(confirmation: Confirmation | null, ha
         confirmation.dialog?.({
             title: confirmation.title,
             type: "confirm",
-            description: confirmation.message
+            description: confirmation.message,
         }).then((result) => result && handler?.());
     } else {
         handler?.();
@@ -81,13 +81,29 @@ export function toggleFullScreen(targetElement: Element | null, isFullscreen: bo
 }
 
 export function copyTextToClipboard(text: string) {
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            successToast("Copied Successfully")
-        })
-        .catch(() => {
-            errorToast("Copied Successfully")
-        });
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                successToast("Copied Successfully")
+            })
+            .catch(() => {
+                errorToast("Copy Failed")
+            });
+    } else {
+        // const element = document.getElementById("copyText") as HTMLInputElement
+        // element.setAttribute("value", text)
+        // element.focus()
+        // element.select()
+
+        // try {
+        //     const result = document.execCommand('copy')
+
+        // } catch (error) {
+        //     errorToast("Copy Fail")
+        // }
+        errorToast("Copy Failed")
+    }
 }
 
 

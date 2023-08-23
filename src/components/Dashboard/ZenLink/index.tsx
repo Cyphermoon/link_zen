@@ -1,4 +1,5 @@
 import CustomDropdown from '@/components/common/CustomDropdown'
+import { useModalManager } from '@/components/modals/ModalContext'
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant'
 import { useCloseLinkOnClickOutside } from '@/hooks/link.hook'
 import { deleteMessage, truncateText } from '@/utils'
@@ -35,12 +36,26 @@ interface Props {
 const ZenLink = ({
     className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, idx, tags, colorTag, setImage
 }: Props) => {
+    const { addModal } = useModalManager()
 
     const linkRef = useRef<HTMLDivElement>(null)
     useCloseLinkOnClickOutside(descOpened, id, handleDescChanged, linkRef.current)
 
     function viewImage() {
         setImage({ idx: idx, visible: true, title })
+    }
+
+    function handleShare() {
+        const modalObj: AddSocialShareModalArg = {
+            type: "social-share",
+            title,
+            url,
+            twitter: {
+                hashtags: ["linkzen"],
+                related: ["linkzen_", "moon_cypher"]
+            }
+        }
+        addModal(modalObj)
     }
 
     return (
@@ -51,7 +66,7 @@ const ZenLink = ({
             `}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
-                <Toolbar viewImage={viewImage} linkUrl={url} />
+                <Toolbar viewImage={viewImage} handleShare={handleShare} linkUrl={url} />
 
                 {/* mobile Dropdown */}
                 <CustomDropdown
@@ -63,6 +78,7 @@ const ZenLink = ({
                     <ZenLinkDropdownOptions
                         viewImage={viewImage}
                         handleCopy={handleCopy}
+                        handleShare={handleShare}
                         deleteMessage={deleteMessage}
                         url={url} />
 

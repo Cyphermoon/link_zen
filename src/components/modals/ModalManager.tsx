@@ -1,7 +1,7 @@
 import React from 'react'
+import ShareSocials from '../Dashboard/ShareSocials'
 import DeleteModal from './DeleteModal'
 import ModalContext from './ModalContext'
-
 
 interface Props {
     children: React.ReactNode
@@ -9,7 +9,7 @@ interface Props {
 
 
 const ModalManager = ({ children }: Props) => {
-    const [modals, setModals] = React.useState<ModalProps[]>([])
+    const [modals, setModals] = React.useState<(ModalProps | SocialShareModalProps)[]>([])
 
 
     function addModal(modal: AddModalArg) {
@@ -43,6 +43,16 @@ const ModalManager = ({ children }: Props) => {
                         key={modal.id}
                         title={modal.title}
                         description={modal.description}
+                        sendResult={sendResult} />
+                }
+
+                if (modal.type === "social-share") {
+                    return <ShareSocials
+                        id={modal.id}
+                        key={modal.id}
+                        title={modal.title}
+                        url={modal.url}
+                        twitter={modal.twitter}
                         sendResult={sendResult} />
                 }
                 return null
