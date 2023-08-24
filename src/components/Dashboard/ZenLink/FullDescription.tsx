@@ -1,5 +1,7 @@
 
+import { copyTextToClipboard } from "@/utils";
 import React from "react";
+import { FaCopy } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import UrlDomain from "./UrlDomain"; // Make sure to adjust the import path based on your project
 
@@ -19,11 +21,12 @@ const FullDescription = ({ id, description, descOpened, handleDescChanged, url }
                     onClick={() => handleDescChanged(id)}
                     className="self-center text-xl text-red-600 font-bold cursor-pointer mx-auto transition-transform hover:scale-105" />
             </div>
-            <p className={`text-left text-sm transition-opacity duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
+            <p className={`text-left text-sm pb-3 transition-opacity grow duration-200 ${descOpened ? "opacity-100" : "opacity-0"}`}>
                 {description}
             </p>
-            <div className="sticky w-full bottom-0 flex items-center justify-center bg-primary py-2 px-3">
-                <UrlDomain url={url} className="text-center" />
+            <div className="sticky w-full -bottom-1 flex items-center justify-between bg-primary pt-2 pb-2.5 px-3">
+                <UrlDomain url={url} className="text-[13px]" />
+                <button title="Copy Description" onClick={() => copyTextToClipboard(description)}><FaCopy /></button>
             </div>
         </div>
     );

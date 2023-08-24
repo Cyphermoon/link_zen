@@ -1,5 +1,6 @@
 import CustomDropdown from '@/components/common/CustomDropdown'
 import { useModalManager } from '@/components/modals/ModalContext'
+import { AddSocialShareModalArg } from '@/components/modals/type'
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant'
 import { useCloseLinkOnClickOutside } from '@/hooks/link.hook'
 import { deleteMessage, truncateText } from '@/utils'
@@ -12,6 +13,7 @@ import FullDescription from './FullDescription'
 import { handleCopy } from './menuHandlers.util'
 import Tags from './Tags'
 import Toolbar from './Toolbar'
+import { ZenLinkDropdownOptionProps } from './type'
 import UrlDomain from './UrlDomain'
 import ZenLinkDropdownOptions from './ZenLinkDropdownOptions'
 
@@ -61,9 +63,7 @@ const ZenLink = ({
     return (
         <div
             ref={linkRef}
-            className={`
-            border-2 border-gray-200 p-3 rounded-2xl bg-primary shadow-sm flex flex-col items-start space-y-4 w-fit ${className} relative overflow-hidden group w-full lg:max-w-[280px] isolate
-            `}
+            className={`border-2 border-gray-200 p-3 rounded-2xl bg-primary shadow-sm flex flex-col items-start justify-between space-y-4 w-fit ${className} relative overflow-hidden group w-full lg:max-w-[280px] isolate`}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
                 <Toolbar viewImage={viewImage} handleShare={handleShare} linkUrl={url} />
