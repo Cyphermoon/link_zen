@@ -5,6 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { RxCross1 } from 'react-icons/rx';
 import * as Yup from 'yup';
 import Button from '../../common/Button';
+import { CreateModalProp } from './type';
 
 interface CreateFolderModalProps {
     formTitle: string;

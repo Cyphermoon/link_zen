@@ -16,6 +16,7 @@ import {
     WhatsappShareButton
 } from "react-share";
 import BaseDialog from "../modals/BaseModal";
+import { ModalId, SocialShareModalProps } from "../modals/type";
 
 interface Props extends Omit<SocialShareModalProps, "type" | "callback" | "description"> {
     sendResult: (id: ModalId, result: boolean) => void

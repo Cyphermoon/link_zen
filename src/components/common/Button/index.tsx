@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { CustomButtonProps } from "./type";
 
 const Btn = ({
     children,

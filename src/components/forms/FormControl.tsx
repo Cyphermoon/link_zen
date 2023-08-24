@@ -1,3 +1,5 @@
+import { FormControlProps } from "./type";
+
 const FormControl = ({ label, labelId, children }: FormControlProps) => {
     return (
         <div className="space-y-3 flex flex-col">

@@ -1,3 +1,4 @@
+import { ContactFormFieldProps } from "@/components/Contact/type"
 import axios from "axios"
 import { mailClient } from "./config"
 import { CreateContactRequestProps, ContactFormRequestProps } from "./type"

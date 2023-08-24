@@ -1,3 +1,5 @@
+import { AddModal } from "@/components/modals/type";
+
 export interface Confirmation {
     title?: string;
     message?: string;

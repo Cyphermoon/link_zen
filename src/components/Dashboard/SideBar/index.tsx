@@ -5,6 +5,7 @@ import { useBoolean } from 'usehooks-ts'
 import { ItemContextMenu } from '../Menus'
 import ItemDropdownMenu from '../Menus/ItemDropdownMenu'
 import CreateModal from '../Modals/CreateModal'
+import { CreateModalProp } from '../Modals/type'
 import SidebarLink from './SideBarLink'
 import SidebarSection from './SidebarSection'
 
