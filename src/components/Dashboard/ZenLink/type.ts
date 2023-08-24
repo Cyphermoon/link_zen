@@ -1,11 +1,11 @@
-type LinkHandler = () => void;
+export type LinkHandler = () => void;
 
-type ConfirmationFunction = (linkName?: string) => {
+export type ConfirmationFunction = (linkName?: string) => {
   title: string;
   message: string;
 };
 
-interface ZenLinkDropdownOptionProps {
+export interface ZenLinkDropdownOptionProps {
   title: string;
   Icon?: React.ComponentType<any>;
   isDanger?: boolean;

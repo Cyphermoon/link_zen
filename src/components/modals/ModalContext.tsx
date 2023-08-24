@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import { AddModal } from "./type";
 
 interface Props {
     addModal: AddModal

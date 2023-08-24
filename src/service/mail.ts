@@ -1,5 +1,6 @@
 import axios from "axios"
 import { mailClient } from "./config"
+import { CreateContactRequestProps, ContactFormRequestProps } from "./type"
 
 
 export const createContact = async (data: CreateContactRequestProps) => { 

@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import { BaseModalProps } from './type';
 
 const BaseModal = ({ state, closeModal, children, closeOnBackgroundClicked = true }: BaseModalProps) => {
     return (

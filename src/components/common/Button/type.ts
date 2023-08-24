@@ -1,6 +1,4 @@
-
-
-interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     tabIndex?: number;
     variant?: "inverse" | "outline" | "normal" | "muted" | "danger";
     className?: string;

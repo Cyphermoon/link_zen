@@ -1,4 +1,5 @@
-import boxContent from "./type";
+import { boxContent } from "./type";
+
 
 const Box = ({ title, body, children, divStyles, pStyles, hStyles }: boxContent) => {
   return (

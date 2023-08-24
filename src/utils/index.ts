@@ -1,4 +1,5 @@
 import { errorToast, successToast } from "./toast";
+import { Confirmation, HandlerFunction } from "./type";
 
 export const truncateText = (text: string, maxLength: number, omission = '...'): string => {
     if (text.length <= maxLength) {

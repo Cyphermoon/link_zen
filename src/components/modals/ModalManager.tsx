@@ -2,6 +2,7 @@ import React from 'react'
 import ShareSocials from '../Dashboard/ShareSocials'
 import DeleteModal from './DeleteModal'
 import ModalContext from './ModalContext'
+import { AddModalArg, ModalId, ModalProps, SocialShareModalProps } from './type'
 
 interface Props {
     children: React.ReactNode

@@ -4,6 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
 import Btn from '../common/Button';
 import BaseModal from './BaseModal';
+import { ModalId } from './type';
 
 interface Props {
     id: ModalId

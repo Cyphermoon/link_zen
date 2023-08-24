@@ -7,6 +7,7 @@ import { PhotoSlider } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { downloadFile, toggleFullScreen } from '@/utils';
 import { errorToast } from '@/utils/toast';
+import { ImageState } from './type';
 
 type ImageType = {
     id: string

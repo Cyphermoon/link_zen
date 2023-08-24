@@ -1,45 +1,44 @@
 import { SelectContentProps } from "@radix-ui/react-select";
 
-type CommonSelectorProp = {
+export type CommonSelectorProp = {
     id: string,
     handleChangeId: (id: string) => void
     content?: SelectContentProps
 }
 
-interface SortOptionProps {
+export interface SortOptionProps {
     id: string;
-    leftIcon: IconType;
+    leftIcon: React.ReactNode;
     title: string;
     order?: "asc" | "desc";
     type: string
-    rightIcon: IconType | string;
+    rightIcon: React.ReactNode | string;
 }
 
-interface ViewOptionProps {
+export interface ViewOptionProps {
     id: string;
-    leftIcon: IconType;
+    leftIcon: React.ReactNode;
     title: string;
 }
 
-
-interface SelectItemProp {
+export interface SelectItemProp {
     value: string
     children: React.ReactNode
 }
 
-type SelectorProp = CommonSelectorProp & {
+export type SelectorProp = CommonSelectorProp & {
     triggerChildren: React.ReactNode
     label: string
     children: React.ReactNode
 }
 
 
-type SortSelectorProp = CommonSelectorProp & {
+export type SortSelectorProp = CommonSelectorProp & {
     options: SortOptionProps[]
     selectedOption: SortOptionProps | undefined
 }
 
-type ViewSelectorProps = CommonSelectorProp & {
+export type ViewSelectorProps = CommonSelectorProp & {
     id: string
     handleChangeId: (id: string) => void
     options: ViewOptionProps[]
