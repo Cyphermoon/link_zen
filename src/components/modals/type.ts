@@ -1,3 +1,6 @@
+import { FieldEditorModalProps } from "./FieldEditorModal";
+
+
 export type ModalId = number;
 
 export interface SharedBaseModalProps {
@@ -16,6 +19,10 @@ export type BaseModalProps = SharedBaseModalProps & {
   children: React.ReactNode;
   closeOnBackgroundClicked?: boolean;
 };
+
+export interface FieldEditorProp {
+  [value: string]: string
+}
 
 // Modal Manger Types
 export interface SharedModalObjProps {
@@ -38,11 +45,18 @@ export interface SocialShareModalProps extends SharedModalObjProps {
     hashtags: string[];
   };
 }
+
+export interface FieldEditorModalMangerProps extends SharedModalObjProps, Omit<FieldEditorModalProps, "sendResult"> {
+  type: "field-editor";
+ 
+}
 // export type for different export type of modal required details
 export type AddConfirmModalArg = Omit<ModalProps, "id" | "callback">;
 export type AddSocialShareModalArg = Omit<SocialShareModalProps, "id" | "callback" >;
+export type AddFieldEditorModalArg = Omit<FieldEditorModalMangerProps, "id" | "callback" >;
 
-export type AddModalArg = AddConfirmModalArg | AddSocialShareModalArg
+export type AddModalArg = AddConfirmModalArg | AddSocialShareModalArg | AddFieldEditorModalArg
+export type ModalMangerModals = ModalProps | SocialShareModalProps | FieldEditorModalMangerProps
 
 // export type for addModal function in the modal manager context
 export type AddModal = (modal: AddModalArg) => Promise<boolean | null>; 

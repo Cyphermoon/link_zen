@@ -1,13 +1,13 @@
 import Logo from '@/components/common/Logo'
+import { useModalManager } from '@/components/modals/ModalContext'
+import { AddFieldEditorModalArg } from '@/components/modals/type'
 import clsx from 'clsx'
 import { RxCross1 } from 'react-icons/rx'
-import { useBoolean } from 'usehooks-ts'
 import { ItemContextMenu } from '../Menus'
 import ItemDropdownMenu from '../Menus/ItemDropdownMenu'
-import CreateModal from '../Modals/CreateModal'
-import { CreateModalProp } from '../Modals/type'
 import SidebarLink from './SideBarLink'
 import SidebarSection from './SidebarSection'
+
 
 
 interface Props {
@@ -21,15 +21,41 @@ interface CountLayoutProps {
 }
 
 const Sidebar = ({ opened, closeSidebar }: Props) => {
-    const { value, setTrue, setFalse } = useBoolean(false)
-    const { value: tagModalOpened, setTrue: openTagModal, setFalse: closeTagModal } = useBoolean(false)
 
-    const handleFolderSubmitted = (value: CreateModalProp) => {
-        console.log(value.folder)
+    const { addModal } = useModalManager()
+
+    const handleFolderCreate = () => {
+        const folderObj: AddFieldEditorModalArg = {
+            type: "field-editor",
+            formTitle: "Create New Folder",
+            initialValue: "",
+            fieldId: "folder",
+            labelName: "Folder Name",
+            name: "folder",
+            placeholder: "Enter Folder name you want to create",
+        }
+
+        addModal(folderObj)
+            .then((result) => {
+                console.log(result)
+            })
     }
 
-    const handleTagSubmitted = (value: CreateModalProp) => {
-        console.log(value.tag)
+    const handleTagCreate = () => {
+        const tagObj: AddFieldEditorModalArg = {
+            type: "field-editor",
+            formTitle: "Create New Tag",
+            initialValue: "",
+            fieldId: "tag",
+            labelName: "Tag Name",
+            name: "tag",
+            placeholder: "Enter tag name you want to create",
+        }
+
+        addModal(tagObj)
+            .then((result) => {
+                console.log(result)
+            })
     }
 
     const SIDEBAR_CLASS = clsx("bg-dashboard-opaque lg:bg-dashboard-transparent fixed z-[2] top-0 left-0 w-9/12 lg:w-3/12 lg:max-w-[200px] h-screen space-y-8 transition duration-500 lg:translate-x-0 lg:pointer-events-auto lg:opacity-100 py-5 overflow-visible hide-scrollbar", {
@@ -69,7 +95,7 @@ const Sidebar = ({ opened, closeSidebar }: Props) => {
                     </ul>
                 </SidebarSection>
 
-                <SidebarSection headerText='Folders' handleClick={setTrue}>
+                <SidebarSection headerText='Folders' handleClick={handleFolderCreate}>
                     <ul>
                         <li>
                             <ItemContextMenu>
@@ -122,7 +148,7 @@ const Sidebar = ({ opened, closeSidebar }: Props) => {
 
             </SidebarSection> */}
 
-                <SidebarSection headerText="Tags" handleClick={openTagModal}>
+                <SidebarSection headerText="Tags" handleClick={handleTagCreate}>
                     <ul>
                         <li>
                             <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />} disableMobileDropDown>
@@ -145,35 +171,6 @@ const Sidebar = ({ opened, closeSidebar }: Props) => {
                 </SidebarSection>
 
             </section>
-            {/* modals */}
-            {
-                value &&
-                <CreateModal
-                    labelName='Folder Name'
-                    placeholder='Enter your folder name'
-                    id='folder'
-                    name='folder'
-                    formTitle='Create a New Folder'
-                    modalState={value}
-                    closeModal={setFalse}
-                    initialValue={""}
-                    handleSubmit={handleFolderSubmitted}
-                />
-            }
-            {
-                tagModalOpened &&
-                <CreateModal
-                    labelName='Tag Name'
-                    placeholder='Enter your tag name'
-                    id='tag'
-                    name='tag'
-                    formTitle='Create a New Tag'
-                    modalState={tagModalOpened}
-                    closeModal={closeTagModal}
-                    initialValue={""}
-                    handleSubmit={handleTagSubmitted}
-                />
-            }
         </div>
     )
 }

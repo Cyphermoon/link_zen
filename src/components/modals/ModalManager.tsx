@@ -1,8 +1,9 @@
 import React from 'react'
 import ShareSocials from '../Dashboard/ShareSocials'
 import DeleteModal from './DeleteModal'
+import FieldEditorModal from './FieldEditorModal'
 import ModalContext from './ModalContext'
-import { AddModalArg, ModalId, ModalProps, SocialShareModalProps } from './type'
+import { AddModalArg, ModalId, ModalMangerModals } from './type'
 
 interface Props {
     children: React.ReactNode
@@ -10,7 +11,7 @@ interface Props {
 
 
 const ModalManager = ({ children }: Props) => {
-    const [modals, setModals] = React.useState<(ModalProps | SocialShareModalProps)[]>([])
+    const [modals, setModals] = React.useState<ModalMangerModals[]>([])
 
 
     function addModal(modal: AddModalArg) {
@@ -25,7 +26,7 @@ const ModalManager = ({ children }: Props) => {
         })
     }
 
-    function sendResult(id: ModalId, result: boolean) {
+    function sendResult(id: ModalId, result: boolean | string) {
         const modal = modals.find(modal => modal.id === id)
 
         if (!modal) return null
@@ -55,6 +56,18 @@ const ModalManager = ({ children }: Props) => {
                         url={modal.url}
                         twitter={modal.twitter}
                         sendResult={sendResult} />
+                }
+                if (modal.type === "field-editor") {
+                    return <FieldEditorModal
+                        key={modal.id}
+                        id={modal.id}
+                        labelName={modal.labelName}
+                        placeholder={modal.placeholder}
+                        fieldId={modal.fieldId}
+                        name={modal.name}
+                        formTitle={modal.formTitle}
+                        sendResult={sendResult}
+                        initialValue={modal.initialValue} />
                 }
                 return null
             })}
