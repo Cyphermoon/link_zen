@@ -1,5 +1,6 @@
 import * as ContextMenu from "@radix-ui/react-context-menu"
 import { IconType } from "react-icons"
+import { getListItemClass } from "../classNames";
 
 
 interface Props extends ContextMenu.ContextMenuItemProps {
@@ -16,7 +17,7 @@ const ContextMenuItem = ({ children, Icon, title, handleClick, className, isDang
     return (
         <ContextMenu.Item
             onClick={() => handleClick && handleClick()}
-            className={`flex space-x-2 p-2 items-center cursor-pointer text-sm text-primary-800 rdx-highlighted:bg-accent-200 rounded-md  hover:text-white ${className} ${isDanger ? "flex items-center space-x-3 text-red-500 rdx-highlighted:text-white rdx-highlighted:bg-red-500" : ""}`}
+            className={`${getListItemClass(isDanger)} ${className}`}
             {...props}>
             {!children &&
                 <>

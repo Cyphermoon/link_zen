@@ -33,8 +33,8 @@ const DeleteModal = ({ id, title, description, sendResult, }: Props) => {
                     <Dialog.Title className={`text-2xl font-medium ${description ? "mb-2" : ""}`}>{title}</Dialog.Title>
                     {description ? <p className='text-sm font-normal'>{parse(description)}</p> : null}
 
-                    <figure className='inline-block mx-auto'>
-                        <Image src={'/asset/failed.gif'} width={200} height={250} alt={`${"Delete Illustration"}`} className="object-contain" />
+                    <figure className='inline-block mx-auto relative w-[200px] h-[200px]'>
+                        <Image src={'/asset/failed.gif'} fill alt={`${"Delete Illustration"}`} className="object-contain" />
                     </figure>
 
                     <div className='flex items-center justify-center space-x-8'>

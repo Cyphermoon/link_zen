@@ -8,6 +8,7 @@ import SortSelector from '../common/Selector/SortSelector'
 import ViewSelector from '../common/Selector/ViewSelector'
 import { useModalManager } from '../modals/ModalContext'
 
+
 const ActionSection = () => {
     const [selectedSortId, setSelectedSortId] = useState(SORT_OPTIONS[0].id)
     const selectedSortOption = SORT_OPTIONS.find((option) => option.id === selectedSortId)
@@ -17,8 +18,8 @@ const ActionSection = () => {
 
     const { addModal } = useModalManager()
 
-    function handleFolderRename(folderName: string) {
-        addModal({
+    function launchRenameModal(folderName: string) {
+        return addModal({
             type: "field-editor",
             formTitle: "Rename Folder",
             initialValue: folderName,
@@ -35,7 +36,7 @@ const ActionSection = () => {
 
                 <div
                     className='relative group cursor-pointer flex items-baseline lg:items-center space-x-1.5'
-                    onClick={() => handleFolderRename("Topics to read")}
+                    onClick={() => launchRenameModal("Topics to read")}
                 >
                     <h1 className='text-3xl lg:text-4xl font-medium'>Topics to Read</h1>
                     <button className='relative text-xl text-gray-400 lg:text-4xl lg:text-gray-500 lg:bottom-1 lg:transition-opacity lg:duration-300 lg:opacity-0 lg:group-hover:opacity-100'>

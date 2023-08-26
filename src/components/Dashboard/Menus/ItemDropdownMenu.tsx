@@ -1,17 +1,24 @@
 import DropdownMenuItem from '@/components/common/CustomDropdown/DropdownMenuItem'
-import React from 'react'
 import { BiRename } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
-const ItemDropdownMenu = () => {
+interface Props {
+    handleRename?: () => void
+    handleDelete?: () => void
+}
+
+const ItemDropdownMenu = ({ handleRename, handleDelete }: Props) => {
     return (
         <>
-            <DropdownMenuItem title="Rename" Icon={BiRename} />
-            <DropdownMenuItem
-                isDanger
-                title="Delete"
-                Icon={RiDeleteBinLine}
-            />
+            {handleRename && <DropdownMenuItem title="Rename" Icon={BiRename} onClick={handleRename} />}
+            {handleDelete &&
+                <DropdownMenuItem
+                    isDanger
+                    title="Delete"
+                    onClick={handleDelete}
+                    Icon={RiDeleteBinLine}
+                />
+            }
         </>
     )
 }

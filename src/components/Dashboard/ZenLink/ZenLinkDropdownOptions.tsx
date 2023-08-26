@@ -7,21 +7,21 @@ import { RiDeleteBinLine, RiEditBoxLine } from "react-icons/ri"
 interface Props {
     viewImage: () => void,
     handleCopy: (text: string) => void
-    deleteMessage: (url: string) => { title: string, message: string }
+    handleDelete: () => void
     handleShare: () => void
     url: string
 }
 
-const ZenLinkDropdownOptions = ({ viewImage, handleCopy, deleteMessage, handleShare, url }: Props) => {
+const ZenLinkDropdownOptions = ({ viewImage, handleCopy, handleDelete, handleShare, url }: Props) => {
 
 
     return (
         <>
-            <DropdownMenuItem Icon={HiViewfinderCircle} title='view image' handler={viewImage} />
-            <DropdownMenuItem Icon={FaCopy} title='Copy' handler={() => handleCopy(url)} />
-            <DropdownMenuItem Icon={FiShare} title='Share' handler={handleShare} />
+            <DropdownMenuItem Icon={HiViewfinderCircle} title='view image' onClick={viewImage} />
+            <DropdownMenuItem Icon={FaCopy} title='Copy' onClick={() => handleCopy(url)} />
+            <DropdownMenuItem Icon={FiShare} title='Share' onClick={handleShare} />
             <DropdownMenuItem Icon={RiEditBoxLine} title='Edit' />
-            <DropdownMenuItem Icon={RiDeleteBinLine} title='Delete' isDanger confirmation={deleteMessage(url)} />
+            <DropdownMenuItem Icon={RiDeleteBinLine} title='Delete' isDanger onClick={handleDelete} />
         </>
     )
 

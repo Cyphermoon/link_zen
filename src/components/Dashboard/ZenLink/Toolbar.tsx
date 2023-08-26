@@ -1,12 +1,10 @@
 import CustomDropdown from "@/components/common/CustomDropdown";
 import CustomToolbar from "@/components/common/CustomToolbar";
 import CustomToolbarButton from "@/components/common/CustomToolbar/ToolBarItem";
-import { useModalManager } from "@/components/modals/ModalContext";
-import { deleteMessage, handleConfirmationOrAction } from "@/utils";
 import { ToolbarButton } from "@radix-ui/react-toolbar";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
-import { handleCopy, handleDelete } from "./menuHandlers.util";
+import { handleCopy } from "./menuHandlers.util";
 import ZenLinkDropdownOptions from "./ZenLinkDropdownOptions";
 
 interface Props {
@@ -14,24 +12,16 @@ interface Props {
     linkUrl: string
     viewImage: () => void
     handleShare: () => void
+    handleDelete: () => void
 }
 
-const Toolbar = ({ linkUrl, viewImage, handleShare, className = "" }: Props) => {
-
-    const { addModal } = useModalManager()
-
-    function deleteLink() {
-        handleConfirmationOrAction({
-            ...deleteMessage(linkUrl),
-            dialog: addModal
-        }, handleDelete)
-    }
+const Toolbar = ({ linkUrl, viewImage, handleShare, handleDelete, className = "" }: Props) => {
 
     return (
         <CustomToolbar
             className={` hidden lg:flex items-center justify-center p-0 w-max bg-primary-600 shadow-lg opacity-0 group-hover:animate-in group-hover:slide-in-from-right-full group-hover:opacity-100 rounded-lg overflow-clip text-white relative ${className}`
             }>
-            <CustomToolbarButton value='delete' Icon={RiDeleteBin6Line} handleClick={deleteLink} />
+            <CustomToolbarButton value='delete' Icon={RiDeleteBin6Line} handleClick={handleDelete} />
             <CustomToolbarButton value='edit' Icon={RiEditBoxLine} />
 
             <CustomDropdown
@@ -47,7 +37,7 @@ const Toolbar = ({ linkUrl, viewImage, handleShare, className = "" }: Props) => 
                     viewImage={viewImage}
                     handleCopy={handleCopy}
                     handleShare={handleShare}
-                    deleteMessage={deleteMessage}
+                    handleDelete={handleDelete}
                     url={linkUrl} />
             </CustomDropdown>
 

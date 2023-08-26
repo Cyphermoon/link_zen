@@ -1,13 +1,12 @@
 import Logo from '@/components/common/Logo'
 import { useModalManager } from '@/components/modals/ModalContext'
 import { AddFieldEditorModalArg } from '@/components/modals/type'
+import { deleteMessage, handleConfirmationOrAction } from '@/utils'
 import clsx from 'clsx'
 import { RxCross1 } from 'react-icons/rx'
-import { ItemContextMenu } from '../Menus'
-import ItemDropdownMenu from '../Menus/ItemDropdownMenu'
+import CountLayout from './CountLayout'
 import SidebarLink from './SideBarLink'
 import SidebarSection from './SidebarSection'
-
 
 
 interface Props {
@@ -15,54 +14,92 @@ interface Props {
     closeSidebar: () => void
 }
 
-interface CountLayoutProps {
-    text: string;
-    number: number;
-}
+type ItemType = 'folder' | 'tag';
+
+const folders = [
+    { id: 1, name: 'Coding tools' },
+    { id: 2, name: 'Topics to read' },
+    { id: 3, name: 'Design Sites' },
+    { id: 4, name: 'Best Spotify Playlist' },
+];
+
+const tags = [
+    { id: 1, text: 'life', number: 1 },
+    { id: 2, text: 'game', number: 2 },
+    { id: 3, text: 'movie', number: 3 },
+];
+
 
 const Sidebar = ({ opened, closeSidebar }: Props) => {
 
     const { addModal } = useModalManager()
 
-    const handleFolderCreate = () => {
-        const folderObj: AddFieldEditorModalArg = {
-            type: "field-editor",
-            formTitle: "Create New Folder",
-            initialValue: "",
-            fieldId: "folder",
-            labelName: "Folder Name",
-            name: "folder",
-            placeholder: "Enter Folder name you want to create",
-        }
+    async function handleCreate(type: ItemType) {
+        const isFolder = type === 'folder';
+        const typeName = isFolder ? 'Folder' : 'Tag';
+        const placeholderText = isFolder ? 'folder' : 'tag';
 
-        addModal(folderObj)
-            .then((result) => {
-                console.log(result)
-            })
+        const obj: AddFieldEditorModalArg = {
+            type: 'field-editor',
+            formTitle: `Create New ${typeName}`,
+            initialValue: '',
+            fieldId: type,
+            labelName: `${typeName} Name`,
+            name: type,
+            placeholder: `Enter ${placeholderText} name you want to create`,
+        };
+
+        try {
+            const result = await addModal(obj);
+            console.log(result);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
     }
 
-    const handleTagCreate = () => {
-        const tagObj: AddFieldEditorModalArg = {
-            type: "field-editor",
-            formTitle: "Create New Tag",
-            initialValue: "",
-            fieldId: "tag",
-            labelName: "Tag Name",
-            name: "tag",
-            placeholder: "Enter tag name you want to create",
-        }
+    async function handleRename(name: string, type: ItemType) {
+        const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
 
-        addModal(tagObj)
-            .then((result) => {
-                console.log(result)
-            })
+        const obj: AddFieldEditorModalArg = {
+            type: 'field-editor',
+            formTitle: `Rename ${capitalizedType}`,
+            initialValue: name,
+            fieldId: `renamed${capitalizedType}`,
+            labelName: `${capitalizedType} Name`,
+            name: `rename${capitalizedType}`,
+            placeholder: `Enter name you want to rename "${name}" to`,
+        };
+
+        try {
+            const result = await addModal(obj);
+            console.log(result);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
     }
 
-    const SIDEBAR_CLASS = clsx("bg-dashboard-opaque lg:bg-dashboard-transparent fixed z-[2] top-0 left-0 w-9/12 lg:w-3/12 lg:max-w-[200px] h-screen space-y-8 transition duration-500 lg:translate-x-0 lg:pointer-events-auto lg:opacity-100 py-5 overflow-visible hide-scrollbar", {
+    async function handleDelete(name: string, listType: ItemType) {
+        const confirmation = deleteMessage(name, listType);
+
+        const deleteLink = () => 1;
+
+        try {
+            const confirmationResult = await handleConfirmationOrAction({
+                ...confirmation,
+                dialog: addModal,
+            }, deleteLink);
+
+            console.log(confirmationResult);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    }
+
+
+    const SIDEBAR_CLASS = clsx("bg-dashboard-opaque lg:bg-dashboard-transparent fixed z-[2] top-0 left-0 w-9/12 lg:w-3/12 lg:max-w-[200px] h-screen transition duration-500 lg:translate-x-0 lg:pointer-events-auto lg:opacity-100 overflow-visible hide-scrollbar", {
         "opacity-100 pointer-events-auto translate-x-0": opened,
         "pointer-events-none opacity-0 -translate-x-full": !opened
     })
-
 
     return (
         <div className='isolate z-[60]'>
@@ -70,106 +107,62 @@ const Sidebar = ({ opened, closeSidebar }: Props) => {
                 className={`lg:hidden w-screen h-screen bg-black/20 fixed top-0 left-0 transition duration-300 ${opened ? "opacity-100 pointer-events-auto" : "pointer-events-none opacity-0"}`} />
 
             <section className={SIDEBAR_CLASS}>
-                <div className={`flex items-center justify-between px-4`}>
-                    <Logo className='text-accent text-xl font-semibold' />
-                    <RxCross1 className='text-gray-800 text-xl lg:hidden' onClick={closeSidebar} />
+                <div className='h-screen overflow-y-scroll hide-scrollbar space-y-8 pt-5 pb-8'>
+                    <div className={`flex items-center justify-between px-4`}>
+                        <Logo className='text-accent text-xl font-semibold' />
+                        <RxCross1 className='text-gray-800 text-xl lg:hidden' onClick={closeSidebar} />
+                    </div>
+
+                    <SidebarSection headerText='Generated'>
+                        <ul>
+                            <li>
+                                <SidebarLink href='#' withDropdownItems={false} withContextMenu={false} >
+                                    Root
+                                </SidebarLink>
+                            </li>
+                            <li>
+                                <SidebarLink href='#' withDropdownItems={false} withContextMenu={false} >
+                                    Frequently Visited
+                                </SidebarLink>
+                            </li>
+                            <li>
+                                <SidebarLink href='#' withDropdownItems={false} withContextMenu={false}  >
+                                    Unused
+                                </SidebarLink>
+                            </li>
+                        </ul>
+                    </SidebarSection>
+
+                    <SidebarSection headerText='Folders' handleClick={() => handleCreate("folder")}>
+                        <ul>
+                            {folders.map(folder => (
+                                <li key={folder.id}>
+                                    <SidebarLink
+                                        handleDelete={() => handleDelete(folder.name, "folder")}
+                                        handleRename={() => handleRename(folder.name, "folder")}
+                                        href="#" >
+                                        {folder.name}
+                                    </SidebarLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </SidebarSection>
+
+                    <SidebarSection headerText="Tags" handleClick={() => handleCreate("tag")}>
+                        <ul>
+                            {tags.map(tag => (
+                                <li key={tag.id}>
+                                    <SidebarLink
+                                        handleDelete={() => handleDelete(tag.text, "tag")}
+                                        handleRename={() => handleRename(tag.text, "tag")}
+                                        href="#">
+                                        <CountLayout text={tag.text} number={tag.number} />
+                                    </SidebarLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </SidebarSection>
                 </div>
-
-                <SidebarSection headerText='Generated'>
-                    <ul>
-                        <li>
-                            <SidebarLink href='#' >
-                                Root
-                            </SidebarLink>
-                        </li>
-                        <li>
-                            <SidebarLink href='#' >
-                                Frequently Visited
-                            </SidebarLink>
-                        </li>
-                        <li>
-                            <SidebarLink href='#' >
-                                Unused
-                            </SidebarLink>
-                        </li>
-                    </ul>
-                </SidebarSection>
-
-                <SidebarSection headerText='Folders' handleClick={handleFolderCreate}>
-                    <ul>
-                        <li>
-                            <ItemContextMenu>
-                                <SidebarLink href="#">Coding tools</SidebarLink>
-                            </ItemContextMenu>
-                        </li>
-                        <li>
-                            <ItemContextMenu>
-                                <SidebarLink href="#">Books to read</SidebarLink>
-                            </ItemContextMenu>
-                        </li>
-                        <li>
-                            <ItemContextMenu>
-                                <SidebarLink
-                                    href="#"
-                                    dropdownItems={<ItemDropdownMenu />}>
-                                    Design Sites
-                                </SidebarLink>
-                            </ItemContextMenu>
-                        </li>
-                        <li>
-                            <ItemContextMenu>
-                                <SidebarLink
-                                    href="#"
-                                    dropdownItems={<ItemDropdownMenu />}>
-                                    Best Spotify Playlist
-                                </SidebarLink>
-                            </ItemContextMenu>
-                        </li>
-                    </ul>
-
-                </SidebarSection>
-
-
-                {/* <SidebarSection headerText='Tags' handleClick={() => 1}>
-                <ul>
-                    <li>
-                        <SidebarLink href='#'>Music </SidebarLink>
-                    </li>
-                    <li>
-                        <SidebarLink href='#'>Books to read</SidebarLink>
-                    </li>
-                    <li>
-                        <SidebarLink href='#'>Design Sites</SidebarLink>
-                    </li>
-                    <li>
-                        <SidebarLink href='#'>Best Spotify Playlist</SidebarLink>
-                    </li>
-                </ul>
-
-            </SidebarSection> */}
-
-                <SidebarSection headerText="Tags" handleClick={handleTagCreate}>
-                    <ul>
-                        <li>
-                            <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />} disableMobileDropDown>
-                                <CountLayout text="life" number={1} />
-                            </SidebarLink>
-                        </li>
-                        <li>
-                            <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />} disableMobileDropDown>
-                                <CountLayout text="game" number={2} />
-                            </SidebarLink>
-                        </li>
-                        <li>
-                            <ItemContextMenu>
-                                <SidebarLink href="#" dropdownItems={<ItemDropdownMenu />} disableMobileDropDown>
-                                    <CountLayout text="movie" number={3} />
-                                </SidebarLink>
-                            </ItemContextMenu>
-                        </li>
-                    </ul>
-                </SidebarSection>
-
             </section>
         </div>
     )
@@ -177,15 +170,6 @@ const Sidebar = ({ opened, closeSidebar }: Props) => {
 
 export default Sidebar
 
-
-const CountLayout = ({ text, number }: CountLayoutProps) => {
-    return (
-        <div className='flex items-center justify-between pr-1.5'>
-            <span className='text-sm'>{text}</span>
-            <span className='group-hover:lg:hidden'>{number}</span>
-        </div>
-    );
-};
 
 
 

@@ -3,17 +3,15 @@ import { useModalManager } from '@/components/modals/ModalContext'
 import { AddSocialShareModalArg } from '@/components/modals/type'
 import { LINK_TITLE_LENGTH } from '@/constants/link.constant'
 import { useCloseLinkOnClickOutside } from '@/hooks/link.hook'
-import { deleteMessage, truncateText } from '@/utils'
+import { deleteMessage, handleConfirmationOrAction, truncateText } from '@/utils'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
-import DropdownMenuItem from '../../common/CustomDropdown/DropdownMenuItem'
 import Excerpt from './Excerpt'
 import FullDescription from './FullDescription'
 import { handleCopy } from './menuHandlers.util'
 import Tags from './Tags'
 import Toolbar from './Toolbar'
-import { ZenLinkDropdownOptionProps } from './type'
 import UrlDomain from './UrlDomain'
 import ZenLinkDropdownOptions from './ZenLinkDropdownOptions'
 
@@ -39,6 +37,19 @@ const ZenLink = ({
     className, imageUrl, descOpened, description, id, handleDescChanged, url, dateCreated, title, idx, tags, colorTag, setImage
 }: Props) => {
     const { addModal } = useModalManager()
+
+
+
+    function handleDelete() {
+        const confirmation = deleteMessage(url)
+
+        const deleteLink = () => 1
+
+        handleConfirmationOrAction({
+            ...confirmation,
+            dialog: addModal
+        }, deleteLink)
+    }
 
     const linkRef = useRef<HTMLDivElement>(null)
     useCloseLinkOnClickOutside(descOpened, id, handleDescChanged, linkRef.current)
@@ -66,7 +77,7 @@ const ZenLink = ({
             className={`border-2 border-gray-200 p-3 rounded-2xl bg-primary shadow-sm flex flex-col items-start justify-between space-y-4 w-fit ${className} relative overflow-hidden group w-full lg:max-w-[280px] isolate`}
         >
             <div className='static lg:absolute top-3 right-3 flex items-center justify-end w-full z-10'>
-                <Toolbar viewImage={viewImage} handleShare={handleShare} linkUrl={url} />
+                <Toolbar handleDelete={handleDelete} viewImage={viewImage} handleShare={handleShare} linkUrl={url} />
 
                 {/* mobile Dropdown */}
                 <CustomDropdown
@@ -79,7 +90,7 @@ const ZenLink = ({
                         viewImage={viewImage}
                         handleCopy={handleCopy}
                         handleShare={handleShare}
-                        deleteMessage={deleteMessage}
+                        handleDelete={handleDelete}
                         url={url} />
 
                 </CustomDropdown>
@@ -117,18 +128,5 @@ const ZenLink = ({
 
 export default ZenLink
 
-
-export function renderDropdownMenuItems(options: ZenLinkDropdownOptionProps[], linkName?: string) {
-    return options.map((option, index) => {
-        const confirmation = option.confirmation?.(linkName);
-        return (
-            <DropdownMenuItem
-                key={index}
-                {...option}
-                confirmation={confirmation}
-            />
-        );
-    });
-}
 
 

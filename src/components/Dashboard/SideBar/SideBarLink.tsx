@@ -1,39 +1,54 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import CustomDropdown from '@/components/common/CustomDropdown'
 import Link from "next/link"
 import { BsThreeDots } from "react-icons/bs"
+import { ItemContextMenu } from '../Menus'
+import ItemDropdownMenu from '../Menus/ItemDropdownMenu'
 
 interface SidebarLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string
     children: React.ReactNode
-    dropdownItems?: React.ReactNode
-    disableMobileDropDown?: boolean
+    withDropdownItems?: boolean
+    withContextMenu?: boolean
+    handleRename?: () => void
+    handleDelete?: () => void
 }
 
-const SidebarLink = ({ href, children, dropdownItems, className, disableMobileDropDown, ...props }: SidebarLinkProps) => {
+const SidebarLink = ({ href, children, withDropdownItems = true, withContextMenu = true, className, handleDelete, handleRename, ...props }: SidebarLinkProps) => {
+
+
     return (
-        <Link href={href} className={`text-gray-700 text-sm ease-out transition-colors duration-300 hover:bg-accent/10 hover:text-gray-600 cursor-pointer block w-full py-1 px-4 group select-none lg:select-text relative ${className}`} {...props}>
+        <div className={`ease-out transition-colors duration-300 hover:bg-accent/10 hover:text-gray-600 cursor-pointer block w-full group relative ${className}`}>
+            {
+                withDropdownItems ?
 
-            {dropdownItems &&
-                <DropdownMenu.Root>
-                    <DropdownMenu.Trigger className={`outline-none absolute top-1/2 -translate-y-1/2 right-2  ${disableMobileDropDown ? "hidden lg:block" : "block"}`}>
-                        <div className={`text-xl transition-opacity opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:hover:bg-black/10 px-1`}>
-                            <BsThreeDots />
-                        </div>
-                    </DropdownMenu.Trigger>
-                    <DropdownMenu.Content
-                        align="start"
-                        side='right'
-                        sideOffset={3}
-                        className='bg-white rounded-xl shadow-lg z-40 drop-shadow-sm border min-w-[150px] py-2.5 px-0.5'>
-                        <>
-                            {dropdownItems}
-                        </>
-                    </DropdownMenu.Content>
-                </DropdownMenu.Root>
+                    <ItemContextMenu
+                        handleRename={handleRename}
+                        handleDelete={handleDelete}>
+                        <Link className='text-sm text-gray-700  ease-out transition-colors duration-300 hover:bg-accent/10 hover:text-gray-600 cursor-pointer block w-full py-1 px-4 group select-none lg:select-text' href={href} {...props}>
+                            {children}
+                        </Link>
+                    </ItemContextMenu>
+                    :
+                    <Link className='text-sm text-gray-700  ease-out transition-colors duration-300 hover:bg-accent/10 hover:text-gray-600 cursor-pointer block w-full py-1 px-4 group select-none lg:select-text' href={href} {...props}>
+                        {children}
+                    </Link>
             }
-            {children}
-        </Link>
 
+            {withDropdownItems &&
+                <CustomDropdown
+                    withPortal={false}
+                    trigger={
+                        <button className={`text-xl text-gray-500 lg:text-lg transition-opacity opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:hover:bg-black/10 px-1 outline-none absolute top-1/2 -translate-y-1/2 right-3 lg:right-4 z-[40]`}>
+                            <BsThreeDots />
+                        </button>
+                    }>
+                    <ItemDropdownMenu
+                        handleRename={handleRename}
+                        handleDelete={handleDelete} />
+
+                </CustomDropdown>
+            }
+        </div>
     )
 }
 
