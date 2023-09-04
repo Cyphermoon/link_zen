@@ -4,7 +4,7 @@ import ActionSection from '@/components/Dashboard/ActionSection';
 import DashboardLayout from '@/components/Dashboard/layout';
 import LinkImagesSlider from '@/components/Dashboard/LinkImagesSlider';
 import { ImageState } from '@/components/Dashboard/type';
-import ZenLink from '@/components/Dashboard/ZenLink';
+import ZenLinkList from '@/components/Dashboard/ZenLinkList';
 import RootLayout from '@/components/layout/RootLayout';
 import AppConfig from '@/constants/app.constant';
 import { useActiveLink } from '@/hooks/link.hook';
@@ -188,9 +188,6 @@ const dummyData = [
 ];
 
 
-
-
-
 const UserDashBoard: React.FC = () => {
     const { activeLink, handleActiveLink } = useActiveLink("");
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -213,19 +210,11 @@ const UserDashBoard: React.FC = () => {
                 <ActionSection />
 
                 <Container className='flex flex-col items-start lg:items-center space-y-8 mb-6'>
-                    <div className='grid w-full justify-items-center md:justify-items-start grid-cols-dynamic-193 md:grid-cols-3 xl:grid-cols-4 gap-7'>
-                        {
-                            dummyData.map((data, idx) => (
-                                <ZenLink
-                                    key={data.id}
-                                    idx={idx}
-                                    descOpened={data.id === activeLink}
-                                    setImage={setImage}
-                                    handleDescChanged={handleActiveLink}
-                                    {...data}
-                                />
-                            ))}
-                    </div>
+                    <ZenLinkList
+                        zenLinks={dummyData}
+                        setImage={setImage}
+                        activeLink={activeLink}
+                        handleDescChanged={handleActiveLink} />
 
                     <Pagination
                         currentPage={currentPage}

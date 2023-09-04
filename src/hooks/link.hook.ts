@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { useClickAnyWhere } from "usehooks-ts"
 
 
@@ -6,7 +6,7 @@ import { useClickAnyWhere } from "usehooks-ts"
 export function useActiveLink<T> (initialValue: T) {
     const [activeLink, setActiveLink] = useState<T>(initialValue)
 
-    const handleActiveLink = (id: T) => {
+    const handleActiveLink =useCallback((id: T) => {
         // change's the currently active link
         if (activeLink === id) {
             setActiveLink(initialValue)
@@ -14,7 +14,7 @@ export function useActiveLink<T> (initialValue: T) {
         }
 
         setActiveLink(id)
-    }
+    }, [activeLink, initialValue])
 
     return {activeLink, handleActiveLink}
 }
