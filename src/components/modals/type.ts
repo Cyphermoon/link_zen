@@ -1,3 +1,5 @@
+import { ShareSocialModalProps } from "../Dashboard/ShareSocials";
+import { DeleteModalProps } from "./DeleteModal";
 import { FieldEditorModalProps } from "./FieldEditorModal";
 
 
@@ -30,20 +32,12 @@ export interface SharedModalObjProps {
   callback: (result: any) => void;
 }
 
-export interface ModalProps extends SharedModalObjProps {
+export interface DeleteModalManagerProps extends SharedModalObjProps, Omit<DeleteModalProps, "sendResult"> {
   type: "confirm"
-  title: string;
-  description?: string;
 }
 
-export interface SocialShareModalProps extends SharedModalObjProps {
+export interface SocialShareModalManagerProps extends SharedModalObjProps, Omit<ShareSocialModalProps, "sendResult"> {
   type: "social-share";
-  url: string;
-  title: string;
-  twitter: {
-    related: string[];
-    hashtags: string[];
-  };
 }
 
 export interface FieldEditorModalMangerProps extends SharedModalObjProps, Omit<FieldEditorModalProps, "sendResult"> {
@@ -51,12 +45,12 @@ export interface FieldEditorModalMangerProps extends SharedModalObjProps, Omit<F
  
 }
 // export type for different export type of modal required details
-export type AddConfirmModalArg = Omit<ModalProps, "id" | "callback">;
-export type AddSocialShareModalArg = Omit<SocialShareModalProps, "id" | "callback" >;
+export type AddConfirmModalArg = Omit<DeleteModalManagerProps, "id" | "callback">;
+export type AddSocialShareModalArg = Omit<SocialShareModalManagerProps, "id" | "callback" >;
 export type AddFieldEditorModalArg = Omit<FieldEditorModalMangerProps, "id" | "callback" >;
 
 export type AddModalArg = AddConfirmModalArg | AddSocialShareModalArg | AddFieldEditorModalArg
-export type ModalMangerModals = ModalProps | SocialShareModalProps | FieldEditorModalMangerProps
+export type ModalMangerModals = DeleteModalManagerProps | SocialShareModalManagerProps | FieldEditorModalMangerProps
 
 // export type for addModal function in the modal manager context
 export type AddModal = (modal: AddModalArg) => Promise<boolean | null>; 

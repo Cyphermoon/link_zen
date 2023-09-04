@@ -6,15 +6,14 @@ import Btn from '../common/Button';
 import BaseModal from './BaseModal';
 import { ModalId } from './type';
 
-interface Props {
+export interface DeleteModalProps {
     id: ModalId
     title: string;
     description?: string;
     sendResult: (id: ModalId, result: boolean) => void
 }
 
-
-const DeleteModal = ({ id, title, description, sendResult, }: Props) => {
+const DeleteModal = ({ id, title, description, sendResult, }: DeleteModalProps) => {
     const { isOpen, closeModal } = useModal(true);
 
     function handleClose(result: boolean) {

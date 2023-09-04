@@ -16,13 +16,20 @@ import {
     WhatsappShareButton
 } from "react-share";
 import BaseDialog from "../modals/BaseModal";
-import { ModalId, SocialShareModalProps } from "../modals/type";
+import { ModalId } from "../modals/type";
 
-interface Props extends Omit<SocialShareModalProps, "type" | "callback" | "description"> {
+export interface ShareSocialModalProps {
+    id: ModalId;
     sendResult: (id: ModalId, result: boolean) => void
+    url: string;
+    title: string;
+    twitter: {
+        related: string[];
+        hashtags: string[];
+    };
 }
 
-const ShareSocials = ({ url, id, title, twitter, sendResult }: Props) => {
+const ShareSocials = ({ url, id, title, twitter, sendResult }: ShareSocialModalProps) => {
     const { isOpen, closeModal } = useModal(true);
 
     function handleClose(result: boolean) {
