@@ -1,4 +1,4 @@
-type boxContent = {
+export type boxContent = {
     title: string,
     body: string,
     children?: React.ReactNode,
@@ -6,8 +6,6 @@ type boxContent = {
     hStyles?: string,
     pStyles?: string,
     tiltCard?: boolean
-
 }
 
 
-export default boxContent

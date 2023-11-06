@@ -3,6 +3,7 @@ import { waitlist } from "./type";
 import { useFormik } from "formik";
 import { createContact } from "@/service/mail";
 import Btn from "@/components/common/Button";
+import { CreateContactRequestProps } from "@/service/type";
 
 const WaitListModal = ({ modalOpened, closeModal }: waitlist) => {
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {

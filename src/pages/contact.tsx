@@ -14,6 +14,7 @@ import Btn from "@/components/common/Button";
 import WaitListWrapper from "@/components/layout/WaitListWrapper";
 import RootLayout from "@/components/layout/RootLayout";
 import { INPUT_CLASS } from "@/components/forms/commonStyles.constant";
+import { ContactFormFieldProps } from "@/components/Contact/type";
 
 
 const ContactFormSchema = Yup.object().shape({

@@ -1,4 +1,5 @@
 import { ErrorMessage, useField } from "formik"
+import { TextAreaProps } from "./type"
 
 const FormikTextarea = ({ className, name, placeholder, ...props }: TextAreaProps) => {
     const [field, meta] = useField(name)

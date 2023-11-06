@@ -1,23 +1,27 @@
-import * as Toolbar from "@radix-ui/react-toolbar"
+import { ToolbarButton, ToolbarButtonProps } from "@radix-ui/react-toolbar";
+import { IconType } from "react-icons";
 
-interface Props {
-    value: string,
-    children: React.ReactNode
+interface Props extends ToolbarButtonProps {
+    value: string;
+    Icon: IconType
+    className?: string;
+    handleClick?: (id?: IdType) => void
 }
 
-
-const ToolBarItem = ({ value, children }: Props) => {
+const CustomToolbarButton = ({ value, Icon, className, handleClick, ...props }: Props) => {
 
     return (
-        <Toolbar.ToggleItem
-            tabIndex={-1}
-            className='py-1 px-2 h-[28px] hover:bg-accent-200 hover:text-white text-md'
+        <ToolbarButton
+            className={`py-1 px-2 h-[28px] hover:bg-accent-200 hover:text-white text-md ${className}`}
             title={value}
-            value={value}>
-            {children}
-        </Toolbar.ToggleItem>
-    )
+            value={value}
+            {...props}
+            onClick={() => handleClick?.()}
+        >
+            {Icon && <Icon />}
+        </ToolbarButton>
+    );
+};
 
-}
 
-export default ToolBarItem
+export default CustomToolbarButton;

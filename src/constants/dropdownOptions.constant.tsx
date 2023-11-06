@@ -1,3 +1,4 @@
+import { SortOptionProps, ViewOptionProps } from '@/components/common/Selector/type';
 import { BsFillGridFill } from 'react-icons/bs';
 import { FaList, FaRegClock } from 'react-icons/fa';
 import { ImSortAlphaAsc, ImSortAlphaDesc } from 'react-icons/im';

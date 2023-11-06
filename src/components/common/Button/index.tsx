@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { CustomButtonProps } from "./type";
 
 const Btn = ({
     children,
@@ -18,6 +19,8 @@ const Btn = ({
             "bg-accent text-white": variant === "normal",
             "bg-primary text-accent": variant === "inverse",
             "border-2 border-accent text-accent bg-transparent": variant === "outline",
+            "text-accent-900, bg-gray-200": variant === "muted",
+            "bg-red-500 text-white": variant === "danger",
             "w-full": fullWidth,
             "hover:opacity-80 hover:scale-95": !disableZoomOutEffect,
             "opacity-70 pointer-events-none": disabled

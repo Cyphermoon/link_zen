@@ -1,4 +1,4 @@
-interface ContactFormFieldProps {
+export interface ContactFormFieldProps {
     name: string;
     email: string;
     message: string;

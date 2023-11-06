@@ -7,8 +7,9 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import Container from '../../common/Container';
 import Logo from '../../common/Logo';
 import NavItem from './NavItem';
+import { NavItem as NavItemProps } from './type';
 
-const navLinks: NavItem[] = [
+const navLinks: NavItemProps[] = [
   {
     href: "/#features",
     text: "Features",

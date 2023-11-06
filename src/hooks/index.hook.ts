@@ -1,5 +1,5 @@
 import { gsap } from "gsap"
-import { MouseEvent } from "react"
+import { MouseEvent, useState } from "react"
 
 export const useTiltEffect = () => {
     const tiltCard = (e: MouseEvent<HTMLDivElement>) => {
@@ -40,3 +40,19 @@ export const useTiltEffect = () => {
 
     return { tiltCard, removeTiltEffect }
 }
+
+
+export const useModal = (initialState: boolean) => {
+    const [isOpen, setIsOpen] = useState(initialState);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    return { isOpen, openModal, closeModal };
+};
+

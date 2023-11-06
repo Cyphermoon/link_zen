@@ -1,4 +1,4 @@
-interface CreateContactRequestProps {
+export interface CreateContactRequestProps {
     email: string,
     updateEnabled: boolean,
     listIds: number[]
@@ -7,7 +7,7 @@ interface CreateContactRequestProps {
     }
 }
 
-interface ContactFormRequestProps {
+export interface ContactFormRequestProps {
     service_id: string;
     template_id: string;
     user_id: string;

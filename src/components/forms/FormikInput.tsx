@@ -1,6 +1,7 @@
 import { ErrorMessage, useField } from "formik";
+import { InputProps } from "./type";
 
-const FormikInput = ({ type = "string", placeholder, name, className, ...props }: InputProps) => {
+const FormikInput = ({ type = "text", placeholder, name, className, ...props }: InputProps) => {
     const [field, meta] = useField({ name, type })
 
 

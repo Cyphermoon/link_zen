@@ -1,19 +1,5 @@
-import boxContent from "./type";
-import {
-  nunito,
-  poppins,
-  roboto,
-  opensans,
-  dmSans,
-  urbanist,
-  worksans,
-  pfDisplay,
-  spectral,
-  karla,
-  raleway,
-  montserrat,
-} from "font";
-
+import { boxContent } from "./type";
+import { urbanist, montserrat } from "font";
 const Box = ({
   title,
   body,

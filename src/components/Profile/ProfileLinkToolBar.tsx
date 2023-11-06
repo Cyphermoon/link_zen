@@ -1,22 +1,17 @@
 import { RiDeleteBin6Line, RiEditBoxLine, RiShareLine } from "react-icons/ri"
 import CustomToolbar from "../common/CustomToolbar"
-import ToolBarItem from "../common/CustomToolbar/ToolBarItem"
+import CustomToolbarButton from "../common/CustomToolbar/ToolBarItem"
 
 
 const ProfileLinkToolBar = () => {
     return (
-        <CustomToolbar>
-            <ToolBarItem value='delete'>
-                <RiDeleteBin6Line />
-            </ToolBarItem>
+        <CustomToolbar className="hidden lg:flex items-center justify-center p-0 w-max bg-primary-200 absolute right-4 top-2 z-10 opacity-0 group-hover:animate-in group-hover:slide-in-from-right-0 group-hover:opacity-100">
 
-            <ToolBarItem value='edit'>
-                <RiEditBoxLine />
-            </ToolBarItem>
+            <CustomToolbarButton value='delete' Icon={RiDeleteBin6Line} />
 
-            <ToolBarItem value='share'>
-                <RiShareLine />
-            </ToolBarItem>
+            <CustomToolbarButton value='edit' Icon={RiEditBoxLine} />
+
+            <CustomToolbarButton value='share' Icon={RiShareLine} />
 
         </CustomToolbar>
     )

@@ -1,19 +1,30 @@
 import * as Select from "@radix-ui/react-select"
 import { forwardRef } from "react"
+import { SelectItemProp, SelectorProp } from "./type"
+
+export const SELECT_TRIGGER_CLASS = "flex flex-row items-center text-base gap-1 px-2 py-1 text-accent-800"
 
 
-const Selector = ({ id, handleChangeId, triggerChildren, label, children }: SelectorProp) => {
+
+const Selector = ({ id, handleChangeId, triggerChildren, label, children, content }: SelectorProp) => {
+    const isPositionPopper = content?.position && content.position === "popper"
+
     return (
         <Select.Root value={id} onValueChange={handleChangeId}>
             <Select.Trigger className='outline-none bg-accent-50 rounded-lg'>
                 <Select.Value>
-                    <div className='flex flex-row items-center text-base gap-1 px-2 py-1 text-accent-900'>
+                    <div className={SELECT_TRIGGER_CLASS}>
                         {triggerChildren}
                     </div>
                 </Select.Value>
             </Select.Trigger>
+
             <Select.Portal>
-                <Select.Content className='bg-primary-50 py-2 px-1 rounded-md animate-in fade-in-0 duration-300'>
+                <Select.Content
+                    position={content?.position}
+                    className={`bg-primary-50 py-2 px-1 rounded-lg border animate-in fade-in-0 duration-300 drop-shadow-md ${isPositionPopper ? "mt-2" : ""}`}
+                    {...content}
+                >
                     <Select.SelectViewport>
                         <Select.Group>
                             <Select.Label className='text-primary-800 font-medium text-lg mb-3 px-2'>

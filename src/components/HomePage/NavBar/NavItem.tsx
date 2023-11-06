@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { NavItemProps } from "./type"
 
 const NavItem = ({ text, href, tabIndex = 0, color, active }: NavItemProps) => {
 

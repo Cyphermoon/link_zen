@@ -6,6 +6,7 @@ import { BsFillEyeSlashFill } from "react-icons/bs";
 import React from "react";
 import Link from "next/link";
 import AppConfig from "@/constants/app.constant";
+import { pfDisplay, lato, quicksand } from "font";
 
 interface AccordionItem {
   header: string;
@@ -26,9 +27,20 @@ const items: AccordionItem[] = [
 
   {
     header: "How do I contact customer support?",
-    content: <p className="my-2">
-      We value your feedback and are committed to providing excellent customer service. To contact our customer care team, please send an email to <Link className="text-primary-700 underline text-md" href={`mailto:${AppConfig.mail}`}>{AppConfig.mail}</Link> Our team of experts is always ready to assist you with any questions or concerns you may have.
-    </p>
+    content: (
+      <p className="my-2">
+        We value your feedback and are committed to providing excellent customer
+        service. To contact our customer care team, please send an email to{" "}
+        <Link
+          className="text-primary-700 underline text-md"
+          href={`mailto:${AppConfig.mail}`}
+        >
+          {AppConfig.mail}
+        </Link>{" "}
+        Our team of experts is always ready to assist you with any questions or
+        concerns you may have.
+      </p>
+    ),
   },
 
   {
@@ -38,12 +50,16 @@ const items: AccordionItem[] = [
   },
 ];
 
-interface AccordionProps { }
+interface AccordionProps {}
 
 const Accordion = (props: AccordionProps) => {
   return (
     <Container className="">
-      <h3 className="text-center mb-12">Frequently Asked Questions</h3>
+      <h3
+        className={`text-center mb-12 font-bold text-4xl ${pfDisplay.className}`}
+      >
+        FAQ
+      </h3>
       <AccordionPrimitive.Root
         type="single"
         defaultValue="item-1"
@@ -85,7 +101,11 @@ const Accordion = (props: AccordionProps) => {
             </AccordionPrimitive.Header>
             <AccordionPrimitive.Content className="AccordionContent pt-1 w-full rounded-b-lg px-4 pb-3 bg-primary shadow-md">
               <div className="text-md text-gray-500">
-                {typeof content === "string" ? <p className="my-2">{content}</p> : content}
+                {typeof content === "string" ? (
+                  <p className="my-2">{content}</p>
+                ) : (
+                  content
+                )}
               </div>
             </AccordionPrimitive.Content>
           </AccordionPrimitive.Item>

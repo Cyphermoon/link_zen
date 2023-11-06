@@ -1,12 +1,14 @@
 import { VscCircleLargeFilled } from "react-icons/vsc"
 import Selector, { SelectItem } from "."
+import { SortSelectorProp } from "./type"
 
-const SortSelector = ({ id, handleChangeId, selectedOption, options }: SortSelectorProp) => {
+const SortSelector = ({ id, handleChangeId, selectedOption, options, content }: SortSelectorProp) => {
     return (
         <Selector
             id={id}
             handleChangeId={handleChangeId}
             label='Sort By'
+            content={content}
             triggerChildren={
                 <>
                     <span>{selectedOption?.leftIcon}</span>

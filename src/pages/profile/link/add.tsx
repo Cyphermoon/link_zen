@@ -13,8 +13,8 @@ import ProfilePreviewLink from '@/components/Profile/ProfilePreviewLink';
 import RootLayout from '@/components/layout/RootLayout';
 
 import { shortenUrl } from '@/service/link';
-import { convertImageToFileURL, isValidImageSize } from '@/utils/image.utils';
-import { errorToast } from '@/utils/toast.utils';
+import { convertImageToFileURL, isValidImageSize } from '@/utils/image';
+import { errorToast } from '@/utils/toast';
 import BackArrow from '@/components/common/BackArrow';
 
 
