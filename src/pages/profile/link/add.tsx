@@ -72,7 +72,7 @@ const AddProfileLink = () => {
                                     <div className='mb-7 lg:mb-10 flex items-center w-full'>
                                         <BackArrow />
                                         <h2 className="text-3xl font-medium text-center grow">
-                                            Create a profile link
+                                            Add a new link
                                         </h2>
                                     </div>
 
