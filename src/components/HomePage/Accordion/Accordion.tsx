@@ -6,7 +6,14 @@ import { BsFillEyeSlashFill } from "react-icons/bs";
 import React from "react";
 import Link from "next/link";
 import AppConfig from "@/constants/app.constant";
-import { pfDisplay, lato, quicksand } from "font";
+import {
+  pfDisplay,
+  urbanist,
+  lato,
+  quicksand,
+  raleway,
+  montserrat,
+} from "font";
 
 interface AccordionItem {
   header: string;
@@ -15,20 +22,41 @@ interface AccordionItem {
 
 const items: AccordionItem[] = [
   {
-    header: "Will there be a mobile app?",
+    header: "How does monetization work?",
     content:
-      "Absolutely! Our company recognizes the growing importance of mobile technology, and we're committed to providing our users with the best possible experience across all platforms. Once our mobile app is in development we'll be sure to keep you informed.",
+      "Monetization on Linkzen allows content creators to earn income from their digital resources. Creators can upload files and set a price or subscription fee, we will provide a link you can share to get people to see it. When users pay to access the content you earn revenue",
   },
   {
-    header: "Is it free",
+    header: "What if I don't have anything to sell; can I use Linkzen?",
     content:
-      "Our goal is to make our platform as widely available as possible, and to do that, we've made the decision to offer our service for free. We believe that our users should be able to take advantage of our offerings without worrying about any financial burdens.",
+      "Yes, absolutely! Linkzen is not just for selling content; It's a versatile platform for managing and sharing all your digital resources. You can use it to bookmark websites, organize links, share files, create a portfolio or even promote your social media presence.",
+  },
+  {
+    header: "Is Linkzen really worth it?",
+    content:
+      "Yes! Linkzen can be a valuable promotional tool. You can create a professional profile showcasing your contents, all in one place, making them easily accessible to your audience. Share your Linkzen profile link on social media, websites, or in your email. This simplifies resource promotion and make it more convenient for your audience to access and engage with your content",
+  },
+  {
+    header: "How do I get paid for my sold content?",
+    content:
+      "It's simple! All you need to do is set up your payment details in your account settings. When users purchase your content, you'll receive payments directly through the payment method you provided. You can choose to get paid on per sales basis, weekly basis, monthly or even yearly basis",
+  },
+
+  {
+    header: "Will there be a mobile app?",
+    content:
+      "Absolutely! we recognizes the growing importance of mobile technology, and we're committed to providing our users with the best possible experience across all platforms. Once our mobile app is in development we'll be sure to keep you informed.",
+  },
+  {
+    header: "Is Linkzen free?",
+    content:
+      "Our goal is to make Linkzen as widely available as possible, and to do that, we've made the decision to offer our service for free. We believe that our users should be able to take advantage of our offerings without worrying about any financial burdens.",
   },
 
   {
     header: "How do I contact customer support?",
     content: (
-      <p className="my-2">
+      <p className={`my-2 ${montserrat.className}`}>
         We value your feedback and are committed to providing excellent customer
         service. To contact our customer care team, please send an email to{" "}
         <Link
@@ -37,16 +65,10 @@ const items: AccordionItem[] = [
         >
           {AppConfig.mail}
         </Link>{" "}
-        Our team of experts is always ready to assist you with any questions or
-        concerns you may have.
+        We are always ready to assist you with any questions or concerns you may
+        have.
       </p>
     ),
-  },
-
-  {
-    header: "How do I create nested folders?",
-    content:
-      " To create a nested folder, all you need to do is simply click on the plus ( + ) icon inside the folder you want to nest another folder in, and select Create Folder!",
   },
 ];
 
@@ -56,7 +78,7 @@ const Accordion = (props: AccordionProps) => {
   return (
     <Container className="">
       <h3
-        className={`text-center mb-12 font-bold text-4xl ${pfDisplay.className}`}
+        className={`text-center mb-12 font-bold text-4xl ${raleway.className}`}
       >
         FAQ
       </h3>
@@ -82,7 +104,9 @@ const Accordion = (props: AccordionProps) => {
                   "inline-flex w-full items-center justify-between px-4 py-5 text-left bg-primary rounded-t-lg shadow-md"
                 )}
               >
-                <span className="font-medium  text-subdue text-base">
+                <span
+                  className={`font-semibold  text-subdue text-base ${urbanist.className} text-lg`}
+                >
                   {header}
                 </span>
                 <AiOutlineEye
@@ -102,7 +126,7 @@ const Accordion = (props: AccordionProps) => {
             <AccordionPrimitive.Content className="AccordionContent pt-1 w-full rounded-b-lg px-4 pb-3 bg-primary shadow-md">
               <div className="text-md text-gray-500">
                 {typeof content === "string" ? (
-                  <p className="my-2">{content}</p>
+                  <p className={`my-2 ${montserrat.className}`}>{content}</p>
                 ) : (
                   content
                 )}
