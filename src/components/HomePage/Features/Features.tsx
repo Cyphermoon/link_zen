@@ -21,13 +21,13 @@ import Box from "./Boxes";
 const Features = () => {
 
   return (
-    <main id="features">
-      <Container>
-        <h3 className={`text-5xl font-bold normal-case ${raleway.className}`}>
+    <main id="features" className="bg-accent text-white">
+      <Container className="py-14">
+        <h3 className={`text-5xl font-bold normal-case ${raleway.className} text-slate-50`}>
           Make your life easy with Linkzen
         </h3>
         <p
-          className={`text-lg mt-4 mb-12 md:text-xl font-medium text-gray-500 ${quicksand.className}`}
+          className={`text-lg mt-4 mb-12 md:text-xl font-medium text-gray-100 ${quicksand.className}`}
         >
           Life is hard but we can make it easy
         </p>
@@ -36,7 +36,7 @@ const Features = () => {
             title="Save to Linkzen Extension"
             body="Save important web contents directly to your Linkzen profile while browsing, using Linkzen's chrome extention"
           >
-            <div className="p-1 w-20 rounded-md flex items-center justify-center bg-profile-gradient md:bg-none">
+            <div className="p-1 w-20 rounded-md flex items-center justify-center bg-white md:bg-none">
               <IoExtensionPuzzleOutline className="text-5xl md:text-7xl text-neutral-500" />
             </div>
           </Box>
@@ -44,7 +44,7 @@ const Features = () => {
             title="Analytics"
             body="Gain valuable insights into your content's impact with detailed analytics. Understand your audience and your content's performance"
           >
-            <div className="bg-profile-gradient p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
+            <div className="bg-white p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
               <IoAnalytics className="text-5xl md:text-7xl text-green-900" />
             </div>
           </Box>
@@ -52,7 +52,7 @@ const Features = () => {
             title="Url Shortner"
             body="Easily reduce the length of your links with our url shortner for easy sharing and promotion of your contents"
           >
-            <div className="bg-profile-gradient p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
+            <div className="bg-white p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
               <FiLink2 className="text-5xl md:text-7xl text-blue-950" />
             </div>
           </Box>
@@ -60,7 +60,7 @@ const Features = () => {
             title="Inbuilt Browser"
             body="View the content of external websites directly within LinkZen, without leaving the page"
           >
-            <div className="bg-profile-gradient p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
+            <div className="bg-white p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
               <VscPreview className="text-5xl md:text-7xl text-stone-700" />
             </div>
           </Box>

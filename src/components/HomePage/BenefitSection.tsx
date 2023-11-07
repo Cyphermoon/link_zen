@@ -2,8 +2,6 @@ import { useTiltEffect } from "@/hooks/index.hook";
 import Image from "next/image";
 import Container from "../common/Container";
 import { urbanist, pfDisplay, raleway } from "font";
-import { useWaitListContext } from "@/context/WaitlistProvider";
-import Btn from "../common/Button";
 
 
 
@@ -61,12 +59,6 @@ const benefits: BenefitProps[] = [
 ];
 
 const BenefitSection = () => {
-      const { openWaitList } = useWaitListContext();
-
-      const handleWaitlistClicked = () => {
-        openWaitList();
-      };
-
   return (
     <section className="bg-profile-gradient py-14">
       <Container className="space-y-24 lg:space-y-40">
@@ -106,13 +98,6 @@ const BenefitSection = () => {
           width={486}
           height={378}
         /> */}
-        <Btn
-          type="button"
-          handleClick={handleWaitlistClicked}
-          className="w-2/3 md:w-1/4 h-16 my-0"
-        >
-          Join the Waitlist
-        </Btn>
       </Container>
     </section>
   );
