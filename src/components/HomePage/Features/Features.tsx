@@ -9,18 +9,22 @@ import { AiOutlineShop } from "react-icons/ai";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { MdOutlineMobileScreenShare } from "react-icons/md";
 import Container from "../../common/Container";
-import { opensans, pfDisplay, lato, quicksand } from "font";
+import { opensans, pfDisplay, lato, quicksand, urbanist, raleway } from "font";
+
+
+
+
+
 
 import Box from "./Boxes";
 
 const Features = () => {
+
   return (
     <main id="features">
       <Container>
-        <h3
-          className={`text-4xl font-semibold normal-case ${pfDisplay.className}`}
-        >
-          Make your life easy with LinkZen
+        <h3 className={`text-5xl font-bold normal-case ${raleway.className}`}>
+          Make your life easy with Linkzen
         </h3>
         <p
           className={`text-lg mt-4 mb-12 md:text-xl font-medium text-gray-500 ${quicksand.className}`}
@@ -29,8 +33,8 @@ const Features = () => {
         </p>
         <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
           <Box
-            title="Save to LinkZen Extension"
-            body="Save web content directly to your LinkZen profile while browsing, using LinkZen's chrome extention"
+            title="Save to Linkzen Extension"
+            body="Save important web contents directly to your Linkzen profile while browsing, using Linkzen's chrome extention"
           >
             <div className="p-1 w-20 rounded-md flex items-center justify-center bg-profile-gradient md:bg-none">
               <IoExtensionPuzzleOutline className="text-5xl md:text-7xl text-neutral-500" />
@@ -38,15 +42,15 @@ const Features = () => {
           </Box>
           <Box
             title="Analytics"
-            body="Gain valuable insights into your content's impact with detailed analytics. Understand your audience and your resource performance"
+            body="Gain valuable insights into your content's impact with detailed analytics. Understand your audience and your content's performance"
           >
             <div className="bg-profile-gradient p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
               <IoAnalytics className="text-5xl md:text-7xl text-green-900" />
             </div>
           </Box>
           <Box
-            title="Url shortner"
-            body="Easily reduce the length of your links with our url shortner for easy sharing of your links"
+            title="Url Shortner"
+            body="Easily reduce the length of your links with our url shortner for easy sharing and promotion of your contents"
           >
             <div className="bg-profile-gradient p-1 w-20 rounded-md flex items-center justify-center md:bg-none">
               <FiLink2 className="text-5xl md:text-7xl text-blue-950" />
