@@ -2,6 +2,10 @@ import { useTiltEffect } from "@/hooks/index.hook";
 import Image from "next/image";
 import Container from "../common/Container";
 import { urbanist, pfDisplay, raleway } from "font";
+import { useWaitListContext } from "@/context/WaitlistProvider";
+import Btn from "../common/Button";
+
+
 
 interface BenefitProps {
   title: string;
@@ -18,17 +22,17 @@ const benefits: BenefitProps[] = [
   {
     title: "Manage your contents effortlessly",
     description:
-      "Store, manage and share your links, files and audio contents with ease. Linkzen becomes your central hub for all your digital contents",
+      "Store, manage and organize links and files effortlessly. Get a sharable link for your files and share them with ease. Linkzen becomes your central hub for all your digital contents",
     imageUrl: "/images/dashboard_page_preview.png",
     width: 700,
     height: 400,
     smallText: "manage 🛠️",
   },
   {
-    title: "Craft your unique online identity",
+    title: "Let your profile do the talking",
     description:
-      "Shape your online identity with custiomizable personalized profiles. Share across your social media accounts and showcase your digital contents with tailor-made pages that reflects your unique personality and style",
-    imageUrl: "/images/dashboard_page_preview.png",
+      "Shape your online identity with custiomizable personalized profiles. Share your profile across your social media pages and showcase your digital contents with a tailor-made profile that reflects your unique personality and style",
+    imageUrl: "/images/profile_page_preview.png",
     width: 700,
     height: 400,
     smallText: "customize ✨",
@@ -37,7 +41,7 @@ const benefits: BenefitProps[] = [
   {
     title: "Monetize your content with ease",
     description:
-      "Monetize your content by setting prices for premium access and turn your linkzen into a revenue-generating platform",
+      "That's not all! You can monetize your digital contents by setting prices for premium access, turning your linkzen into a revenue-generating platform",
     imageUrl: "/images/dashboard_page_preview.png",
     width: 700,
     height: 400,
@@ -47,7 +51,7 @@ const benefits: BenefitProps[] = [
   {
     title: "Discover content that suits you",
     description:
-      "Explore a world of resources within the LinkZen community. Discover new content, get inspired, and connect with like minded users.",
+      "Explore a world of digital content within the Linkzen community. Discover new contents, get inspired, and connect with like minded champs",
     imageUrl: "/images/dashboard_page_preview.png",
     width: 700,
     height: 400,
@@ -57,6 +61,12 @@ const benefits: BenefitProps[] = [
 ];
 
 const BenefitSection = () => {
+      const { openWaitList } = useWaitListContext();
+
+      const handleWaitlistClicked = () => {
+        openWaitList();
+      };
+
   return (
     <section className="bg-profile-gradient py-14">
       <Container className="space-y-24 lg:space-y-40">
@@ -96,6 +106,13 @@ const BenefitSection = () => {
           width={486}
           height={378}
         /> */}
+        <Btn
+          type="button"
+          handleClick={handleWaitlistClicked}
+          className="w-2/3 md:w-1/4 h-16 my-0"
+        >
+          Join the Waitlist
+        </Btn>
       </Container>
     </section>
   );
