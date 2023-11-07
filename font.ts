@@ -99,7 +99,7 @@ export const lato = Lato({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito",
-  weight: "100",
+  weight: ["100","300","400", "700", "900"]
 });
 
 export const quicksand = Quicksand({
